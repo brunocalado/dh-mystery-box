@@ -1,0 +1,83 @@
+{
+  "id": "dh-mystery-box",
+  "title": "Daggerheart: 🎁 Mystery Box",
+  "version": "0.0.1",
+  
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  
+  "authors": [
+    {
+      "name": "Mestre Digital",
+      "flags": {}
+    }
+  ],
+  
+  "description": "Add a thrill of surprise to your Daggerheart sessions. This module lets Game Masters create item boxes—like treasure chests, magical caches, or lucky bags — that players can open to reveal random rewards.",
+
+  "relationships": {
+    "systems": [
+      {
+        "id": "daggerheart",
+        "type": "system",
+        "compatibility": {
+          "minimum": "1.8.0"
+        }
+      }
+    ],
+    "recommends": [
+      {
+        "id": "dice-so-nice",
+        "type": "module",
+        "title": "Dice So Nice!",
+        "compatibility": {
+          "minimum": "5.2.4"
+        }
+      }
+    ]
+  },
+
+  "media": [{
+    "type": "setup",
+    "url": "modules/dh-mystery-box/assets/images/thumbnail.webp",
+    "thumbnail": "modules/dh-mystery-box/assets/images/thumbnail.webp"
+  }], 
+  
+  "esmodules": ["scripts/main.js"],
+
+  "styles": ["styles/mystery-box.css", "styles/mb-reveal.css", "styles/mb-settings.css"],
+
+  "packs": [
+    {
+      "label": "Macros",
+      "type": "Macro",
+      "name": "macros",
+      "path": "packs/macros",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {},
+      "banner": "modules/daggerheart-store/assets/images/banner.webp" 
+    }
+  ],  
+  "packFolders": [
+    {
+      "name": "🎁️ Mystery Box",
+      "sorting": "a",
+      "color": "#624d09",
+      "packs": [        
+        "macros"
+      ],
+      "folders": []
+    }
+  ],
+ 
+  "url": "https://github.com/brunocalado/dh-mystery-box",
+  "manifest": "https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json",
+  "download": "https://codeload.github.com/brunocalado/dh-mystery-box/zip/main"
+  
+}

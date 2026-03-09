@@ -1,0 +1,11 @@
+<div class="dh-mb-reveal-list">
+    {{#each items as |item|}}
+    <div class="dh-mb-reveal-row">
+        <img src="{{item.img}}" class="dh-mb-reveal-img" alt="{{item.name}}">
+        <span class="dh-mb-reveal-name">{{item.name}}</span>
+        <button type="button" class="dh-mb-reveal-view" data-action="viewItem" data-index="{{item.index}}" title="View Item">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+    {{/each}}
+</div>

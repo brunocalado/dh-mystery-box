@@ -1,0 +1,79 @@
+.dh-mb-reveal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: var(--mb-bg-dark);
+  max-height: 400px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #111111;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #444444;
+    border-radius: 4px;
+
+    &:hover {
+      background: #555555;
+    }
+  }
+}
+
+.dh-mb-reveal-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--mb-border-light);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.dh-mb-reveal-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.dh-mb-reveal-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dh-mb-reveal-view {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
+  color: #aaa;
+  transition: all 0.2s;
+
+  &:hover {
+    background: linear-gradient(to bottom, var(--mb-accent), #d55400);
+    border-color: var(--mb-accent);
+    color: #fff;
+    box-shadow: 0 0 6px rgba(255, 100, 0, 0.4);
+  }
+}

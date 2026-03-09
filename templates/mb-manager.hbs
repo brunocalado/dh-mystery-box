@@ -1,0 +1,43 @@
+<div class="dh-mb-manager-content">
+    <div class="mb-manager-header">
+        <p class="mb-notes">
+            <i class="fas fa-info-circle"></i>
+            Manage your Mystery Boxes. Create new boxes, edit their contents, or delete them.
+        </p>
+        <button type="button" data-action="createBox" class="mb-btn-create">
+            <i class="fas fa-plus"></i> Create Box
+        </button>
+    </div>
+
+    <div class="mb-box-list">
+        {{#if boxes.length}}
+        {{#each boxes as |box|}}
+        <div class="mb-box-entry" data-id="{{box.id}}">
+            <div class="mb-box-info">
+                <img src="{{box.icon}}" class="mb-box-icon" alt="box">
+                <div class="mb-box-details">
+                    <span class="mb-box-name">{{box.name}}</span>
+                    <span class="mb-box-count">{{box.itemCount}} item(s)</span>
+                </div>
+            </div>
+            <div class="mb-box-actions">
+                <button type="button" data-action="regenerateItem" data-id="{{box.id}}" title="Regenerate Item">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button type="button" data-action="editBox" data-id="{{box.id}}" title="Edit">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="mb-btn-danger" data-action="deleteBox" data-id="{{box.id}}" title="Delete">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="mb-empty-state">
+            <i class="fas fa-box-open"></i>
+            <p>No Mystery Boxes created yet.</p>
+        </div>
+        {{/if}}
+    </div>
+</div>

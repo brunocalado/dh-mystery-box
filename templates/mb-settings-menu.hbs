@@ -1,0 +1,131 @@
+<div class="mbs-content">
+
+<!-- NAVIGATION TABS -->
+<nav class="mbs-nav">
+    <a class="mbs-nav-item active" data-tab="icons"><i class="fas fa-image"></i> Icons</a>
+    <a class="mbs-nav-item" data-tab="videos"><i class="fas fa-film"></i> Videos</a>
+    <a class="mbs-nav-item" data-tab="audio"><i class="fas fa-volume-up"></i> Audio</a>
+</nav>
+
+<!-- TAB CONTENT CONTAINER -->
+<section class="mbs-tab-content">
+
+    <!-- =======================
+         TAB: ICONS
+         ======================= -->
+    <div class="mbs-tab active" data-tab="icons">
+        <div class="mbs-config-card">
+            <h3 class="mbs-card-title"><i class="fas fa-image"></i> Default Icons</h3>
+            <p class="mbs-card-hint">Images used as the icon for world items created by each rarity tier.</p>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-common">Common</span>
+                <input type="text" class="mbs-path-input" name="iconCommon" value="{{iconCommon}}" placeholder="Path to common icon...">
+                <button type="button" class="mbs-file-picker-btn" data-target="iconCommon" data-picker-type="image" title="Browse for file">
+                    <i class="fas fa-file-image"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-uncommon">Uncommon</span>
+                <input type="text" class="mbs-path-input" name="iconUncommon" value="{{iconUncommon}}" placeholder="Path to uncommon icon...">
+                <button type="button" class="mbs-file-picker-btn" data-target="iconUncommon" data-picker-type="image" title="Browse for file">
+                    <i class="fas fa-file-image"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-rare">Rare</span>
+                <input type="text" class="mbs-path-input" name="iconRare" value="{{iconRare}}" placeholder="Path to rare icon...">
+                <button type="button" class="mbs-file-picker-btn" data-target="iconRare" data-picker-type="image" title="Browse for file">
+                    <i class="fas fa-file-image"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-legendary">Legendary</span>
+                <input type="text" class="mbs-path-input" name="iconLegendary" value="{{iconLegendary}}" placeholder="Path to legendary icon...">
+                <button type="button" class="mbs-file-picker-btn" data-target="iconLegendary" data-picker-type="image" title="Browse for file">
+                    <i class="fas fa-file-image"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =======================
+         TAB: VIDEOS
+         ======================= -->
+    <div class="mbs-tab" data-tab="videos">
+        <div class="mbs-config-card">
+            <h3 class="mbs-card-title"><i class="fas fa-film"></i> Default Opening Videos</h3>
+            <p class="mbs-card-hint">Videos played as the opening animation when a player opens a box of each rarity.</p>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-common">Common</span>
+                <input type="text" class="mbs-path-input" name="videoCommon" value="{{videoCommon}}" placeholder="Path to common video...">
+                <button type="button" class="mbs-file-picker-btn" data-target="videoCommon" data-picker-type="video" title="Browse for file">
+                    <i class="fas fa-file-video"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-uncommon">Uncommon</span>
+                <input type="text" class="mbs-path-input" name="videoUncommon" value="{{videoUncommon}}" placeholder="Path to uncommon video...">
+                <button type="button" class="mbs-file-picker-btn" data-target="videoUncommon" data-picker-type="video" title="Browse for file">
+                    <i class="fas fa-file-video"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-rare">Rare</span>
+                <input type="text" class="mbs-path-input" name="videoRare" value="{{videoRare}}" placeholder="Path to rare video...">
+                <button type="button" class="mbs-file-picker-btn" data-target="videoRare" data-picker-type="video" title="Browse for file">
+                    <i class="fas fa-file-video"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-legendary">Legendary</span>
+                <input type="text" class="mbs-path-input" name="videoLegendary" value="{{videoLegendary}}" placeholder="Path to legendary video...">
+                <button type="button" class="mbs-file-picker-btn" data-target="videoLegendary" data-picker-type="video" title="Browse for file">
+                    <i class="fas fa-file-video"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =======================
+         TAB: AUDIO
+         ======================= -->
+    <div class="mbs-tab" data-tab="audio">
+        <div class="mbs-config-card">
+            <h3 class="mbs-card-title"><i class="fas fa-volume-up"></i> Sound Effects</h3>
+            <p class="mbs-card-hint">Audio files played when a Mystery Box is opened or found empty.</p>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label">Open Sound</span>
+                <input type="text" class="mbs-path-input" name="openSound" value="{{openSound}}" placeholder="Path to open sound...">
+                <button type="button" class="mbs-file-picker-btn" data-target="openSound" data-picker-type="audio" title="Browse for file">
+                    <i class="fas fa-file-audio"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label">Empty Sound</span>
+                <input type="text" class="mbs-path-input" name="emptySound" value="{{emptySound}}" placeholder="Path to empty sound...">
+                <button type="button" class="mbs-file-picker-btn" data-target="emptySound" data-picker-type="audio" title="Browse for file">
+                    <i class="fas fa-file-audio"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="mbs-footer flexrow">
+    <button type="submit" class="mbs-save-btn" name="submit">
+        <i class="far fa-save"></i> Save Configuration
+    </button>
+</footer>
+
+</div>

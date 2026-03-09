@@ -1,0 +1,35 @@
+<div class="d-flex flex-column gap-2 dh-mb-opener-content">
+    {{#if noActor}}
+    <p class="mb-notes mb-notes-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        No linked actor found. Please assign a character to your user profile.
+    </p>
+    {{else}}
+        {{#if boxes.length}}
+        <p class="mb-notes">
+            <i class="fas fa-info-circle"></i>
+            Select a Mystery Box to open. Items inside will be rolled based on their drop chance.
+        </p>
+
+        <div class="mb-opener-grid">
+            {{#each boxes as |box|}}
+            <div class="mb-opener-card">
+                <img src="{{box.img}}" class="mb-opener-img" alt="{{box.boxName}}">
+                <div class="mb-opener-info">
+                    <span class="mb-opener-name">{{box.boxName}}</span>
+                    <span class="mb-opener-meta">{{box.itemCount}} possible item(s) | Qty: {{box.quantity}}</span>
+                </div>
+                <button type="button" data-action="openBox" data-box-id="{{box.boxId}}" data-actor-item-id="{{box.actorItemId}}" class="mb-btn-open">
+                    <i class="fas fa-box-open"></i> Open
+                </button>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="mb-empty-state">
+            <i class="fas fa-box-open"></i>
+            <p>You don't have any Mystery Boxes in your inventory.</p>
+        </div>
+        {{/if}}
+    {{/if}}
+</div>

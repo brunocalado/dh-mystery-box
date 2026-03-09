@@ -1,0 +1,39 @@
+<div class="dh-mb-editor-content">
+    <div class="mb-editor-header">
+        <label>Box Name</label>
+        <input type="text" class="mb-input" name="name" value="{{name}}" placeholder="e.g. Golden Chest" maxlength="40" required>
+        <select class="mb-input" name="openingStyle" style="flex: 0 0 auto; width: auto; margin-left: 4px;">
+            {{selectOptions openingStyleOptions selected=openingStyle}}
+        </select>
+        <select class="mb-input" name="rarity" style="flex: 0 0 auto; width: auto; margin-left: 4px;">
+            {{selectOptions rarityOptions selected=rarity}}
+        </select>
+        <button type="button" class="mb-add-btn" data-action="addItem">
+            <i class="fas fa-plus"></i> Add Item
+        </button>
+    </div>
+
+    <div class="mb-item-list" id="mb-item-list">
+        {{#each items as |item|}}
+        <div class="mb-item-row" data-index="{{@index}}">
+            <div class="mb-item-drop filled" data-index="{{@index}}">
+                <img src="{{item.img}}" class="mb-item-img" alt="{{item.name}}">
+                <span class="mb-item-name">{{item.name}}</span>
+            </div>
+            <div class="mb-item-controls">
+                <input type="range" class="chance-slider" name="chance_{{@index}}" value="{{item.chance}}" min="0" max="100" step="1">
+                <span class="chance-value">{{item.chance}}%</span>
+                <button type="button" class="mb-item-remove" data-action="removeItem" data-index="{{@index}}" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <div class="mb-form-footer">
+        <button type="submit">
+            <i class="fas fa-save"></i> {{#if isEdit}}Save Changes{{else}}Create Box{{/if}}
+        </button>
+    </div>
+</div>
