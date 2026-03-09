@@ -23,7 +23,7 @@ Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** modul
 Install via the Foundry VTT Module browser or use this manifest link:
 
 ```
-https://raw.githubusercontent.com/brunocalado/dh-statblock-importer/main/module.json
+https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json
 ```
 
 ## ⚖️ Credits & License

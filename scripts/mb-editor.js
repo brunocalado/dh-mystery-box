@@ -13,6 +13,31 @@ function getRarityIcon(rarity) {
 }
 
 /**
+ * Finds or creates the dedicated folder for Mystery Box items.
+ * @returns {Promise<Folder|null>} The folder document, or null on failure.
+ */
+async function getOrCreateMysteryBoxFolder() {
+  const FOLDER_NAME = "🎁️ Mystery Box";
+  const FOLDER_COLOR = "#480057"; // From module.json packFolders
+  const FOLDER_TYPE = "Item";
+
+  let folder = game.folders.find(f => f.name === FOLDER_NAME && f.type === FOLDER_TYPE);
+  if (folder) return folder;
+
+  try {
+    return await Folder.create({
+      name: FOLDER_NAME,
+      type: FOLDER_TYPE,
+      color: FOLDER_COLOR
+    });
+  } catch (err) {
+    ui.notifications.error(`Failed to create item folder "${FOLDER_NAME}".`);
+    console.error(`[${MODULE_ID}]`, err);
+    return null;
+  }
+}
+
+/**
  * Editor for creating or editing a single Mystery Box.
  * Uses per-row drag-and-drop zones with a "+" button to add item slots.
  * Opened from the MysteryBoxManager via create/edit actions.
@@ -375,8 +400,10 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    * @param {string} [rarity="common"] - The rarity of the box to determine the icon.
    */
   static async createWorldItem(name, boxId, rarity = "common") {
+    const folder = await getOrCreateMysteryBoxFolder();
+
     const actionId = foundry.utils.randomID();
-    const img = getRarityIcon(rarity) || RARITY_ICONS.common;
+    const img = getRarityIcon(rarity);
     const itemData = {
       name,
       type: "loot",
@@ -410,13 +437,14 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         }
       },
       effects: [],
-      folder: null,
+      folder: folder?.id ?? null,
       flags: { [MODULE_ID]: { boxId } },
       ownership: { default: 0 }
     };
 
     try {
       await Item.create(itemData);
+      ui.notifications.info(`Created Mystery Box item "${name}".`);
     } catch (err) {
       ui.notifications.error("Failed to create the world item for this Mystery Box.");
       console.error(err);
@@ -436,7 +464,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     );
     if (!worldItem) return;
 
-    const img = getRarityIcon(newRarity) || RARITY_ICONS.common;
+    const img = getRarityIcon(newRarity);
 
     try {
       await worldItem.update({ name: newName, img });
