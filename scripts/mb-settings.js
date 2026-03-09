@@ -14,7 +14,7 @@ export class MysteryBoxSettingsApp extends foundry.applications.api.HandlebarsAp
         classes: ["dh-mystery-box-app", "dh-mystery-box-settings"],
         window: { title: "Mystery Box: Default Assets", resizable: true },
         position: { width: 700, height: 520 }
-    });
+    }, { inplace: false });
 
     static PARTS = {
         content: { template: `modules/${MODULE_ID}/templates/mb-settings-menu.hbs` }
