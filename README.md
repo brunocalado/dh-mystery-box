@@ -18,6 +18,16 @@ Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** modul
 3.  🎁 **Give it to a Player:** Drag the box item to a player's character sheet.
 4.  🎉 **Open & Enjoy:** The player clicks to open, watches the reveal, and collects their loot!
 
+## Macros
+
+```js
+MysteryBox.Open();
+```
+
+```js
+MysteryBox.Manager();
+```
+
 ## 🖼️ Images
 
 <p align="center">
