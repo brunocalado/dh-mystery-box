@@ -122,6 +122,15 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         continue;
       }
 
+      // Skip the roll entirely for guaranteed items — a 100% chance needs no RNG.
+      if (entry.chance >= 100) {
+        if (debugLogs) {
+          console.log(`[Mystery Box] Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
+        }
+        resolvedItems.push(item.toObject());
+        continue;
+      }
+
       const r = new Roll("1d100");
       await r.evaluate();
 

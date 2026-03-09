@@ -4,21 +4,31 @@
 
 Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** module lets Game Masters create item boxes—like treasure chests, magical caches, or lucky bags—that players can open to reveal random rewards.
 
-### ✨ Why use it?
+## ✨ Why use it?
 
 *   **Suspense & Fun:** Players love the anticipation of rolling for loot.
 *   **Visual Flair:** Opening a box triggers exciting animations (confetti or video) and sound effects.
 *   **Automated Rewards:** No more manual copying of items. The module handles the dice rolls and drops the winnings directly into the character's inventory.
 *   **Fully Customizable:** You decide what's in the box and the odds of getting it.
 
-### 🚀 How it works
+## ⚙️ How it works
 
-1.  **Create a Box:** As a GM, use the Mystery Box Manager to define a new box.
-2.  **Fill it up:** Drag and drop items you want players to win and set their drop chances (e.g., 10% for a rare sword, 100% for a potion).
-3.  **Give it to a Player:** Drag the box item to a player's character sheet.
-4.  **Open & Enjoy:** The player clicks to open, watches the reveal, and collects their loot!
+1.  📦 **Create a Box:** As a GM, use the Mystery Box Manager to define a new box.
+2.  ✨ **Fill it up:** Drag and drop items you want players to win and set their drop chances (e.g., 10% for a rare sword, 100% for a potion).
+3.  🎁 **Give it to a Player:** Drag the box item to a player's character sheet.
+4.  🎉 **Open & Enjoy:** The player clicks to open, watches the reveal, and collects their loot!
 
-## 🚀 Installation
+## 🖼️ Images
+
+<p align="center">
+  <img width="700" src="docs/manager.webp">
+</p>
+
+<p align="center">
+  <img width="900" src="docs/player-view.webp">
+</p>
+
+## 📥 Installation
 
 Install via the Foundry VTT Module browser or use this manifest link:
 
