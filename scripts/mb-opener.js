@@ -4,6 +4,42 @@ import { MysteryBoxConfetti } from "./mb-confetti.js";
 const MODULE_ID = "dh-mystery-box";
 
 /**
+ * Selects N unique items from a weighted pool using a seeded RNG.
+ * Each selected item is removed from the pool so no duplicates occur within one draw.
+ * @param {Array<{uuid: string, name: string, weight: number, img: string}>} items - Pool of candidates.
+ * @param {number} count - How many items to draw.
+ * @param {MersenneTwister} rng - Seeded MersenneTwister instance for deterministic randomness.
+ * @returns {Array<{uuid: string, name: string, img: string}>} The selected items.
+ */
+function weightedRandomSelection(items, count, rng) {
+  const pool = items.map(i => ({ ...i }));
+  const selected = [];
+  const draws = Math.min(count, pool.length);
+
+  for (let i = 0; i < draws; i++) {
+    const totalWeight = pool.reduce((sum, item) => sum + item.weight, 0);
+    if (totalWeight <= 0) break;
+
+    const randomValue = rng.random() * totalWeight;
+    let cumulative = 0;
+    let chosenIndex = 0;
+
+    for (let j = 0; j < pool.length; j++) {
+      cumulative += pool[j].weight;
+      if (randomValue < cumulative) {
+        chosenIndex = j;
+        break;
+      }
+    }
+
+    selected.push(pool[chosenIndex]);
+    pool.splice(chosenIndex, 1);
+  }
+
+  return selected;
+}
+
+/**
  * Player-facing UI for selecting and opening Mystery Boxes.
  * Finds consumable items on the linked actor whose names match registered boxes.
  * Opened via `MysteryBox.Open()` or the compendium macro.
@@ -114,38 +150,90 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
     }
 
     const debugLogs = game.settings.get(MODULE_ID, "debugLogs");
+    const boxMode = boxConfig.mode ?? "current";
     const resolvedItems = [];
-    for (const entry of boxConfig.items) {
-      const item = await fromUuid(entry.uuid);
-      if (!item) {
-        console.warn(`[${MODULE_ID}] Item UUID "${entry.uuid}" no longer exists. Skipping.`);
-        continue;
-      }
 
-      // Skip the roll entirely for guaranteed items — a 100% chance needs no RNG.
-      if (entry.chance >= 100) {
-        if (debugLogs) {
-          console.log(`[Mystery Box] Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
-        }
-        resolvedItems.push(item.toObject());
-        continue;
-      }
-
-      const r = new Roll("1d100");
-      await r.evaluate();
+    if (boxMode === "raffle") {
+      // Raffle mode: roll 1d100 as a visible seed, then use weighted random selection
+      const roll = new Roll("1d100");
+      await roll.evaluate();
+      await roll.toMessage({ flavor: "Generating seed of fate..." });
 
       if (game.modules.get("dice-so-nice")?.active && game.dice3d) {
-        await game.dice3d.showForRoll(r, game.user, true);
+        await game.dice3d.showForRoll(roll, game.user, true);
       }
 
-      const success = r.total <= entry.chance;
+      // Seed MersenneTwister with the roll result and current timestamp for maximum entropy
+      const now = Date.now();
+      const rng = new foundry.dice.MersenneTwister();
+      rng.seedArray([
+        roll.total,
+        now & 0xFFFFFFFF,
+        Math.floor(now / 0x100000000)
+      ]);
+
+      // Build weighted pool from valid items only
+      const pool = [];
+      for (const entry of boxConfig.items) {
+        const item = await fromUuid(entry.uuid);
+        if (!item) {
+          console.warn(`[${MODULE_ID}] Item UUID "${entry.uuid}" no longer exists. Skipping.`);
+          continue;
+        }
+        pool.push({ uuid: entry.uuid, name: item.name, img: item.img, weight: entry.chance, itemObj: item.toObject() });
+      }
+
+      const drawCount = Math.min(boxConfig.raffleCount ?? 1, pool.length);
+      if (debugLogs && drawCount < (boxConfig.raffleCount ?? 1)) {
+        console.warn(`[Mystery Box] raffleCount (${boxConfig.raffleCount}) exceeds item pool size (${pool.length}). Clamped to ${drawCount}.`);
+      }
+
+      const selected = weightedRandomSelection(pool, drawCount, rng);
+      for (const pick of selected) {
+        const matched = pool.find(p => p.uuid === pick.uuid);
+        if (matched) resolvedItems.push(matched.itemObj);
+      }
 
       if (debugLogs) {
-        console.log(`[Mystery Box] Item: "${item.name}" | Chance: ${entry.chance}% | Rolled: ${r.total} | Result: ${success ? "ADDED" : "SKIPPED"}`);
+        console.log(`[Mystery Box] MODE: RAFFLE | Seed: ${roll.total}×${now} | Selected: ${resolvedItems.length}/${pool.length} items`);
+        for (const item of resolvedItems) {
+          console.log(`  → "${item.name}"`);
+        }
       }
+    } else {
+      // Current mode: each item rolls independently against its chance percentage
+      for (const entry of boxConfig.items) {
+        const item = await fromUuid(entry.uuid);
+        if (!item) {
+          console.warn(`[${MODULE_ID}] Item UUID "${entry.uuid}" no longer exists. Skipping.`);
+          continue;
+        }
 
-      if (success) {
-        resolvedItems.push(item.toObject());
+        // Skip the roll entirely for guaranteed items — a 100% chance needs no RNG.
+        if (entry.chance >= 100) {
+          if (debugLogs) {
+            console.log(`[Mystery Box] MODE: CURRENT | Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
+          }
+          resolvedItems.push(item.toObject());
+          continue;
+        }
+
+        const r = new Roll("1d100");
+        await r.evaluate();
+
+        if (game.modules.get("dice-so-nice")?.active && game.dice3d) {
+          await game.dice3d.showForRoll(r, game.user, true);
+        }
+
+        const success = r.total <= entry.chance;
+
+        if (debugLogs) {
+          console.log(`[Mystery Box] MODE: CURRENT | Item: "${item.name}" | Chance: ${entry.chance}% | Rolled: ${r.total} | Result: ${success ? "ADDED" : "SKIPPED"}`);
+        }
+
+        if (success) {
+          resolvedItems.push(item.toObject());
+        }
       }
     }
 

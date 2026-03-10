@@ -60,6 +60,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._boxName = "";
     this._boxRarity = "common";
     this._boxOpeningStyle = "video";
+    this._boxMode = "current";
+    this._raffleCount = 1;
     this._initialized = false;
   }
 
@@ -108,6 +110,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         this._boxRarity = box.rarity ?? "common";
         this._boxOpeningStyle = box.openingStyle ?? "video";
         if (this._boxOpeningStyle === "none") this._boxOpeningStyle = "confetti";
+        this._boxMode = box.mode ?? "current";
+        this._raffleCount = box.raffleCount ?? 1;
         this._items = [];
         for (const entry of box.items) {
           const item = await fromUuid(entry.uuid);
@@ -133,6 +137,9 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       name: this._boxName,
       rarity: this._boxRarity,
       openingStyle: this._boxOpeningStyle,
+      mode: this._boxMode,
+      raffleCount: this._raffleCount,
+      isRaffle: this._boxMode === "raffle",
       openingStyleOptions: {
         confetti: "Confetti",
         video: "Video"
@@ -142,6 +149,10 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         uncommon: "Uncommon",
         rare: "Rare",
         legendary: "Legendary"
+      },
+      modeOptions: {
+        current: "Current",
+        raffle: "Raffle"
       },
       items: this._items,
       isEdit: !!this._boxId
@@ -181,19 +192,46 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       this.#onDrop(event, index);
     });
 
-    // Sync range slider display values
+    // Sync range slider display values with mode-aware labels
     const sliders = this.element.querySelectorAll(".chance-slider");
     for (const slider of sliders) {
-      // Enforce step and min on existing sliders (from template)
       slider.setAttribute("min", "5");
       slider.setAttribute("step", "5");
 
       const display = slider.closest(".mb-item-controls")?.querySelector(".chance-value");
       if (display) {
         slider.addEventListener("input", () => {
-          display.textContent = `${slider.value}%`;
+          display.textContent = this._boxMode === "raffle" ? `Weight: ${slider.value}` : `${slider.value}%`;
         });
       }
+    }
+
+    // Mode selector: toggle raffleCount visibility and update slider labels
+    const modeSelect = this.element.querySelector(".mb-mode-select");
+    const raffleCountInput = this.element.querySelector(".mb-raffle-count");
+    if (modeSelect) {
+      modeSelect.addEventListener("change", () => {
+        this._boxMode = modeSelect.value;
+        const nowRaffle = this._boxMode === "raffle";
+
+        if (raffleCountInput) {
+          raffleCountInput.style.display = nowRaffle ? "" : "none";
+        }
+
+        // Update all slider display labels to reflect the new mode
+        for (const s of this.element.querySelectorAll(".chance-slider")) {
+          const d = s.closest(".mb-item-controls")?.querySelector(".chance-value");
+          if (d) d.textContent = nowRaffle ? `Weight: ${s.value}` : `${s.value}%`;
+        }
+      });
+    }
+
+    // Keep raffleCount in sync when user changes the number input
+    if (raffleCountInput) {
+      raffleCountInput.addEventListener("change", () => {
+        this._raffleCount = Math.clamp(parseInt(raffleCountInput.value) || 1, 1, 100);
+        raffleCountInput.value = String(this._raffleCount);
+      });
     }
   }
 
@@ -210,6 +248,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const newRow = document.createElement("div");
     newRow.className = "mb-item-row";
     newRow.dataset.index = String(nextIndex);
+    const isRaffle = this._boxMode === "raffle";
+    const labelText = isRaffle ? "Weight: 100" : "100%";
     newRow.innerHTML = `
       <div class="mb-item-drop empty" data-index="${nextIndex}">
           <i class="fas fa-hand-pointer"></i>
@@ -217,18 +257,18 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       </div>
       <div class="mb-item-controls">
           <input type="range" class="chance-slider" name="chance_${nextIndex}" value="100" min="5" max="100" step="5">
-          <span class="chance-value">100%</span>
+          <span class="chance-value">${labelText}</span>
           <button type="button" class="mb-item-remove" data-action="removeItem" data-index="${nextIndex}" title="Remove">
               <i class="fas fa-times"></i>
           </button>
       </div>`;
     itemList.appendChild(newRow);
 
-    // Sync slider for the new row
+    // Sync slider for the new row with mode-aware label
     const slider = newRow.querySelector(".chance-slider");
     const display = newRow.querySelector(".chance-value");
     slider.addEventListener("input", () => {
-      display.textContent = `${slider.value}%`;
+      display.textContent = this._boxMode === "raffle" ? `Weight: ${slider.value}` : `${slider.value}%`;
     });
   }
 
@@ -371,6 +411,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const name = data.name?.trim();
     const rarity = data.rarity;
     const openingStyle = data.openingStyle;
+    const mode = data.mode ?? "current";
+    const raffleCount = Math.clamp(parseInt(data.raffleCount) || 1, 1, 100);
 
     if (!name) {
       ui.notifications.warn("Please provide a name for the Mystery Box.");
@@ -404,6 +446,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       name,
       rarity,
       openingStyle,
+      mode,
+      raffleCount,
       items: validItems.map((i) => ({ uuid: i.uuid, chance: i.chance }))
     };
 

@@ -392,6 +392,18 @@
             }
         }
 
+        & .mb-mode-select {
+            flex: 0 0 auto;
+            width: auto;
+        }
+
+        & .mb-raffle-count {
+            flex: 0 0 auto;
+            width: 56px;
+            text-align: center;
+            transition: opacity 0.2s, width 0.2s;
+        }
+
         & .mb-add-btn {
             background: linear-gradient(to bottom, #2a3a2a, #1b2b1b);
             border: 1px solid #3a5a3a;
