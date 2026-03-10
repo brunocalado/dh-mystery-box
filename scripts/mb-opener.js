@@ -183,9 +183,12 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         pool.push({ uuid: entry.uuid, name: item.name, img: item.img, weight: entry.chance, itemObj: item.toObject() });
       }
 
-      const drawCount = Math.min(boxConfig.raffleCount ?? 1, pool.length);
-      if (debugLogs && drawCount < (boxConfig.raffleCount ?? 1)) {
-        console.warn(`[Mystery Box] raffleCount (${boxConfig.raffleCount}) exceeds item pool size (${pool.length}). Clamped to ${drawCount}.`);
+      const minDraw = boxConfig.raffleCount ?? 1;
+      const maxDraw = boxConfig.raffleMaximum ?? minDraw;
+      const randomDraw = Math.floor(Math.random() * (maxDraw - minDraw + 1)) + minDraw;
+      const drawCount = Math.min(randomDraw, pool.length);
+      if (debugLogs && drawCount < randomDraw) {
+        console.warn(`[Mystery Box] randomDraw (${randomDraw}) exceeds item pool size (${pool.length}). Clamped to ${drawCount}.`);
       }
 
       const selected = weightedRandomSelection(pool, drawCount, rng);

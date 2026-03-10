@@ -57,6 +57,7 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
       mode: this.parentEditor._boxMode,
       modeOptions: { percentage: "Percentage", raffle: "Raffle" },
       raffleCount: this.parentEditor._raffleCount,
+      raffleMaximum: this.parentEditor._raffleMaximum,
       isRaffle: this.parentEditor._boxMode === "raffle"
     };
   }
@@ -68,11 +69,28 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
    * @param {object} options - Render options.
    */
   _onRender(context, options) {
+    // --- TAB SWITCHING ---
+    const navItems = this.element.querySelectorAll(".mbs-nav-item");
+    const tabs = this.element.querySelectorAll(".mbs-tab");
+
+    navItems.forEach(nav => {
+      nav.addEventListener("click", e => {
+        e.preventDefault();
+        const target = nav.dataset.tab;
+        navItems.forEach(n => n.classList.toggle("active", n.dataset.tab === target));
+        tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === target));
+      });
+    });
+
+    // --- RAFFLE MODE CONDITIONAL VISIBILITY (scoped to Raffle tab) ---
     const modeSelect = this.element.querySelector("[name='mode']");
-    const raffleGroup = this.element.querySelector(".mbs-raffle-group");
-    if (modeSelect && raffleGroup) {
+    const raffleGroups = this.element.querySelectorAll(".mbs-raffle-group");
+    if (modeSelect && raffleGroups.length) {
       modeSelect.addEventListener("change", () => {
-        raffleGroup.style.display = modeSelect.value === "raffle" ? "" : "none";
+        const show = modeSelect.value === "raffle";
+        for (const group of raffleGroups) {
+          group.style.display = show ? "" : "none";
+        }
       });
     }
   }
@@ -88,11 +106,13 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
     const rarity = form.querySelector("[name='rarity']")?.value || "common";
     const mode = form.querySelector("[name='mode']")?.value || "percentage";
     const raffleCount = Math.clamp(parseInt(form.querySelector("[name='raffleCount']")?.value) || 1, 1, 100);
+    const raffleMaximum = Math.clamp(parseInt(form.querySelector("[name='raffleMaximum']")?.value) || 1, 1, 100);
 
     this.parentEditor._boxOpeningStyle = openingStyle;
     this.parentEditor._boxRarity = rarity;
     this.parentEditor._boxMode = mode;
     this.parentEditor._raffleCount = raffleCount;
+    this.parentEditor._raffleMaximum = raffleMaximum;
 
     // Re-render the parent editor to reflect mode changes (slider labels, raffleCount visibility)
     this.parentEditor.render({ parts: ["form"] });

@@ -63,6 +63,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._boxOpeningStyle = "video";
     this._boxMode = "percentage";
     this._raffleCount = 1;
+    this._raffleMaximum = 1;
     this._initialized = false;
   }
 
@@ -114,6 +115,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         if (this._boxOpeningStyle === "none") this._boxOpeningStyle = "confetti";
         this._boxMode = box.mode ?? "percentage";
         this._raffleCount = box.raffleCount ?? 1;
+        this._raffleMaximum = box.raffleMaximum ?? 1;
         this._items = [];
         for (const entry of box.items) {
           const item = await fromUuid(entry.uuid);
@@ -141,6 +143,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       openingStyle: this._boxOpeningStyle,
       mode: this._boxMode,
       raffleCount: this._raffleCount,
+      raffleMaximum: this._raffleMaximum,
       isRaffle: this._boxMode === "raffle",
       openingStyleOptions: {
         confetti: "Confetti",
@@ -401,6 +404,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const openingStyle = data.openingStyle;
     const mode = data.mode ?? "percentage";
     const raffleCount = Math.clamp(parseInt(data.raffleCount) || 1, 1, 100);
+    const raffleMaximum = Math.clamp(parseInt(data.raffleMaximum) || 1, 1, 100);
 
     if (!name) {
       ui.notifications.warn("Please provide a name for the Mystery Box.");
@@ -436,6 +440,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       openingStyle,
       mode,
       raffleCount,
+      raffleMaximum,
       items: validItems.map((i) => ({ uuid: i.uuid, chance: i.chance }))
     };
 

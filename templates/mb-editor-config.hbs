@@ -1,40 +1,65 @@
 <div class="mb-editor-config-content">
-    <div class="mbs-config-card">
-        <label for="cfg-opening-style">Opening Style</label>
-        <select id="cfg-opening-style" name="openingStyle" class="mb-input">
-            {{selectOptions openingStyleOptions selected=openingStyle}}
-        </select>
-        <p class="mbs-field-hint">Choose how the item is revealed (Confetti animation or Video playback)</p>
+
+<!-- NAVIGATION TABS -->
+<nav class="mbs-nav">
+    <a class="mbs-nav-item active" data-tab="general"><i class="fas fa-box-open"></i> General</a>
+    <a class="mbs-nav-item" data-tab="raffle"><i class="fas fa-sliders"></i> Raffle</a>
+</nav>
+
+<!-- TAB CONTENT CONTAINER -->
+<section class="mbs-tab-content">
+
+    <!-- TAB: GENERAL -->
+    <div class="mbs-tab active" data-tab="general">
+        <div class="mbs-config-card">
+            <label for="cfg-opening-style">Opening Style</label>
+            <select id="cfg-opening-style" name="openingStyle" class="mb-input">
+                {{selectOptions openingStyleOptions selected=openingStyle}}
+            </select>
+            <p class="mbs-field-hint">Choose how the item is revealed (Confetti animation or Video playback)</p>
+        </div>
+
+        <div class="mbs-config-card">
+            <label for="cfg-rarity">Rarity</label>
+            <select id="cfg-rarity" name="rarity" class="mb-input">
+                {{selectOptions rarityOptions selected=rarity}}
+            </select>
+            <p class="mbs-field-hint">Defines the default icon for the created item and determines which audio and video is played.</p>
+        </div>
     </div>
 
-    <div class="mbs-config-card">
-        <label for="cfg-rarity">Rarity</label>
-        <select id="cfg-rarity" name="rarity" class="mb-input">
-            {{selectOptions rarityOptions selected=rarity}}
-        </select>
-        <p class="mbs-field-hint">Defines the default icon for the created item and determines which audio and video is played.</p>
+    <!-- TAB: RAFFLE -->
+    <div class="mbs-tab" data-tab="raffle">
+        <div class="mbs-config-card">
+            <label for="cfg-mode">Mode</label>
+            <select id="cfg-mode" name="mode" class="mb-input">
+                {{selectOptions modeOptions selected=mode}}
+            </select>
+            <p class="mbs-field-hint">Percentage: Each item has an independent chance to be awarded. | Raffle: A set number of items are drawn from the pool based on weights.</p>
+        </div>
+
+        <div class="mbs-config-card mbs-raffle-group" {{#unless isRaffle}}style="display: none;"{{/unless}}>
+            <label for="cfg-raffle-count">Raffle Draw Count</label>
+            <input type="number" id="cfg-raffle-count" name="raffleCount" class="mb-input" value="{{raffleCount}}" min="1" max="100" step="1">
+            <p class="mbs-field-hint">Number of items drawn per raffle opening</p>
+        </div>
+
+        <div class="mbs-config-card mbs-raffle-group" {{#unless isRaffle}}style="display: none;"{{/unless}}>
+            <label for="cfg-raffle-maximum">Raffle Maximum Draw</label>
+            <input type="number" id="cfg-raffle-maximum" name="raffleMaximum" class="mb-input" value="{{raffleMaximum}}" min="1" max="100" step="1">
+            <p class="mbs-field-hint">Maximum number of items that can be drawn from the raffle (draw count will be random between Draw Count and this value)</p>
+        </div>
     </div>
 
-    <div class="mbs-config-card">
-        <label for="cfg-mode">Mode</label>
-        <select id="cfg-mode" name="mode" class="mb-input">
-            {{selectOptions modeOptions selected=mode}}
-        </select>
-        <p class="mbs-field-hint">Percentage: Each item has an independent chance to be awarded. | Raffle: A set number of items are drawn from the pool based on weights.</p>
-    </div>
+</section>
 
-    <div class="mbs-config-card mbs-raffle-group" {{#unless isRaffle}}style="display: none;"{{/unless}}>
-        <label for="cfg-raffle-count">Raffle Draw Count</label>
-        <input type="number" id="cfg-raffle-count" name="raffleCount" class="mb-input" value="{{raffleCount}}" min="1" max="100" step="1">
-        <p class="mbs-field-hint">Number of items drawn per raffle opening</p>
-    </div>
+<footer class="mbs-footer">
+    <button type="button" class="mbs-btn mbs-btn-primary" data-action="save">
+        <i class="fas fa-check"></i> Apply
+    </button>
+    <button type="button" class="mbs-btn mbs-btn-secondary" data-action="cancel">
+        <i class="fas fa-times"></i> Cancel
+    </button>
+</footer>
 
-    <footer class="mbs-footer">
-        <button type="button" class="mbs-btn mbs-btn-primary" data-action="save">
-            <i class="fas fa-check"></i> Apply
-        </button>
-        <button type="button" class="mbs-btn mbs-btn-secondary" data-action="cancel">
-            <i class="fas fa-times"></i> Cancel
-        </button>
-    </footer>
 </div>
