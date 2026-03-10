@@ -187,8 +187,16 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       const maxDraw = boxConfig.raffleMaximum ?? minDraw;
       const randomDraw = Math.floor(Math.random() * (maxDraw - minDraw + 1)) + minDraw;
       const drawCount = Math.min(randomDraw, pool.length);
-      if (debugLogs && drawCount < randomDraw) {
-        console.warn(`[Mystery Box] randomDraw (${randomDraw}) exceeds item pool size (${pool.length}). Clamped to ${drawCount}.`);
+
+      if (debugLogs) {
+        console.group(`[Mystery Box] 🎲 Raffle Draw: "${boxConfig.name}"`);
+        console.log(`Seed (1d100): ${roll.total}`);
+        console.log(`Pool Size: ${pool.length}`);
+        console.log(`Draw Target: ${randomDraw} (Min: ${minDraw}, Max: ${maxDraw}) -> Actual: ${drawCount}`);
+        console.table(pool.map(p => ({ Name: p.name, Weight: p.weight })));
+        if (drawCount < randomDraw) {
+          console.warn(`Draw count clamped from ${randomDraw} to ${pool.length} (pool size)`);
+        }
       }
 
       const selected = weightedRandomSelection(pool, drawCount, rng);
@@ -198,10 +206,9 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       }
 
       if (debugLogs) {
-        console.log(`[Mystery Box] MODE: RAFFLE | Seed: ${roll.total}×${now} | Selected: ${resolvedItems.length}/${pool.length} items`);
-        for (const item of resolvedItems) {
-          console.log(`  → "${item.name}"`);
-        }
+        console.log(`Results (${resolvedItems.length}):`);
+        resolvedItems.forEach(i => console.log(`  🎉 ${i.name}`));
+        console.groupEnd();
       }
     } else {
       // Percentage mode: each item rolls independently against its chance percentage
