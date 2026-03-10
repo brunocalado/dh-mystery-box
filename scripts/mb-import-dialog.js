@@ -66,9 +66,19 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
       const index = await pack.getIndex({ fields: ["type"] });
       const hasValid = index.some(entry => VALID_ITEM_TYPES.has(entry.type));
       if (hasValid) {
-        results.push({ id: pack.metadata.id, name: pack.metadata.label });
+        const pkg = pack.metadata.packageName;
+        let source = pkg;
+        if (pkg === "world" || pack.metadata.packageType === "world") source = "World";
+        else if (pkg === game.system.id) source = game.system.title;
+        else {
+          const m = game.modules.get(pkg);
+          if (m) source = m.title;
+        }
+
+        results.push({ id: pack.metadata.id, name: `${source} - ${pack.metadata.label}` });
       }
     }
+    results.sort((a, b) => a.name.localeCompare(b.name));
     return results;
   }
 
@@ -100,6 +110,10 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
   async _prepareContext(options) {
     if (!this._initialized) {
       this._compendiums = await this._fetchValidCompendiums();
+      if (this._compendiums.length > 0 && !this._selectedCompendiumId) {
+        this._selectedCompendiumId = this._compendiums[0].id;
+        this._items = await this._loadCompendiumItems(this._selectedCompendiumId);
+      }
       this._initialized = true;
     }
 
@@ -132,6 +146,14 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
         this._defaultChance = parseInt(slider.value);
         display.textContent = `${slider.value}%`;
       });
+    }
+
+    const select = this.element.querySelector(".mb-import-compendium-select");
+    const placeholder = select?.querySelector("option[value='']");
+    if (placeholder) placeholder.remove();
+
+    if (select) {
+      select.addEventListener("change", (event) => MysteryBoxImportDialog.#onSelectCompendium.call(this, event, select));
     }
   }
 
