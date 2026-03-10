@@ -404,6 +404,29 @@
             transition: opacity 0.2s, width 0.2s;
         }
 
+        & .mb-config-btn {
+            background: linear-gradient(to bottom, #3a3a4a, #2a2a3a);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #C9A060;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            height: 28px;
+            width: 28px;
+
+            &:hover {
+                color: #fff;
+                border-color: #C9A060;
+                box-shadow: 0 0 8px rgba(201, 160, 96, 0.3);
+            }
+        }
+
         & .mb-add-btn {
             background: linear-gradient(to bottom, #2a3a2a, #1b2b1b);
             border: 1px solid #3a5a3a;

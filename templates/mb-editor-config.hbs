@@ -1,0 +1,40 @@
+<div class="mb-editor-config-content">
+    <div class="mbs-config-card">
+        <label for="cfg-opening-style">Opening Style</label>
+        <select id="cfg-opening-style" name="openingStyle" class="mb-input">
+            {{selectOptions openingStyleOptions selected=openingStyle}}
+        </select>
+        <p class="mbs-field-hint">Choose how the item is revealed (Confetti animation or Video playback)</p>
+    </div>
+
+    <div class="mbs-config-card">
+        <label for="cfg-rarity">Rarity</label>
+        <select id="cfg-rarity" name="rarity" class="mb-input">
+            {{selectOptions rarityOptions selected=rarity}}
+        </select>
+        <p class="mbs-field-hint">Set item rarity to determine visual styling and sorting</p>
+    </div>
+
+    <div class="mbs-config-card">
+        <label for="cfg-mode">Mode</label>
+        <select id="cfg-mode" name="mode" class="mb-input">
+            {{selectOptions modeOptions selected=mode}}
+        </select>
+        <p class="mbs-field-hint">Current: Reveal one item at a time | Raffle: Random selection from pool</p>
+    </div>
+
+    <div class="mbs-config-card mbs-raffle-group" {{#unless isRaffle}}style="display: none;"{{/unless}}>
+        <label for="cfg-raffle-count">Raffle Draw Count</label>
+        <input type="number" id="cfg-raffle-count" name="raffleCount" class="mb-input" value="{{raffleCount}}" min="1" max="100" step="1">
+        <p class="mbs-field-hint">Number of items drawn per raffle opening</p>
+    </div>
+
+    <footer class="mbs-footer">
+        <button type="button" class="mbs-btn mbs-btn-primary" data-action="save">
+            <i class="fas fa-check"></i> Apply
+        </button>
+        <button type="button" class="mbs-btn mbs-btn-secondary" data-action="cancel">
+            <i class="fas fa-times"></i> Cancel
+        </button>
+    </footer>
+</div>

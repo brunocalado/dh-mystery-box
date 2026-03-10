@@ -2,18 +2,13 @@
     <div class="mb-editor-header">
         <label>Box Name</label>
         <input type="text" class="mb-input" name="name" value="{{name}}" placeholder="e.g. Golden Chest" maxlength="40" required>
-        <select class="mb-input" name="openingStyle" style="flex: 0 0 auto; width: auto; margin-left: 4px;">
-            {{selectOptions openingStyleOptions selected=openingStyle}}
-        </select>
-        <select class="mb-input" name="rarity" style="flex: 0 0 auto; width: auto; margin-left: 4px;">
-            {{selectOptions rarityOptions selected=rarity}}
-        </select>
-        <select class="mb-input mb-mode-select" name="mode" style="flex: 0 0 auto; width: auto; margin-left: 4px;">
-            {{selectOptions modeOptions selected=mode}}
-        </select>
-        <input type="number" class="mb-input mb-raffle-count" name="raffleCount" value="{{raffleCount}}" min="1" max="100" step="1"
-               style="flex: 0 0 auto; width: 56px; margin-left: 4px;{{#unless isRaffle}} display: none;{{/unless}}"
-               title="Number of items to draw">
+        <input type="hidden" name="openingStyle" value="{{openingStyle}}">
+        <input type="hidden" name="rarity" value="{{rarity}}">
+        <input type="hidden" name="mode" value="{{mode}}">
+        <input type="hidden" name="raffleCount" value="{{raffleCount}}">
+        <button type="button" class="mb-config-btn" data-action="openEditorConfig" title="Box Configuration">
+            <i class="fas fa-sliders"></i>
+        </button>
         <button type="button" class="mb-add-btn" data-action="addItem">
             <i class="fas fa-plus"></i> Add Item
         </button>

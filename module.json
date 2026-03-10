@@ -47,7 +47,7 @@
   
   "esmodules": ["scripts/main.js"],
 
-  "styles": ["styles/mystery-box.css", "styles/mb-reveal.css", "styles/mb-settings.css", "styles/mb-import-dialog.css"],
+  "styles": ["styles/mystery-box.css", "styles/mb-reveal.css", "styles/mb-settings.css", "styles/mb-import-dialog.css", "styles/mb-editor-config.css"],
 
   "packs": [
     {

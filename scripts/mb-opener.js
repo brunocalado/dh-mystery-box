@@ -150,7 +150,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
     }
 
     const debugLogs = game.settings.get(MODULE_ID, "debugLogs");
-    const boxMode = boxConfig.mode ?? "current";
+    const boxMode = boxConfig.mode ?? "percentage";
     const resolvedItems = [];
 
     if (boxMode === "raffle") {
@@ -201,7 +201,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         }
       }
     } else {
-      // Current mode: each item rolls independently against its chance percentage
+      // Percentage mode: each item rolls independently against its chance percentage
       for (const entry of boxConfig.items) {
         const item = await fromUuid(entry.uuid);
         if (!item) {
@@ -212,7 +212,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         // Skip the roll entirely for guaranteed items — a 100% chance needs no RNG.
         if (entry.chance >= 100) {
           if (debugLogs) {
-            console.log(`[Mystery Box] MODE: CURRENT | Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
+            console.log(`[Mystery Box] MODE: PERCENTAGE | Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
           }
           resolvedItems.push(item.toObject());
           continue;
@@ -228,7 +228,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         const success = r.total <= entry.chance;
 
         if (debugLogs) {
-          console.log(`[Mystery Box] MODE: CURRENT | Item: "${item.name}" | Chance: ${entry.chance}% | Rolled: ${r.total} | Result: ${success ? "ADDED" : "SKIPPED"}`);
+          console.log(`[Mystery Box] MODE: PERCENTAGE | Item: "${item.name}" | Chance: ${entry.chance}% | Rolled: ${r.total} | Result: ${success ? "ADDED" : "SKIPPED"}`);
         }
 
         if (success) {

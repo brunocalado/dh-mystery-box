@@ -1,4 +1,5 @@
 import { MysteryBoxImportDialog } from "./mb-import-dialog.js";
+import { MysteryBoxEditorConfig } from "./mb-editor-config.js";
 
 const MODULE_ID = "dh-mystery-box";
 const VALID_ITEM_TYPES = new Set(["weapon", "armor", "loot", "consumable", "feature"]);
@@ -60,7 +61,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._boxName = "";
     this._boxRarity = "common";
     this._boxOpeningStyle = "video";
-    this._boxMode = "current";
+    this._boxMode = "percentage";
     this._raffleCount = 1;
     this._initialized = false;
   }
@@ -85,7 +86,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     actions: {
       removeItem: MysteryBoxEditor.#onRemoveItem,
       addItem: MysteryBoxEditor.#onAddItem,
-      openImportDialog: MysteryBoxEditor.#onOpenImportDialog
+      openImportDialog: MysteryBoxEditor.#onOpenImportDialog,
+      openEditorConfig: MysteryBoxEditor.#onOpenEditorConfig
     }
   }, { inplace: false });
 
@@ -110,7 +112,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         this._boxRarity = box.rarity ?? "common";
         this._boxOpeningStyle = box.openingStyle ?? "video";
         if (this._boxOpeningStyle === "none") this._boxOpeningStyle = "confetti";
-        this._boxMode = box.mode ?? "current";
+        this._boxMode = box.mode ?? "percentage";
         this._raffleCount = box.raffleCount ?? 1;
         this._items = [];
         for (const entry of box.items) {
@@ -151,7 +153,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         legendary: "Legendary"
       },
       modeOptions: {
-        current: "Current",
+        percentage: "Percentage",
         raffle: "Raffle"
       },
       items: this._items,
@@ -206,33 +208,6 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       }
     }
 
-    // Mode selector: toggle raffleCount visibility and update slider labels
-    const modeSelect = this.element.querySelector(".mb-mode-select");
-    const raffleCountInput = this.element.querySelector(".mb-raffle-count");
-    if (modeSelect) {
-      modeSelect.addEventListener("change", () => {
-        this._boxMode = modeSelect.value;
-        const nowRaffle = this._boxMode === "raffle";
-
-        if (raffleCountInput) {
-          raffleCountInput.style.display = nowRaffle ? "" : "none";
-        }
-
-        // Update all slider display labels to reflect the new mode
-        for (const s of this.element.querySelectorAll(".chance-slider")) {
-          const d = s.closest(".mb-item-controls")?.querySelector(".chance-value");
-          if (d) d.textContent = nowRaffle ? `Weight: ${s.value}` : `${s.value}%`;
-        }
-      });
-    }
-
-    // Keep raffleCount in sync when user changes the number input
-    if (raffleCountInput) {
-      raffleCountInput.addEventListener("change", () => {
-        this._raffleCount = Math.clamp(parseInt(raffleCountInput.value) || 1, 1, 100);
-        raffleCountInput.value = String(this._raffleCount);
-      });
-    }
   }
 
   /**
@@ -401,6 +376,19 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
   }
 
   /**
+   * Open the editor configuration dialog for openingStyle, rarity, and mode.
+   * @param {PointerEvent} event - The triggering click event.
+   * @param {HTMLElement} target - The action button element.
+   */
+  static #onOpenEditorConfig(event, target) {
+    // Sync sliders before opening to preserve current chance values
+    this.#syncSlidersToItems();
+
+    const config = new MysteryBoxEditorConfig(this);
+    config.render(true);
+  }
+
+  /**
    * Handle form submission: read form values, persist to settings, create/update world item.
    * @param {SubmitEvent} event - The form submission event.
    * @param {HTMLFormElement} form - The submitted form element.
@@ -411,7 +399,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const name = data.name?.trim();
     const rarity = data.rarity;
     const openingStyle = data.openingStyle;
-    const mode = data.mode ?? "current";
+    const mode = data.mode ?? "percentage";
     const raffleCount = Math.clamp(parseInt(data.raffleCount) || 1, 1, 100);
 
     if (!name) {

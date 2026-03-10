@@ -124,7 +124,8 @@ Hooks.once("init", () => {
     `modules/${MODULE_ID}/templates/mb-opener.hbs`,
     `modules/${MODULE_ID}/templates/mb-reveal.hbs`,
     `modules/${MODULE_ID}/templates/mb-settings-menu.hbs`,
-    `modules/${MODULE_ID}/templates/mb-import-dialog.hbs`
+    `modules/${MODULE_ID}/templates/mb-import-dialog.hbs`,
+    `modules/${MODULE_ID}/templates/mb-editor-config.hbs`
   ]);
 });
 
