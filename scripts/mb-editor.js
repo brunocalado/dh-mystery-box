@@ -86,7 +86,6 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     },
     actions: {
       removeItem: MysteryBoxEditor.#onRemoveItem,
-      addItem: MysteryBoxEditor.#onAddItem,
       openImportDialog: MysteryBoxEditor.#onOpenImportDialog,
       openEditorConfig: MysteryBoxEditor.#onOpenEditorConfig
     }
@@ -211,43 +210,29 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       }
     }
 
-  }
-
-  /**
-   * Add an empty item slot to the list.
-   * Creates a new row with a dashed drop zone where the user can drag an item.
-   * @param {PointerEvent} event - The triggering click event.
-   * @param {HTMLElement} target - The action button element.
-   */
-  static #onAddItem(event, target) {
-    const itemList = this.element.querySelector("#mb-item-list");
-    const nextIndex = itemList.querySelectorAll(".mb-item-row").length;
-
-    const newRow = document.createElement("div");
-    newRow.className = "mb-item-row";
-    newRow.dataset.index = String(nextIndex);
-    const isRaffle = this._boxMode === "raffle";
-    const labelText = isRaffle ? "Weight: 100" : "100%";
-    newRow.innerHTML = `
-      <div class="mb-item-drop empty" data-index="${nextIndex}">
-          <i class="fas fa-hand-pointer"></i>
-          <span class="mb-item-name">Drag Item Here</span>
-      </div>
-      <div class="mb-item-controls">
-          <input type="range" class="chance-slider" name="chance_${nextIndex}" value="100" min="5" max="100" step="5">
-          <span class="chance-value">${labelText}</span>
-          <button type="button" class="mb-item-remove" data-action="removeItem" data-index="${nextIndex}" title="Remove">
-              <i class="fas fa-times"></i>
-          </button>
-      </div>`;
-    itemList.appendChild(newRow);
-
-    // Sync slider for the new row with mode-aware label
-    const slider = newRow.querySelector(".chance-slider");
-    const display = newRow.querySelector(".chance-value");
-    slider.addEventListener("input", () => {
-      display.textContent = this._boxMode === "raffle" ? `Weight: ${slider.value}` : `${slider.value}%`;
-    });
+    // Listener for the permanent "Add Item" drop zone
+    const addZone = this.element.querySelector("#mb-item-add-zone");
+    if (addZone) {
+      addZone.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "copy";
+        addZone.classList.add("drag-over");
+        addZone.style.border = "2px dashed var(--color-shadow-highlight, #ff6400)";
+        addZone.style.background = "rgba(255, 255, 255, 0.05)";
+      });
+      addZone.addEventListener("dragleave", () => {
+        addZone.classList.remove("drag-over");
+        addZone.style.border = "";
+        addZone.style.background = "";
+      });
+      addZone.addEventListener("drop", (event) => {
+        event.preventDefault();
+        addZone.classList.remove("drag-over");
+        addZone.style.border = "";
+        addZone.style.background = "";
+        this.#onDropNew(event);
+      });
+    }
   }
 
   /**
@@ -296,6 +281,45 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
 
     // Collect all slider values before re-render to preserve them
     this.#syncSlidersToItems();
+
+    this.render({ parts: ["form"] });
+  }
+
+  /**
+   * Handle an item being dropped into the "Add Item" zone.
+   * Appends the item to the list.
+   * @param {DragEvent} event - The native drop event.
+   */
+  async #onDropNew(event) {
+    let data;
+    try {
+      data = JSON.parse(event.dataTransfer.getData("text/plain"));
+    } catch {
+      return;
+    }
+
+    if (data.type !== "Item") return;
+
+    const item = await fromUuid(data.uuid);
+    if (!item) {
+      ui.notifications.warn("Could not resolve the dropped item.");
+      return;
+    }
+
+    if (!VALID_ITEM_TYPES.has(item.type)) {
+      ui.notifications.warn("Only weapon, armor, loot, consumable, and feature items are allowed.");
+      return;
+    }
+
+    this.#syncSlidersToItems();
+
+    this._items.push({
+      uuid: data.uuid,
+      name: item.name,
+      img: item.img,
+      type: item.type,
+      chance: 100
+    });
 
     this.render({ parts: ["form"] });
   }
