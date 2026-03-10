@@ -157,7 +157,6 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       // Raffle mode: roll 1d100 as a visible seed, then use weighted random selection
       const roll = new Roll("1d100");
       await roll.evaluate();
-      await roll.toMessage({ flavor: "Generating seed of fate..." });
 
       if (game.modules.get("dice-so-nice")?.active && game.dice3d) {
         await game.dice3d.showForRoll(roll, game.user, true);
@@ -185,7 +184,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
       const minDraw = boxConfig.raffleCount ?? 1;
       const maxDraw = boxConfig.raffleMaximum ?? minDraw;
-      const randomDraw = Math.floor(Math.random() * (maxDraw - minDraw + 1)) + minDraw;
+      const randomDraw = Math.floor(rng.random() * (maxDraw - minDraw + 1)) + minDraw;
       const drawCount = Math.min(randomDraw, pool.length);
 
       debugLog("group", `[Mystery Box] 🎲 Raffle Draw: "${boxConfig.name}"`);
