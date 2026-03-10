@@ -277,10 +277,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
     if (openingStyle === "video") {
       await MysteryBoxOpener.#playOpeningVideo(boxConfig.rarity);
     } else {
-      const soundPath = game.settings.get(MODULE_ID, "openSound");
-      if (soundPath) {
-        foundry.audio.AudioHelper.play({ src: soundPath, volume: 0.8, loop: false }, false);
-      }
+      MysteryBoxOpener.#playOpeningSound(boxConfig.rarity);
       new MysteryBoxConfetti().play({ intensity: 4, duration: 5000 });
     }
 
@@ -328,6 +325,19 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
     this.close();
     new MysteryBoxReveal(resolvedItems).render(true);
+  }
+
+  /**
+   * Plays the rarity-specific opening sound effect.
+   * Reads the configured path from settings so GMs can override without touching module code.
+   * @param {string} [rarity="common"] - The rarity of the box being opened.
+   */
+  static #playOpeningSound(rarity = "common") {
+    const key = `sound${rarity.charAt(0).toUpperCase()}${rarity.slice(1)}`;
+    const src = game.settings.get(MODULE_ID, key);
+    if (src) {
+      foundry.audio.AudioHelper.play({ src, volume: 0.8, loop: false }, false);
+    }
   }
 
   /**

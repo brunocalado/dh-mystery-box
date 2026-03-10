@@ -16,11 +16,32 @@ Hooks.once("init", () => {
     default: {}
   });
 
-  game.settings.register(MODULE_ID, "openSound", {
+  game.settings.register(MODULE_ID, "soundCommon", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/audio/epic.mp3`
+    default: `modules/${MODULE_ID}/assets/audio/box-common.mp3`
+  });
+
+  game.settings.register(MODULE_ID, "soundUncommon", {
+    scope: "world",
+    config: false,
+    type: String,
+    default: `modules/${MODULE_ID}/assets/audio/box-uncommon.mp3`
+  });
+
+  game.settings.register(MODULE_ID, "soundRare", {
+    scope: "world",
+    config: false,
+    type: String,
+    default: `modules/${MODULE_ID}/assets/audio/box-rare.mp3`
+  });
+
+  game.settings.register(MODULE_ID, "soundLegendary", {
+    scope: "world",
+    config: false,
+    type: String,
+    default: `modules/${MODULE_ID}/assets/audio/box-legendary.mp3`
   });
 
   game.settings.register(MODULE_ID, "emptySound", {

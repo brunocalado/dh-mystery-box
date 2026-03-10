@@ -103,9 +103,33 @@
             <p class="mbs-card-hint">Audio files played when a Mystery Box is opened or found empty.</p>
 
             <div class="mbs-asset-row">
-                <span class="mbs-rarity-label">Open Sound</span>
-                <input type="text" class="mbs-path-input" name="openSound" value="{{openSound}}" placeholder="Path to open sound...">
-                <button type="button" class="mbs-file-picker-btn" data-target="openSound" data-picker-type="audio" title="Browse for file">
+                <span class="mbs-rarity-label mbs-common">Common</span>
+                <input type="text" class="mbs-path-input" name="soundCommon" value="{{soundCommon}}" placeholder="Path to common open sound...">
+                <button type="button" class="mbs-file-picker-btn" data-target="soundCommon" data-picker-type="audio" title="Browse for file">
+                    <i class="fas fa-file-audio"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-uncommon">Uncommon</span>
+                <input type="text" class="mbs-path-input" name="soundUncommon" value="{{soundUncommon}}" placeholder="Path to uncommon open sound...">
+                <button type="button" class="mbs-file-picker-btn" data-target="soundUncommon" data-picker-type="audio" title="Browse for file">
+                    <i class="fas fa-file-audio"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-rare">Rare</span>
+                <input type="text" class="mbs-path-input" name="soundRare" value="{{soundRare}}" placeholder="Path to rare open sound...">
+                <button type="button" class="mbs-file-picker-btn" data-target="soundRare" data-picker-type="audio" title="Browse for file">
+                    <i class="fas fa-file-audio"></i>
+                </button>
+            </div>
+
+            <div class="mbs-asset-row">
+                <span class="mbs-rarity-label mbs-legendary">Legendary</span>
+                <input type="text" class="mbs-path-input" name="soundLegendary" value="{{soundLegendary}}" placeholder="Path to legendary open sound...">
+                <button type="button" class="mbs-file-picker-btn" data-target="soundLegendary" data-picker-type="audio" title="Browse for file">
                     <i class="fas fa-file-audio"></i>
                 </button>
             </div>

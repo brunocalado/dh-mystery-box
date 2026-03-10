@@ -36,7 +36,10 @@ export class MysteryBoxSettingsApp extends foundry.applications.api.HandlebarsAp
             videoUncommon:  game.settings.get(MODULE_ID, "videoUncommon"),
             videoRare:      game.settings.get(MODULE_ID, "videoRare"),
             videoLegendary: game.settings.get(MODULE_ID, "videoLegendary"),
-            openSound:      game.settings.get(MODULE_ID, "openSound"),
+            soundCommon:    game.settings.get(MODULE_ID, "soundCommon"),
+            soundUncommon:  game.settings.get(MODULE_ID, "soundUncommon"),
+            soundRare:      game.settings.get(MODULE_ID, "soundRare"),
+            soundLegendary: game.settings.get(MODULE_ID, "soundLegendary"),
             emptySound:     game.settings.get(MODULE_ID, "emptySound")
         };
     }
@@ -84,7 +87,8 @@ export class MysteryBoxSettingsApp extends foundry.applications.api.HandlebarsAp
             const keys = [
                 "iconCommon", "iconUncommon", "iconRare", "iconLegendary",
                 "videoCommon", "videoUncommon", "videoRare", "videoLegendary",
-                "openSound", "emptySound"
+                "soundCommon", "soundUncommon", "soundRare", "soundLegendary",
+                "emptySound"
             ];
 
             try {
