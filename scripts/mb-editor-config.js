@@ -111,6 +111,8 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
     // Ensure maximum is not less than the minimum draw count.
     if (raffleMaximum < raffleCount) raffleMaximum = raffleCount;
 
+    this.parentEditor._syncFormToState();
+
     this.parentEditor._boxOpeningStyle = openingStyle;
     this.parentEditor._boxRarity = rarity;
     this.parentEditor._boxMode = mode;

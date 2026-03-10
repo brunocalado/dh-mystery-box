@@ -280,7 +280,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     };
 
     // Collect all slider values before re-render to preserve them
-    this.#syncSlidersToItems();
+    this._syncFormToState();
 
     this.render({ parts: ["form"] });
   }
@@ -311,7 +311,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       return;
     }
 
-    this.#syncSlidersToItems();
+    this._syncFormToState();
 
     this._items.push({
       uuid: data.uuid,
@@ -328,7 +328,11 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    * Read current slider values from the DOM and sync them to the _items array.
    * Prevents data loss during re-renders.
    */
-  #syncSlidersToItems() {
+  _syncFormToState() {
+    // Capture current name from input so it isn't lost on re-render
+    const nameInput = this.element?.querySelector("[name='name']");
+    if (nameInput) this._boxName = nameInput.value;
+
     const rows = this.element.querySelectorAll(".mb-item-row");
     for (const row of rows) {
       const idx = parseInt(row.dataset.index);
@@ -348,7 +352,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const index = Number(target.dataset.index);
 
     // Sync sliders before modifying the array
-    this.#syncSlidersToItems();
+    this._syncFormToState();
 
     if (Number.isFinite(index) && index >= 0 && index < this._items.length) {
       this._items.splice(index, 1);
@@ -372,7 +376,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    */
   static #onOpenImportDialog(event, target) {
     // Sync sliders before opening to preserve current chance values
-    this.#syncSlidersToItems();
+    this._syncFormToState();
 
     const editor = this;
     const dialog = new MysteryBoxImportDialog({
@@ -409,7 +413,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    */
   static #onOpenEditorConfig(event, target) {
     // Sync sliders before opening to preserve current chance values
-    this.#syncSlidersToItems();
+    this._syncFormToState();
 
     const config = new MysteryBoxEditorConfig(this);
     config.render(true);
@@ -436,7 +440,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     }
 
     // Sync sliders before saving
-    this.#syncSlidersToItems();
+    this._syncFormToState();
 
     // Filter out null/empty slots
     const validItems = this._items.filter((i) => i !== null);
