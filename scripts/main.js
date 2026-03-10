@@ -1,6 +1,7 @@
 import { MysteryBoxManager } from "./mb-manager.js";
 import { MysteryBoxOpener } from "./mb-opener.js";
 import { MysteryBoxSettingsApp } from "./mb-settings.js";
+import { debugLog } from "./mb-helpers.js";
 
 const MODULE_ID = "dh-mystery-box";
 

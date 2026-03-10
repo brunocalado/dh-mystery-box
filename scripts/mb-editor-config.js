@@ -105,8 +105,11 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
     const openingStyle = form.querySelector("[name='openingStyle']")?.value || "confetti";
     const rarity = form.querySelector("[name='rarity']")?.value || "common";
     const mode = form.querySelector("[name='mode']")?.value || "percentage";
-    const raffleCount = Math.clamp(parseInt(form.querySelector("[name='raffleCount']")?.value) || 1, 1, 100);
-    const raffleMaximum = Math.clamp(parseInt(form.querySelector("[name='raffleMaximum']")?.value) || 1, 1, 100);
+    let raffleCount = Math.clamp(parseInt(form.querySelector("[name='raffleCount']")?.value) || 1, 1, 100);
+    let raffleMaximum = Math.clamp(parseInt(form.querySelector("[name='raffleMaximum']")?.value) || 1, 1, 100);
+
+    // Ensure maximum is not less than the minimum draw count.
+    if (raffleMaximum < raffleCount) raffleMaximum = raffleCount;
 
     this.parentEditor._boxOpeningStyle = openingStyle;
     this.parentEditor._boxRarity = rarity;

@@ -1,5 +1,6 @@
 import { MysteryBoxReveal } from "./mb-reveal.js";
 import { MysteryBoxConfetti } from "./mb-confetti.js";
+import { debugLog } from "./mb-helpers.js";
 
 const MODULE_ID = "dh-mystery-box";
 
@@ -149,7 +150,6 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       return;
     }
 
-    const debugLogs = game.settings.get(MODULE_ID, "debugLogs");
     const boxMode = boxConfig.mode ?? "percentage";
     const resolvedItems = [];
 
@@ -188,15 +188,13 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       const randomDraw = Math.floor(Math.random() * (maxDraw - minDraw + 1)) + minDraw;
       const drawCount = Math.min(randomDraw, pool.length);
 
-      if (debugLogs) {
-        console.group(`[Mystery Box] 🎲 Raffle Draw: "${boxConfig.name}"`);
-        console.log(`Seed (1d100): ${roll.total}`);
-        console.log(`Pool Size: ${pool.length}`);
-        console.log(`Draw Target: ${randomDraw} (Min: ${minDraw}, Max: ${maxDraw}) -> Actual: ${drawCount}`);
-        console.table(pool.map(p => ({ Name: p.name, Weight: p.weight })));
-        if (drawCount < randomDraw) {
-          console.warn(`Draw count clamped from ${randomDraw} to ${pool.length} (pool size)`);
-        }
+      debugLog("group", `[Mystery Box] 🎲 Raffle Draw: "${boxConfig.name}"`);
+      debugLog("log", `Seed (1d100): ${roll.total}`);
+      debugLog("log", `Pool Size: ${pool.length}`);
+      debugLog("log", `Draw Target: ${randomDraw} (Min: ${minDraw}, Max: ${maxDraw}) -> Actual: ${drawCount}`);
+      debugLog("table", pool.map(p => ({ Name: p.name, Weight: p.weight })));
+      if (drawCount < randomDraw) {
+        debugLog("warn", `Draw count clamped from ${randomDraw} to ${pool.length} (pool size)`);
       }
 
       const selected = weightedRandomSelection(pool, drawCount, rng);
@@ -205,11 +203,9 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         if (matched) resolvedItems.push(matched.itemObj);
       }
 
-      if (debugLogs) {
-        console.log(`Results (${resolvedItems.length}):`);
-        resolvedItems.forEach(i => console.log(`  🎉 ${i.name}`));
-        console.groupEnd();
-      }
+      debugLog("log", `Results (${resolvedItems.length}):`);
+      resolvedItems.forEach(i => debugLog("log", `  🎉 ${i.name}`));
+      debugLog("groupEnd");
     } else {
       // Percentage mode: each item rolls independently against its chance percentage
       for (const entry of boxConfig.items) {
@@ -221,9 +217,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
         // Skip the roll entirely for guaranteed items — a 100% chance needs no RNG.
         if (entry.chance >= 100) {
-          if (debugLogs) {
-            console.log(`[Mystery Box] MODE: PERCENTAGE | Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
-          }
+          debugLog("log", `[Mystery Box] MODE: PERCENTAGE | Item: "${item.name}" | Chance: 100% | Result: ADDED (guaranteed)`);
           resolvedItems.push(item.toObject());
           continue;
         }
@@ -237,9 +231,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
         const success = r.total <= entry.chance;
 
-        if (debugLogs) {
-          console.log(`[Mystery Box] MODE: PERCENTAGE | Item: "${item.name}" | Chance: ${entry.chance}% | Rolled: ${r.total} | Result: ${success ? "ADDED" : "SKIPPED"}`);
-        }
+        debugLog("log", `[Mystery Box] MODE: PERCENTAGE | Item: "${item.name}" | Chance: ${entry.chance}% | Rolled: ${r.total} | Result: ${success ? "ADDED" : "SKIPPED"}`);
 
         if (success) {
           resolvedItems.push(item.toObject());
