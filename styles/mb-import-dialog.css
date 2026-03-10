@@ -1,0 +1,258 @@
+/* =========================================
+   Import Dialog Styles
+   ========================================= */
+.dh-mystery-box-import {
+    & .dh-mb-import-content {
+        background: var(--mb-bg-dark);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+
+        & .mb-import-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            & .mb-import-compendium-select {
+                flex: 1;
+            }
+
+            & .mb-import-load-btn {
+                background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
+                border: 1px solid #555;
+                color: #ccc;
+                padding: 4px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.2s;
+                height: 28px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                white-space: nowrap;
+                flex-shrink: 0;
+
+                &:hover {
+                    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+                    border-color: var(--mb-accent);
+                    color: #fff;
+                }
+            }
+        }
+
+        & .mb-import-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--mb-border-light);
+        }
+
+        & .mb-import-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        & .mb-import-toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        & .mb-import-toggle-btn {
+            background: linear-gradient(to bottom, #2a3a4a, #1b2b3b);
+            border: 1px solid #3a5a7a;
+            color: #88bbee;
+            padding: 3px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+
+            &:hover {
+                background: linear-gradient(to bottom, #3a5a7a, #2a4a6a);
+                border-color: #88bbee;
+                color: #aaddff;
+            }
+        }
+
+        & .mb-import-count {
+            font-size: 0.8em;
+            color: #999;
+            margin-left: 4px;
+        }
+
+        & .mb-import-chance-label {
+            font-size: 0.85em;
+            color: #ccc;
+            white-space: nowrap;
+        }
+
+        & .mb-import-chance-slider {
+            width: 100px;
+            accent-color: var(--mb-accent);
+        }
+
+        & .mb-import-chance-value {
+            font-size: 0.8em;
+            color: var(--mb-accent);
+            font-weight: 700;
+            min-width: 32px;
+            text-align: right;
+        }
+
+        & .mb-import-item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 6px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 4px;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #111111;
+                border-radius: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #444444;
+                border-radius: 4px;
+
+                &:hover {
+                    background: #555555;
+                }
+            }
+        }
+
+        & .mb-import-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            background: var(--mb-bg-dark);
+            border: 1px solid var(--mb-border-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+                border-color: #666;
+                background: #222;
+            }
+
+            &.selected {
+                border-color: var(--mb-accent);
+                background: #2a1a0a;
+                box-shadow: 0 0 4px rgba(255, 100, 0, 0.2);
+            }
+        }
+
+        & .mb-import-item-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            border: 1px solid var(--mb-border-light);
+            object-fit: cover;
+            flex-shrink: 0;
+            cursor: zoom-in;
+
+            &:hover {
+                border-color: var(--mb-accent);
+                box-shadow: 0 0 4px rgba(255, 100, 0, 0.4);
+            }
+        }
+
+        & .mb-import-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        & .mb-import-item-name {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.85em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        & .mb-import-item-type {
+            font-size: 0.7em;
+            color: #999;
+            text-transform: capitalize;
+        }
+
+        & .mb-import-item-check {
+            color: #555;
+            font-size: 1em;
+            flex-shrink: 0;
+        }
+
+        & .mb-import-item.selected .mb-import-item-check {
+            color: var(--mb-accent);
+        }
+
+        & .mb-import-footer {
+            padding-top: 8px;
+            border-top: 1px solid var(--mb-border-light);
+        }
+
+        & .mb-import-btn {
+            width: 100%;
+            background: linear-gradient(to bottom, var(--mb-accent), #d55400);
+            border: 1px solid var(--mb-accent);
+            color: #fff;
+            padding: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+
+            &:hover {
+                background: linear-gradient(to bottom, #ff7b1a, var(--mb-accent));
+                box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+            }
+        }
+
+        & .mb-empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #888;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            & i {
+                font-size: 2.5rem;
+                margin-bottom: 0.8rem;
+                opacity: 0.4;
+            }
+
+            & p {
+                font-size: 0.95em;
+                margin: 0;
+            }
+        }
+    }
+}

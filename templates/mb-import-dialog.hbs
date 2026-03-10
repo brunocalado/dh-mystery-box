@@ -1,0 +1,64 @@
+<div class="dh-mb-import-content">
+    <div class="mb-import-header">
+        <select class="mb-input mb-import-compendium-select">
+            <option value="">— Select Compendium —</option>
+            {{#each compendiums}}
+            <option value="{{this.id}}" {{#if (eq this.id ../selectedCompendiumId)}}selected{{/if}}>{{this.name}}</option>
+            {{/each}}
+        </select>
+        <button type="button" class="mb-import-load-btn" data-action="selectCompendium">
+            <i class="fas fa-sync"></i> Load
+        </button>
+    </div>
+
+    {{#if hasItems}}
+    <div class="mb-import-toolbar">
+        <div class="mb-import-toolbar-left">
+            <button type="button" class="mb-import-toggle-btn" data-action="selectAll">
+                <i class="fas fa-check-double"></i> Select All
+            </button>
+            <button type="button" class="mb-import-toggle-btn" data-action="deselectAll">
+                <i class="fas fa-times"></i> Deselect All
+            </button>
+            <button type="button" class="mb-import-toggle-btn" data-action="randomSelect">
+                <i class="fas fa-dice"></i> Random
+            </button>
+            <span class="mb-import-count">{{selectedCount}} selected</span>
+        </div>
+        <div class="mb-import-toolbar-right">
+            <label class="mb-import-chance-label" title="The chance value applied to all imported items. You can adjust individual chances later in the editor.">Default Chance</label>
+            <input type="range" class="chance-slider mb-import-chance-slider" value="{{defaultChance}}" min="5" max="100" step="5">
+            <span class="chance-value mb-import-chance-value">{{defaultChance}}%</span>
+        </div>
+    </div>
+
+    <div class="mb-import-item-grid">
+        {{#each items}}
+        <div class="mb-import-item {{#if this.selected}}selected{{/if}}" data-action="toggleItem" data-index="{{this.index}}">
+            <img src="{{this.img}}" class="mb-import-item-img" alt="{{this.name}}" data-action="viewItem" data-uuid="{{this.uuid}}">
+            <div class="mb-import-item-info">
+                <span class="mb-import-item-name">{{this.name}}</span>
+                <span class="mb-import-item-type">{{this.type}}</span>
+            </div>
+            <i class="fas {{#if this.selected}}fa-check-square{{else}}fa-square{{/if}} mb-import-item-check"></i>
+        </div>
+        {{/each}}
+    </div>
+
+    <div class="mb-import-footer">
+        <button type="button" class="mb-import-btn" data-action="importItems">
+            <i class="fas fa-file-import"></i> Import Selected
+        </button>
+    </div>
+    {{else if hasCompendiums}}
+    <div class="mb-empty-state">
+        <i class="fas fa-boxes-stacked"></i>
+        <p>Select a compendium and click Load to browse items.</p>
+    </div>
+    {{else}}
+    <div class="mb-empty-state">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>No Item compendiums with valid items found.</p>
+    </div>
+    {{/if}}
+</div>

@@ -1,3 +1,5 @@
+import { MysteryBoxImportDialog } from "./mb-import-dialog.js";
+
 const MODULE_ID = "dh-mystery-box";
 const VALID_ITEM_TYPES = new Set(["weapon", "armor", "loot", "consumable", "feature"]);
 
@@ -80,7 +82,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     },
     actions: {
       removeItem: MysteryBoxEditor.#onRemoveItem,
-      addItem: MysteryBoxEditor.#onAddItem
+      addItem: MysteryBoxEditor.#onAddItem,
+      openImportDialog: MysteryBoxEditor.#onOpenImportDialog
     }
   }, { inplace: false });
 
@@ -317,6 +320,44 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._items = this._items.filter((i) => i !== null);
 
     this.render({ parts: ["form"] });
+  }
+
+  /**
+   * Open the bulk import dialog to add items from compendiums.
+   * Passes a callback that appends imported items to the editor's item list.
+   * @param {PointerEvent} event - The triggering click event.
+   * @param {HTMLElement} target - The action button element.
+   */
+  static #onOpenImportDialog(event, target) {
+    // Sync sliders before opening to preserve current chance values
+    this.#syncSlidersToItems();
+
+    const editor = this;
+    const dialog = new MysteryBoxImportDialog({
+      onImport(importedItems) {
+        // Remove null slots before appending
+        editor._items = editor._items.filter(i => i !== null);
+
+        const existingUuids = new Set(editor._items.map(i => i.uuid));
+        let added = 0;
+
+        for (const item of importedItems) {
+          if (existingUuids.has(item.uuid)) continue;
+          editor._items.push({
+            uuid: item.uuid,
+            name: item.name,
+            img: item.img,
+            type: item.type,
+            chance: item.chance
+          });
+          existingUuids.add(item.uuid);
+          added++;
+        }
+
+        if (added > 0) editor.render({ parts: ["form"] });
+      }
+    });
+    dialog.render(true);
   }
 
   /**
