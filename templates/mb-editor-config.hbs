@@ -12,7 +12,7 @@
         <select id="cfg-rarity" name="rarity" class="mb-input">
             {{selectOptions rarityOptions selected=rarity}}
         </select>
-        <p class="mbs-field-hint">Set item rarity to determine visual styling and sorting</p>
+        <p class="mbs-field-hint">Defines the default icon for the created item and determines which video is played.</p>
     </div>
 
     <div class="mbs-config-card">
@@ -20,7 +20,7 @@
         <select id="cfg-mode" name="mode" class="mb-input">
             {{selectOptions modeOptions selected=mode}}
         </select>
-        <p class="mbs-field-hint">Current: Reveal one item at a time | Raffle: Random selection from pool</p>
+        <p class="mbs-field-hint">Percentage: Each item has an independent chance to be awarded. | Raffle: A set number of items are drawn from the pool based on weights.</p>
     </div>
 
     <div class="mbs-config-card mbs-raffle-group" {{#unless isRaffle}}style="display: none;"{{/unless}}>

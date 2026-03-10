@@ -52,6 +52,6 @@ https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json
 
 * **Assets:** AI images provided are [CC0 1.0 Universal Public Domain](https://creativecommons.org/publicdomain/zero/1.0/).
 
-* **empty.mp3, epic.mp3:** [License](https://pixabay.com/service/license-summary/)
+* **empty.mp3, box-common.mp3, box-uncommon.mp3, box-rare.mp3, box-legendary.mp3:** [License](https://pixabay.com/service/license-summary/)
 
 **Disclaimer:** This module is an independent creation and is not affiliated with Darrington Press.
