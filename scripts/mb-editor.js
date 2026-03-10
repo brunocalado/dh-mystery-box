@@ -400,11 +400,11 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
   static async #onFormSubmit(event, form, formData) {
     const data = formData.object;
     const name = data.name?.trim();
-    const rarity = data.rarity;
-    const openingStyle = data.openingStyle;
-    const mode = data.mode ?? "percentage";
-    const raffleCount = Math.clamp(parseInt(data.raffleCount) || 1, 1, 100);
-    const raffleMaximum = Math.clamp(parseInt(data.raffleMaximum) || 1, 1, 100);
+    const rarity = this._boxRarity;
+    const openingStyle = this._boxOpeningStyle;
+    const mode = this._boxMode;
+    const raffleCount = this._raffleCount;
+    const raffleMaximum = this._raffleMaximum;
 
     if (!name) {
       ui.notifications.warn("Please provide a name for the Mystery Box.");
