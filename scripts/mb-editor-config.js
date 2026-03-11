@@ -51,7 +51,7 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
   async _prepareContext(options) {
     return {
       openingStyle: this.parentEditor._boxOpeningStyle,
-      openingStyleOptions: { confetti: "Confetti", video: "Video" },
+      openingStyleOptions: { confetti: "Confetti", video: "Video", sound: "Sound Only", none: "None" },
       rarity: this.parentEditor._boxRarity,
       rarityOptions: { common: "Common", uncommon: "Uncommon", rare: "Rare", legendary: "Legendary" },
       mode: this.parentEditor._boxMode,
@@ -103,7 +103,7 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
    */
   static #onSave(event, target) {
     const form = this.element;
-    const openingStyle = form.querySelector("[name='openingStyle']")?.value || "confetti";
+    const openingStyle = form.querySelector("[name='openingStyle']")?.value || "video";
     const rarity = form.querySelector("[name='rarity']")?.value || "common";
     const mode = form.querySelector("[name='mode']")?.value || "percentage";
     let raffleCount = Math.clamp(parseInt(form.querySelector("[name='raffleCount']")?.value) || 1, 1, 100);

@@ -29,6 +29,52 @@ MysteryBox.Open();
 ```js
 MysteryBox.Manager();
 ```
+## 🎲 Box Modes
+
+When creating a Mystery Box, you choose how it decides what the player receives. There are two modes:
+
+### 🎯 Percentage Mode
+
+Each item in the box has its **own independent chance** of being given to the player.
+
+When the player opens the box, the module rolls a 1–100 dice **for each item separately**:
+- If the roll is equal to or lower than the item's chance, the player **receives** that item.
+- If not, that item is **skipped**.
+
+This means the player can receive **multiple items at once**, **just one**, or even **nothing** — depending on how lucky the rolls are.
+
+> **Example:** A box contains three items:
+> - 🗡️ Rare Sword → 10% chance
+> - 🧪 Healing Potion → 80% chance
+> - 📜 Magic Scroll → 50% chance
+>
+> Each one is rolled independently. The player could walk away with all three, only the Potion, or nothing at all.
+
+**Items set to 100% are always given** — no dice roll needed.
+
+### 🎟️ Raffle Mode
+
+The box draws a **fixed number of items** from the pool — like a raffle ticket. The player is **guaranteed to receive exactly N items** (or whatever range the GM configured).
+
+Instead of each item fighting its own odds, all items compete against each other in a weighted draw:
+- Items with **higher weights** are more likely to be picked.
+- Items with **lower weights** are rarer picks.
+- The same item **cannot be drawn twice** in a single opening.
+
+A visible 1d100 dice is rolled first (its result seeds the random number generator), then the weighted draw happens behind the scenes.
+
+> **Example:** A box has 5 items, all with different weights, and is set to draw **2 items**. The player will always get exactly 2, but which 2 depends on the weighted randomness.
+
+**Use this mode when you want to guarantee a fixed number of rewards** but still want randomness in *which* rewards are given.
+
+### 📊 Quick Comparison
+
+| | Percentage | Raffle |
+|---|---|---|
+| Items received | 0 to all | Fixed count (N) |
+| Each item rolled? | Yes, independently | No — all compete together |
+| Can get nothing? | Yes | No (unless pool is empty) |
+| Best for | Loot drops with variable results | Prize boxes with guaranteed rewards |
 
 ### Developers
 [API](https://github.com/brunocalado/dh-mystery-box/wiki/API)

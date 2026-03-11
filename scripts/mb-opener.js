@@ -279,9 +279,13 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
     if (openingStyle === "video") {
       await MysteryBoxOpener.#playOpeningVideo(boxConfig.rarity);
-    } else {
+    } else if (openingStyle === "confetti") {
       MysteryBoxOpener.#playOpeningSound(boxConfig.rarity);
       new MysteryBoxConfetti().play({ intensity: 4, duration: 5000 });
+    } else if (openingStyle === "sound") {
+      MysteryBoxOpener.#playOpeningSound(boxConfig.rarity);
+    } else if (openingStyle === "none") {
+      // no sound, no animation
     }
 
     try {
