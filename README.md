@@ -1,4 +1,6 @@
-# 🎁 Daggerheart Mystery Box
+# 🎁 Mystery Box
+
+## Daggerheart
 
 **Turn loot into an event!**
 
