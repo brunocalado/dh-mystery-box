@@ -154,27 +154,59 @@ Hooks.once("init", () => {
 });
 
 /**
+ * Serializes async tasks by chaining each onto the last promise.
+ * Prevents race conditions when multiple concurrent hooks write to the same resource.
+ */
+class TaskQueue {
+  constructor() {
+    this.last = Promise.resolve();
+  }
+
+  /**
+   * Push a new async task onto the queue.
+   * The task runs only after all previously queued tasks have resolved.
+   * @param {Function} fn - Async function to execute.
+   * @returns {Promise<void>}
+   */
+  push(fn) {
+    this.last = this.last.then(async () => {
+      try {
+        await fn();
+      } catch (err) {
+        console.error(`[${MODULE_ID}] TaskQueue error:`, err);
+      }
+    });
+    return this.last;
+  }
+}
+
+// Module-level queue — serializes all createItem settings writes
+const _boxInstallQueue = new TaskQueue();
+
+/**
  * Auto-install box config when a GM imports a Mystery Box item into World Items.
- * Reads the embedded config flag (set by MysteryBoxEditor) and registers it in settings.
+ * Synchronous hook callback; the async write is serialized via TaskQueue to prevent
+ * race conditions during batch imports.
  * Triggered by the Foundry `createItem` hook.
  * @param {Item} item - The newly created world item.
  * @param {object} options - Creation options.
  * @param {string} userId - The ID of the user who created the item.
  */
-
-Hooks.on("createItem", async (item, options, userId) => {
+Hooks.on("createItem", (item, options, userId) => {
   if (!game.user.isGM) return;
   const boxId = item.getFlag(MODULE_ID, "boxId");
   if (!boxId) return;
   const embeddedConfig = item.getFlag(MODULE_ID, "config");
   if (!embeddedConfig) return;
 
-  const boxes = foundry.utils.deepClone(game.settings.get(MODULE_ID, "boxes"));
-  if (boxes[boxId]) return;
+  _boxInstallQueue.push(async () => {
+    const boxes = foundry.utils.deepClone(game.settings.get(MODULE_ID, "boxes"));
+    if (boxes[boxId]) return;
 
-  boxes[boxId] = embeddedConfig;
-  await game.settings.set(MODULE_ID, "boxes", boxes);
-  ui.notifications.info(`Mystery Box "${embeddedConfig.name}" auto-installed from imported item.`);
+    boxes[boxId] = embeddedConfig;
+    await game.settings.set(MODULE_ID, "boxes", boxes);
+    ui.notifications.info(`Mystery Box "${embeddedConfig.name}" auto-installed from imported item.`);
+  });
 });
 
 /**
