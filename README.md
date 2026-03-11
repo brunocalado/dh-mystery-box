@@ -29,6 +29,10 @@ MysteryBox.Open();
 ```js
 MysteryBox.Manager();
 ```
+
+### Developers
+[API](https://github.com/brunocalado/dh-mystery-box/wiki/API)
+
 ## 🎲 Box Modes
 
 When creating a Mystery Box, you choose how it decides what the player receives. There are two modes:
@@ -76,8 +80,23 @@ A visible 1d100 dice is rolled first (its result seeds the random number generat
 | Can get nothing? | Yes | No (unless pool is empty) |
 | Best for | Loot drops with variable results | Prize boxes with guaranteed rewards |
 
-### Developers
-[API](https://github.com/brunocalado/dh-mystery-box/wiki/API)
+## 🎬 Opening Styles
+
+When creating a Mystery Box, you can choose how the reveal is presented to the player.
+
+### 🎉 Confetti
+A burst of colorful confetti fills the screen. Lightweight and festive — works for any occasion.
+
+### 🎥 Video
+Plays a short animated video tied to the box's rarity before revealing the contents. The higher the rarity, the more dramatic the intro.
+
+### 🔊 Sound Only
+Plays the rarity sound effect without any visual animation. Good for a subtle reveal that doesn't interrupt the flow of play.
+
+### 🚫 None
+No animation or sound. The contents are revealed immediately and silently.
+
+> **Tip:** Use **Video** for dramatic high-rarity rewards, **Confetti** for a fun everyday feel, **Sound Only** when you want atmosphere without distraction, and **None** for a fast no-frills experience.
 
 ## Export and Import Boxes 
 
