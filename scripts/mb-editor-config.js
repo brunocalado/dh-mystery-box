@@ -27,7 +27,7 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
       resizable: false
     },
     position: {
-      width: 380,
+      width: 450,
       height: "auto"
     },
     actions: {
