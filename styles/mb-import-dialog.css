@@ -153,6 +153,7 @@
         & .mb-import-item-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            align-content: start; /* Corrige o estiramento vertical quando há poucos itens */
             gap: 6px;
             overflow-y: auto;
             flex: 1;

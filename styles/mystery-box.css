@@ -79,8 +79,8 @@
         }
 
         & .mb-box-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 8px;
             max-height: 500px;
             overflow-y: auto;
@@ -113,8 +113,6 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            width: 200px;
-            flex-shrink: 0;
             transition: border-color 0.2s;
 
             &:hover {
@@ -204,6 +202,7 @@
             padding: 2rem 1rem;
             color: #888;
             width: 100%;
+            grid-column: 1 / -1; /* Força o empty state a ocupar a grade toda */
 
             & i {
                 font-size: 2.5rem;
@@ -261,8 +260,8 @@
         }
 
         & .mb-item-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 8px;
             max-height: 500px;
             overflow-y: auto;
@@ -277,8 +276,6 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            width: 200px;
-            flex-shrink: 0;
             transition: border-color 0.2s;
 
             &:hover {
