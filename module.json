@@ -1,7 +1,7 @@
 {
   "id": "dh-mystery-box",
   "title": "Daggerheart: 🎁 Mystery Box",
-  "version": "0.0.4",
+  "version": "0.0.5",
   
   "compatibility": {
     "minimum": "13",
@@ -61,8 +61,21 @@
         "ASSISTANT": "OWNER"
       },
       "flags": {},
-      "banner": "modules/daggerheart-store/assets/images/banner.webp" 
-    }
+      "banner": "modules/dh-mystery-box/assets/images/banner.webp" 
+    },
+    {
+      "label": "Mystery Boxes Demo",
+      "type": "Item",
+      "name": "mystery-boxes-demo",
+      "path": "packs/mystery-boxes-demo",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {},
+      "banner": "modules/dh-mystery-box/assets/images/banner.webp" 
+    }    
   ],  
   "packFolders": [
     {
@@ -70,7 +83,8 @@
       "sorting": "a",
       "color": "#480057",
       "packs": [        
-        "macros"
+        "macros",
+        "mystery-boxes-demo"
       ],
       "folders": []
     }

@@ -114,7 +114,6 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
    * @param {HTMLElement} target - The action button with data-box-id and data-actor-item-id.
    */
   static async #onOpenBox(event, target) {
-    const boxId = target.dataset.boxId;
     const actorItemId = target.dataset.actorItemId;
     const actor = game.user.character;
 
@@ -123,17 +122,20 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       return;
     }
 
-    const boxes = game.settings.get(MODULE_ID, "boxes");
-    const boxConfig = boxes[boxId];
-    if (!boxConfig) {
-      ui.notifications.warn("Mystery Box configuration not found.");
-      return;
-    }
-
-    // Consume the box before rolling — ensures the correct item is decremented regardless of system behavior.
     const actorItem = actor.items.get(actorItemId);
     if (!actorItem) {
       ui.notifications.warn("Mystery Box item not found on your character.");
+      return;
+    }
+
+    const boxId = target.dataset.boxId;
+    const boxes = game.settings.get(MODULE_ID, "boxes");
+    const boxConfig = boxes[boxId];
+
+    if (!boxConfig) {
+      ui.notifications.warn(
+        "This Mystery Box is not configured in this world. Ask your GM to import the item into the world first."
+      );
       return;
     }
 

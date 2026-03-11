@@ -480,10 +480,20 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       return;
     }
 
+    const boxConfig = {
+      name,
+      rarity,
+      openingStyle,
+      mode,
+      raffleCount,
+      raffleMaximum,
+      items: validItems.map(i => ({ uuid: i.uuid, chance: i.chance }))
+    };
+
     if (isCreate) {
-      await MysteryBoxEditor.createWorldItem(name, boxId, rarity);
+      await MysteryBoxEditor.createWorldItem(name, boxId, rarity, boxConfig);
     } else {
-      await MysteryBoxEditor.#updateWorldItem(boxId, name, rarity);
+      await MysteryBoxEditor.#updateWorldItem(boxId, name, rarity, boxConfig);
     }
 
     // Refresh the manager window if it is currently open
@@ -504,8 +514,9 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    * @param {string} name - The box name to use for the item.
    * @param {string} boxId - The unique box ID from settings, stored as a flag for detection.
    * @param {string} [rarity="common"] - The rarity of the box to determine the icon.
+   * @param {object} [boxConfig=null] - Full box configuration to embed as a flag for portability.
    */
-  static async createWorldItem(name, boxId, rarity = "common") {
+  static async createWorldItem(name, boxId, rarity = "common", boxConfig = null) {
     const folder = await getOrCreateMysteryBoxFolder();
 
     const actionId = foundry.utils.randomID();
@@ -544,7 +555,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       },
       effects: [],
       folder: folder?.id ?? null,
-      flags: { [MODULE_ID]: { boxId } },
+      flags: { [MODULE_ID]: { boxId, config: boxConfig } },
       ownership: { default: 0 }
     };
 
@@ -563,8 +574,9 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    * @param {string} boxId - The box ID stored as a flag on the world item.
    * @param {string} newName - The new name to apply.
    * @param {string} newRarity - The new rarity to apply.
+   * @param {object} boxConfig - Full box configuration to embed as a flag for portability.
    */
-  static async #updateWorldItem(boxId, newName, newRarity) {
+  static async #updateWorldItem(boxId, newName, newRarity, boxConfig) {
     const worldItem = game.items.find(
       (i) => i.type === "loot" && i.getFlag(MODULE_ID, "boxId") === boxId
     );
@@ -573,7 +585,11 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const img = getRarityIcon(newRarity);
 
     try {
-      await worldItem.update({ name: newName, img });
+      await worldItem.update({
+        name: newName,
+        img,
+        flags: { [MODULE_ID]: { boxId, config: boxConfig } }
+      });
     } catch (err) {
       ui.notifications.error("Failed to update the world item.");
       console.error(err);

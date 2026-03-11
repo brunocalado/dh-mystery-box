@@ -101,7 +101,13 @@ export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplic
       return;
     }
 
-    await MysteryBoxEditor.createWorldItem(box.name, boxId, box.rarity);
+    const boxConfig = {
+      mode: "percentage",
+      raffleCount: 1,
+      raffleMaximum: 1,
+      ...box
+    };
+    await MysteryBoxEditor.createWorldItem(box.name, boxId, box.rarity, boxConfig);
   }
 
   /**

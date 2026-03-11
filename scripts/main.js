@@ -154,10 +154,63 @@ Hooks.once("init", () => {
 });
 
 /**
+ * Auto-install box config when a GM imports a Mystery Box item into World Items.
+ * Reads the embedded config flag (set by MysteryBoxEditor) and registers it in settings.
+ * Triggered by the Foundry `createItem` hook.
+ * @param {Item} item - The newly created world item.
+ * @param {object} options - Creation options.
+ * @param {string} userId - The ID of the user who created the item.
+ */
+
+Hooks.on("createItem", async (item, options, userId) => {
+  if (!game.user.isGM) return;
+  const boxId = item.getFlag(MODULE_ID, "boxId");
+  if (!boxId) return;
+  const embeddedConfig = item.getFlag(MODULE_ID, "config");
+  if (!embeddedConfig) return;
+
+  const boxes = foundry.utils.deepClone(game.settings.get(MODULE_ID, "boxes"));
+  if (boxes[boxId]) return;
+
+  boxes[boxId] = embeddedConfig;
+  await game.settings.set(MODULE_ID, "boxes", boxes);
+  ui.notifications.info(`Mystery Box "${embeddedConfig.name}" auto-installed from imported item.`);
+});
+
+/**
+ * Auto-install box config when a GM drags a Mystery Box item from a compendium onto an actor sheet.
+ * Triggered by the Foundry `createEmbeddedDocuments` hook.
+ * @param {Actor} parent - The parent document (actor) receiving the embedded items.
+ * @param {Document[]} documents - The array of newly created embedded documents.
+ * @param {object} options - Creation options.
+ * @param {string} userId - The ID of the user who created the documents.
+ */
+Hooks.on("createEmbeddedDocuments", async (parent, documents, options, userId) => {
+  if (!game.user.isGM) return;
+  if (parent.documentName !== "Actor") return;
+
+  for (const doc of documents) {
+    if (doc.documentName !== "Item") continue;
+    const boxId = doc.getFlag(MODULE_ID, "boxId");
+    if (!boxId) continue;
+    const embeddedConfig = doc.getFlag(MODULE_ID, "config");
+    if (!embeddedConfig) continue;
+
+    const boxes = foundry.utils.deepClone(game.settings.get(MODULE_ID, "boxes"));
+    if (boxes[boxId]) continue;
+
+    boxes[boxId] = embeddedConfig;
+    await game.settings.set(MODULE_ID, "boxes", boxes);
+    ui.notifications.info(`Mystery Box "${embeddedConfig.name}" auto-installed from actor item.`);
+  }
+});
+
+/**
  * Expose the global MysteryBox API once the game is ready.
  * Triggered by the Foundry `ready` hook.
  */
 Hooks.once("ready", () => {
+
   globalThis.MysteryBox = {
     /**
      * Opens the Mystery Box Manager window. GM only.
