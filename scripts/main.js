@@ -10,6 +10,8 @@ const MODULE_ID = "dh-mystery-box";
  * Triggered by the Foundry `init` hook.
  */
 Hooks.once("init", () => {
+  Handlebars.registerHelper("eq", (a, b) => a === b);
+
   game.settings.register(MODULE_ID, "boxes", {
     scope: "world",
     config: false,

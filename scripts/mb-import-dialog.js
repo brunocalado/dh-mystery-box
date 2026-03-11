@@ -23,6 +23,8 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     this._selectedIndexes = new Set();
     this._defaultChance = 75;
     this._initialized = false;
+    this._sourceMode = "compendium"; // "compendium" | "folder"
+    this._folderItems = [];
   }
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
@@ -39,6 +41,7 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     },
     actions: {
       selectCompendium: MysteryBoxImportDialog.#onSelectCompendium,
+      toggleSourceMode: MysteryBoxImportDialog.#onToggleSourceMode,
       toggleItem: MysteryBoxImportDialog.#onToggleItem,
       selectAll: MysteryBoxImportDialog.#onSelectAll,
       deselectAll: MysteryBoxImportDialog.#onDeselectAll,
@@ -102,6 +105,25 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
   }
 
   /**
+   * Load all valid items from a world Folder dropped into the folder zone.
+   * Recursively collects items from sub-folders.
+   * @param {Folder} folder - The world Folder document.
+   * @returns {Promise<Array<{uuid: string, name: string, img: string, type: string}>>} Array of items.
+   */
+  async _loadFolderItems(folder) {
+    const results = [];
+    for (const item of folder.contents) {
+      if (!VALID_ITEM_TYPES.has(item.type)) continue;
+      results.push({ uuid: item.uuid, name: item.name, img: item.img, type: item.type });
+    }
+    // Recursively handle sub-folders
+    for (const sub of game.folders.filter(f => f.folder?.id === folder.id && f.type === "Item")) {
+      results.push(...await this._loadFolderItems(sub));
+    }
+    return results;
+  }
+
+  /**
    * Build template context with compendium list, current items, and selection state.
    * Fetches compendiums on first render only.
    * @param {object} options - Render options from AppV2 lifecycle.
@@ -120,13 +142,20 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     return {
       compendiums: this._compendiums,
       selectedCompendiumId: this._selectedCompendiumId,
+      sourceMode: this._sourceMode,
       items: this._items.map((item, idx) => ({
+        ...item,
+        index: idx,
+        selected: this._selectedIndexes.has(idx)
+      })),
+      folderItems: this._folderItems.map((item, idx) => ({
         ...item,
         index: idx,
         selected: this._selectedIndexes.has(idx)
       })),
       defaultChance: this._defaultChance,
       hasItems: this._items.length > 0,
+      hasFolderItems: this._folderItems.length > 0,
       hasCompendiums: this._compendiums.length > 0,
       selectedCount: this._selectedIndexes.size
     };
@@ -155,6 +184,25 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     if (select) {
       select.addEventListener("change", (event) => MysteryBoxImportDialog.#onSelectCompendium.call(this, event, select));
     }
+
+    if (this._sourceMode === "folder") {
+      const folderZone = this.element.querySelector("#mb-folder-drop-zone");
+      if (folderZone) {
+        folderZone.addEventListener("dragover", (event) => {
+          event.preventDefault();
+          event.dataTransfer.dropEffect = "copy";
+          folderZone.classList.add("drag-over");
+        });
+        folderZone.addEventListener("dragleave", () => {
+          folderZone.classList.remove("drag-over");
+        });
+        folderZone.addEventListener("drop", (event) => {
+          event.preventDefault();
+          folderZone.classList.remove("drag-over");
+          MysteryBoxImportDialog.#onFolderDrop.call(this, event);
+        });
+      }
+    }
   }
 
   /**
@@ -172,6 +220,52 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     this._selectedCompendiumId = compendiumId;
     this._items = await this._loadCompendiumItems(compendiumId);
     this._selectedIndexes.clear();
+    this.render({ parts: ["form"] });
+  }
+
+  /**
+   * Toggle between compendium and folder source modes.
+   * Resets selection state on each toggle to avoid index collisions between modes.
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
+   */
+  static #onToggleSourceMode(event, target) {
+    this._sourceMode = this._sourceMode === "compendium" ? "folder" : "compendium";
+    this._selectedIndexes.clear();
+    this._folderItems = [];
+    this.render({ parts: ["form"] });
+  }
+
+  /**
+   * Handle a world Folder being dropped onto the folder drop zone.
+   * Validates that the dragged entity is a Folder of type Item, then loads its items.
+   * @param {DragEvent} event - The native drop event.
+   */
+  static async #onFolderDrop(event) {
+    let data;
+    try {
+      data = JSON.parse(event.dataTransfer.getData("text/plain"));
+    } catch { return; }
+
+    if (data.type !== "Folder") {
+      ui.notifications.warn("Only world folders can be dropped here.");
+      return;
+    }
+
+    const folder = data.uuid ? fromUuidSync(data.uuid) : game.folders.get(data.id);
+    if (!folder || folder.type !== "Item") {
+      ui.notifications.warn("Only Item-type folders are supported.");
+      return;
+    }
+
+    this._folderItems = await this._loadFolderItems(folder);
+    this._selectedIndexes.clear();
+
+    // Auto-select all items from folder for convenience
+    for (let i = 0; i < this._folderItems.length; i++) {
+      this._selectedIndexes.add(i);
+    }
+
     this.render({ parts: ["form"] });
   }
 
@@ -201,7 +295,8 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
    * @param {HTMLElement} target - The action element.
    */
   static #onSelectAll(event, target) {
-    for (let i = 0; i < this._items.length; i++) {
+    const sourceList = this._sourceMode === "folder" ? this._folderItems : this._items;
+    for (let i = 0; i < sourceList.length; i++) {
       this._selectedIndexes.add(i);
     }
     const rows = this.element.querySelectorAll(".mb-import-item");
@@ -229,7 +324,8 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
    * @param {HTMLElement} target - The action element.
    */
   static async #onRandomSelect(event, target) {
-    const totalItems = this._items.length;
+    const sourceList = this._sourceMode === "folder" ? this._folderItems : this._items;
+    const totalItems = sourceList.length;
     if (totalItems === 0) return;
 
     const content = `<p>How many items to randomly select? (1–${totalItems})</p>
@@ -323,8 +419,9 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     if (slider) this._defaultChance = parseInt(slider.value);
 
     const selectedItems = [];
+    const sourceList = this._sourceMode === "folder" ? this._folderItems : this._items;
     for (const idx of this._selectedIndexes) {
-      const item = this._items[idx];
+      const item = sourceList[idx];
       if (item) {
         selectedItems.push({
           uuid: item.uuid,
