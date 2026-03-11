@@ -1,3 +1,8 @@
+# 0.0.6
+
+## [Added]
+- `MysteryBox.CreateBox()` API method: programmatically create a Mystery Box and its world item from a macro without opening any UI.
+
 # 0.0.5
 
 ## [Added]

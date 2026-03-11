@@ -1,5 +1,6 @@
 import { MysteryBoxManager } from "./mb-manager.js";
 import { MysteryBoxOpener } from "./mb-opener.js";
+import { MysteryBoxEditor } from "./mb-editor.js";
 import { MysteryBoxSettingsApp } from "./mb-settings.js";
 import { debugLog } from "./mb-helpers.js";
 
@@ -260,6 +261,70 @@ Hooks.once("ready", () => {
      */
     Open() {
       new MysteryBoxOpener().render(true);
+    },
+
+    /**
+     * Programmatically create a Mystery Box and its world item without opening any UI.
+     * GM only. Intended for macro usage.
+     * Triggered by user macro execution via the global MysteryBox API.
+     * @param {object} options - The creation options.
+     * @param {object} options.config - Box configuration.
+     * @param {string} options.config.name - Display name for the box (required).
+     * @param {"common"|"uncommon"|"rare"|"legendary"} [options.config.rarity="common"] - Rarity tier.
+     * @param {"video"|"confetti"} [options.config.openingStyle="video"] - Opening animation style.
+     * @param {"percentage"|"raffle"} [options.config.mode="percentage"] - Item resolution mode.
+     * @param {number} [options.config.raffleCount=1] - Number of raffle draws.
+     * @param {number} [options.config.raffleMaximum=1] - Maximum raffle winners.
+     * @param {Array<{uuid: string, chance: number}>} options.items - Items to include in the box.
+     * @returns {Promise<void>}
+     */
+    async CreateBox({ config = {}, items = [] } = {}) {
+      if (!game.user.isGM) {
+        ui.notifications.warn("Only the GM can create Mystery Boxes.");
+        return;
+      }
+
+      const {
+        name,
+        rarity = "common",
+        openingStyle = "video",
+        mode = "percentage",
+        raffleCount = 1,
+        raffleMaximum = 1
+      } = config;
+
+      if (!name?.trim()) {
+        ui.notifications.error("MysteryBox.CreateBox: 'config.name' is required.");
+        return;
+      }
+
+      if (!Array.isArray(items) || items.length === 0) {
+        ui.notifications.error("MysteryBox.CreateBox: 'items' must be a non-empty array.");
+        return;
+      }
+
+      const resolvedItems = [];
+      for (const entry of items) {
+        const doc = await fromUuid(entry.uuid);
+        if (!doc) {
+          ui.notifications.warn(`MysteryBox.CreateBox: Item with UUID "${entry.uuid}" not found — skipping.`);
+          continue;
+        }
+        resolvedItems.push({ uuid: entry.uuid, chance: entry.chance ?? 100 });
+      }
+
+      if (resolvedItems.length === 0) {
+        ui.notifications.error("MysteryBox.CreateBox: No valid items after UUID resolution.");
+        return;
+      }
+
+      const boxId = foundry.utils.randomID();
+      const boxConfig = { name, rarity, openingStyle, mode, raffleCount, raffleMaximum, items: resolvedItems };
+      const boxes = foundry.utils.deepClone(game.settings.get(MODULE_ID, "boxes"));
+      boxes[boxId] = boxConfig;
+      await game.settings.set(MODULE_ID, "boxes", boxes);
+
+      await MysteryBoxEditor.createWorldItem(name, boxId, rarity, boxConfig);
     }
   };
 });

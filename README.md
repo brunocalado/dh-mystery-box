@@ -28,9 +28,12 @@ MysteryBox.Open();
 MysteryBox.Manager();
 ```
 
+### Developers
+[API](https://github.com/brunocalado/dh-mystery-box/wiki/API)
+
 ## Export and Import Boxes 
 
-Você pode compartilhar os items criados com outros mundos. quando vc importar 1 item para om undo ele vai criar para vc as configurações. vc pode arrastar se quiser o item do comendium direto para ficha do jogador.
+You can share your created Mystery Boxes with other worlds. When you import a Mystery Box item into a world, the module automatically configures the necessary settings for you. You can also drag items directly from a compendium onto a player's character sheet.
 
 ## 🖼️ Images
 
