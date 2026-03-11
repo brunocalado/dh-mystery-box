@@ -473,10 +473,11 @@
         }
 
         & .raffle-prob {
+            margin-left: auto;
             color: var(--color-text-light-highlight, #aaaaaa);
             font-size: 0.85em;
-            margin-left: 4px;
             white-space: nowrap;
+            padding-right: 6px;
         }
     }
 }

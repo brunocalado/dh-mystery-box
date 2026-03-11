@@ -27,13 +27,15 @@
             <div class="mb-item-drop filled" data-index="{{@index}}">
                 <img src="{{item.img}}" class="mb-item-img" alt="{{item.name}}">
                 <span class="mb-item-name">{{item.name}}</span>
+                {{#if ../isRaffle}}
+                  <span class="raffle-prob">({{raffleProbability item.chance ../items ../raffleCount}})</span>
+                {{/if}}
             </div>
             <div class="mb-item-controls">
                 <input type="range" class="chance-slider" name="chance_{{@index}}" value="{{item.chance}}" min="0" max="100" step="1">
                 <span class="chance-value">
                   {{#if ../isRaffle}}
                     Weight: {{item.chance}}
-                    <span class="raffle-prob">({{raffleProbability item.chance ../items ../raffleCount}})</span>
                   {{else}}
                     {{item.chance}}%
                   {{/if}}
