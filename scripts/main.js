@@ -275,6 +275,7 @@ Hooks.once("ready", () => {
      * @param {"percentage"|"raffle"} [options.config.mode="percentage"] - Item resolution mode.
      * @param {number} [options.config.raffleCount=1] - Number of raffle draws.
      * @param {number} [options.config.raffleMaximum=1] - Maximum raffle winners.
+     * @param {string} [options.config.description=""] - HTML description for the created world item.
      * @param {Array<{uuid: string, chance: number}>} options.items - Items to include in the box.
      * @returns {Promise<void>}
      */
@@ -290,7 +291,8 @@ Hooks.once("ready", () => {
         openingStyle = "video",
         mode = "percentage",
         raffleCount = 1,
-        raffleMaximum = 1
+        raffleMaximum = 1,
+        description = ""
       } = config;
 
       if (!name?.trim()) {
@@ -319,12 +321,12 @@ Hooks.once("ready", () => {
       }
 
       const boxId = foundry.utils.randomID();
-      const boxConfig = { name, rarity, openingStyle, mode, raffleCount, raffleMaximum, items: resolvedItems };
+      const boxConfig = { name, rarity, openingStyle, mode, raffleCount, raffleMaximum, description, items: resolvedItems };
       const boxes = foundry.utils.deepClone(game.settings.get(MODULE_ID, "boxes"));
       boxes[boxId] = boxConfig;
       await game.settings.set(MODULE_ID, "boxes", boxes);
 
-      await MysteryBoxEditor.createWorldItem(name, boxId, rarity, boxConfig);
+      await MysteryBoxEditor.createWorldItem(name, boxId, rarity, boxConfig, description);
     }
   };
 });

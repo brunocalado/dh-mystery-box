@@ -83,6 +83,7 @@
             font-size: 13px;
         }
 
+        & textarea,
         & select,
         & input[type="number"] {
             width: 100%;
@@ -101,6 +102,11 @@
                 border-color: var(--mbs-accent);
                 box-shadow: 0 0 5px rgba(201, 160, 96, 0.2);
             }
+        }
+
+        & textarea {
+            height: auto;
+            resize: vertical;
         }
 
         & select option {

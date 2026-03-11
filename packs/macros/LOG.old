@@ -1,3 +1,5 @@
-2026/03/09-12:47:37.689 2370 Recovering log #28
-2026/03/09-12:47:37.692 2370 Delete type=0 #28
-2026/03/09-12:47:37.692 2370 Delete type=3 #26
+2026/03/11-15:05:11.903 3920 Log #34: 0 ops saved to Table #35 OK
+2026/03/11-15:05:11.903 3920 Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\macros/000034.log: OK
+2026/03/11-15:05:11.903 3920 Table #9: 4 entries OK
+2026/03/11-15:05:11.905 3920 Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\macros/MANIFEST-000032: OK
+2026/03/11-15:05:11.909 3920 **** Repaired leveldb C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\macros; recovered 1 files; 955 bytes. Some data may have been lost. ****

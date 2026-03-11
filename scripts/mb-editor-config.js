@@ -58,7 +58,8 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
       modeOptions: { percentage: "Percentage", raffle: "Raffle" },
       raffleCount: this.parentEditor._raffleCount,
       raffleMaximum: this.parentEditor._raffleMaximum,
-      isRaffle: this.parentEditor._boxMode === "raffle"
+      isRaffle: this.parentEditor._boxMode === "raffle",
+      description: this.parentEditor._boxDescription ?? ""
     };
   }
 
@@ -111,6 +112,8 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
     // Ensure maximum is not less than the minimum draw count.
     if (raffleMaximum < raffleCount) raffleMaximum = raffleCount;
 
+    const description = form.querySelector("[name='description']")?.value ?? "";
+
     this.parentEditor._syncFormToState();
 
     this.parentEditor._boxOpeningStyle = openingStyle;
@@ -118,6 +121,7 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
     this.parentEditor._boxMode = mode;
     this.parentEditor._raffleCount = raffleCount;
     this.parentEditor._raffleMaximum = raffleMaximum;
+    this.parentEditor._boxDescription = description;
 
     // Re-render the parent editor to reflect mode changes (slider labels, raffleCount visibility)
     this.parentEditor.render({ parts: ["form"] });

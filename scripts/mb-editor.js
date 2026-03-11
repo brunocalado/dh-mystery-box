@@ -64,6 +64,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._boxMode = "percentage";
     this._raffleCount = 1;
     this._raffleMaximum = 1;
+    this._boxDescription = "";
     this._initialized = false;
   }
 
@@ -115,6 +116,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         this._boxMode = box.mode ?? "percentage";
         this._raffleCount = box.raffleCount ?? 1;
         this._raffleMaximum = box.raffleMaximum ?? 1;
+        this._boxDescription = box.description ?? "";
         this._items = [];
         for (const entry of box.items) {
           const item = await fromUuid(entry.uuid);
@@ -433,6 +435,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     const mode = this._boxMode;
     const raffleCount = this._raffleCount;
     const raffleMaximum = this._raffleMaximum;
+    const description = this._boxDescription ?? "";
 
     if (!name) {
       ui.notifications.warn("Please provide a name for the Mystery Box.");
@@ -469,6 +472,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       mode,
       raffleCount,
       raffleMaximum,
+      description,
       items: validItems.map((i) => ({ uuid: i.uuid, chance: i.chance }))
     };
 
@@ -487,13 +491,14 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       mode,
       raffleCount,
       raffleMaximum,
+      description,
       items: validItems.map(i => ({ uuid: i.uuid, chance: i.chance }))
     };
 
     if (isCreate) {
-      await MysteryBoxEditor.createWorldItem(name, boxId, rarity, boxConfig);
+      await MysteryBoxEditor.createWorldItem(name, boxId, rarity, boxConfig, description);
     } else {
-      await MysteryBoxEditor.#updateWorldItem(boxId, name, rarity, boxConfig);
+      await MysteryBoxEditor.#updateWorldItem(boxId, name, rarity, boxConfig, description);
     }
 
     // Refresh the manager window if it is currently open
@@ -515,8 +520,9 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    * @param {string} boxId - The unique box ID from settings, stored as a flag for detection.
    * @param {string} [rarity="common"] - The rarity of the box to determine the icon.
    * @param {object} [boxConfig=null] - Full box configuration to embed as a flag for portability.
+   * @param {string} [description=""] - HTML description for the created world item.
    */
-  static async createWorldItem(name, boxId, rarity = "common", boxConfig = null) {
+  static async createWorldItem(name, boxId, rarity = "common", boxConfig = null, description = "") {
     const folder = await getOrCreateMysteryBoxFolder();
 
     const actionId = foundry.utils.randomID();
@@ -527,7 +533,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       img: img,
       system: {
         attribution: {},
-        description: "",
+        description: description,
         quantity: 1,
         actions: {
           [actionId]: {
@@ -575,8 +581,9 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
    * @param {string} newName - The new name to apply.
    * @param {string} newRarity - The new rarity to apply.
    * @param {object} boxConfig - Full box configuration to embed as a flag for portability.
+   * @param {string} [description=""] - HTML description for the world item.
    */
-  static async #updateWorldItem(boxId, newName, newRarity, boxConfig) {
+  static async #updateWorldItem(boxId, newName, newRarity, boxConfig, description = "") {
     const worldItem = game.items.find(
       (i) => i.type === "loot" && i.getFlag(MODULE_ID, "boxId") === boxId
     );
@@ -588,6 +595,7 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       await worldItem.update({
         name: newName,
         img,
+        "system.description": description,
         flags: { [MODULE_ID]: { boxId, config: boxConfig } }
       });
     } catch (err) {

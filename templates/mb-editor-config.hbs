@@ -4,6 +4,7 @@
 <nav class="mbs-nav">
     <a class="mbs-nav-item active" data-tab="general"><i class="fas fa-box-open"></i> General</a>
     <a class="mbs-nav-item" data-tab="raffle"><i class="fas fa-sliders"></i> Raffle</a>
+    <a class="mbs-nav-item" data-tab="description"><i class="fas fa-align-left"></i> Description</a>
 </nav>
 
 <!-- TAB CONTENT CONTAINER -->
@@ -48,6 +49,15 @@
             <label for="cfg-raffle-maximum">Raffle Maximum Draw</label>
             <input type="number" id="cfg-raffle-maximum" name="raffleMaximum" class="mb-input" value="{{raffleMaximum}}" min="1" max="100" step="1">
             <p class="mbs-field-hint">Maximum number of items that can be drawn from the raffle (draw count will be random between Draw Count and this value)</p>
+        </div>
+    </div>
+
+    <!-- TAB: DESCRIPTION -->
+    <div class="mbs-tab" data-tab="description">
+        <div class="mbs-config-card">
+            <label for="cfg-description">Item Description</label>
+            <textarea id="cfg-description" name="description" class="mb-input" rows="6">{{description}}</textarea>
+            <p class="mbs-field-hint">This text will be set as the description of the created world item. Supports HTML.</p>
         </div>
     </div>
 
