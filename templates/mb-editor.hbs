@@ -30,7 +30,14 @@
             </div>
             <div class="mb-item-controls">
                 <input type="range" class="chance-slider" name="chance_{{@index}}" value="{{item.chance}}" min="0" max="100" step="1">
-                <span class="chance-value">{{#if ../isRaffle}}Weight: {{item.chance}}{{else}}{{item.chance}}%{{/if}}</span>
+                <span class="chance-value">
+                  {{#if ../isRaffle}}
+                    Weight: {{item.chance}}
+                    <span class="raffle-prob">({{raffleProbability item.chance ../items ../raffleCount}})</span>
+                  {{else}}
+                    {{item.chance}}%
+                  {{/if}}
+                </span>
                 <button type="button" class="mb-item-remove" data-action="removeItem" data-index="{{@index}}" title="Remove">
                     <i class="fas fa-times"></i>
                 </button>

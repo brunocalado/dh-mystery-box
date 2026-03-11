@@ -26,3 +26,23 @@ export function debugLog(type, ...args) {
       console.log(...args);
   }
 }
+
+/**
+ * Computes the probability (as a formatted percentage string) that an item
+ * will be selected in a weighted raffle draw.
+ * Formula: min(1, (itemWeight / totalWeight) * draws) * 100
+ * @param {number} itemChance - The weight of this item.
+ * @param {Array<{chance: number}>} items - All items in the box.
+ * @param {number} raffleCount - Number of items to be drawn.
+ * @returns {string} Formatted probability, e.g. "12.50%"
+ */
+export function computeRaffleProbability(itemChance, items, raffleCount) {
+  const totalWeight = items.reduce((sum, i) => sum + (i?.chance || 0), 0);
+  if (totalWeight === 0) return "0.00%";
+  const prob = Math.min(1, (itemChance / totalWeight) * raffleCount) * 100;
+  return `${prob.toFixed(2)}%`;
+}
+
+Handlebars.registerHelper("raffleProbability", function(itemChance, items, raffleCount) {
+  return computeRaffleProbability(itemChance, items, raffleCount);
+});
