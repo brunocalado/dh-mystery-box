@@ -40,7 +40,11 @@ export class MysteryBoxSettingsApp extends foundry.applications.api.HandlebarsAp
             soundUncommon:  game.settings.get(MODULE_ID, "soundUncommon"),
             soundRare:      game.settings.get(MODULE_ID, "soundRare"),
             soundLegendary: game.settings.get(MODULE_ID, "soundLegendary"),
-            emptySound:     game.settings.get(MODULE_ID, "emptySound")
+            emptySound:     game.settings.get(MODULE_ID, "emptySound"),
+            defaultOpeningStyle: game.settings.get(MODULE_ID, "defaultOpeningStyle"),
+            defaultOpeningStyleOptions: { confetti: "Confetti", video: "Video", sound: "Sound Only", none: "None" },
+            defaultMode: game.settings.get(MODULE_ID, "defaultMode"),
+            defaultModeOptions: { percentage: "Percentage", raffle: "Raffle" }
         };
     }
 
@@ -88,7 +92,9 @@ export class MysteryBoxSettingsApp extends foundry.applications.api.HandlebarsAp
                 "iconCommon", "iconUncommon", "iconRare", "iconLegendary",
                 "videoCommon", "videoUncommon", "videoRare", "videoLegendary",
                 "soundCommon", "soundUncommon", "soundRare", "soundLegendary",
-                "emptySound"
+                "emptySound",
+                "defaultOpeningStyle",
+                "defaultMode"
             ];
 
             try {

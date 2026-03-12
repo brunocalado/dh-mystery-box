@@ -60,8 +60,12 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._items = [];
     this._boxName = "";
     this._boxRarity = "common";
-    this._boxOpeningStyle = "video";
-    this._boxMode = "percentage";
+    this._boxOpeningStyle = (!boxId)
+      ? (game.settings.get(MODULE_ID, "defaultOpeningStyle") ?? "video")
+      : "video";
+    this._boxMode = (!boxId)
+      ? (game.settings.get(MODULE_ID, "defaultMode") ?? "percentage")
+      : "percentage";
     this._raffleCount = 1;
     this._raffleMaximum = 1;
     this._boxDescription = "";

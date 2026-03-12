@@ -5,6 +5,7 @@
     <a class="mbs-nav-item active" data-tab="icons"><i class="fas fa-image"></i> Icons</a>
     <a class="mbs-nav-item" data-tab="videos"><i class="fas fa-film"></i> Videos</a>
     <a class="mbs-nav-item" data-tab="audio"><i class="fas fa-volume-up"></i> Audio</a>
+    <a class="mbs-nav-item" data-tab="defaults"><i class="fas fa-sliders"></i> Box Defaults</a>
 </nav>
 
 <!-- TAB CONTENT CONTAINER -->
@@ -140,6 +141,30 @@
                 <button type="button" class="mbs-file-picker-btn" data-target="emptySound" data-picker-type="audio" title="Browse for file">
                     <i class="fas fa-file-audio"></i>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =======================
+         TAB: BOX DEFAULTS
+         ======================= -->
+    <div class="mbs-tab" data-tab="defaults">
+        <div class="mbs-config-card">
+            <h3 class="mbs-card-title"><i class="fas fa-sliders"></i> New Box Creation Defaults</h3>
+            <p class="mbs-card-hint">These values are pre-selected when a new Mystery Box is created via the editor.</p>
+
+            <div class="mbs-asset-row">
+                <label class="mbs-rarity-label" for="cfg-default-opening-style">Opening Style</label>
+                <select id="cfg-default-opening-style" name="defaultOpeningStyle" class="mb-input">
+                    {{selectOptions defaultOpeningStyleOptions selected=defaultOpeningStyle}}
+                </select>
+            </div>
+
+            <div class="mbs-asset-row">
+                <label class="mbs-rarity-label" for="cfg-default-mode">Raffle Mode</label>
+                <select id="cfg-default-mode" name="defaultMode" class="mb-input">
+                    {{selectOptions defaultModeOptions selected=defaultMode}}
+                </select>
             </div>
         </div>
     </div>

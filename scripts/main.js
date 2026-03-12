@@ -77,6 +77,20 @@ Hooks.once("init", () => {
     default: false
   });
 
+  game.settings.register(MODULE_ID, "defaultOpeningStyle", {
+    scope: "world",
+    config: false,
+    type: String,
+    default: "sound"
+  });
+
+  game.settings.register(MODULE_ID, "defaultMode", {
+    scope: "world",
+    config: false,
+    type: String,
+    default: "percentage"
+  });
+
   // --- Default Asset Paths (managed via settings menu) ---
   game.settings.register(MODULE_ID, "iconCommon", {
     scope: "world",
