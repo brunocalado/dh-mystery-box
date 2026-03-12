@@ -29,7 +29,7 @@ export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplic
       resizable: true
     },
     position: {
-      width: 700,
+      width: 900,
       height: "auto"
     },
     actions: {
@@ -48,19 +48,37 @@ export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplic
 
   /**
    * Build context data for the manager template.
-   * Reads the stored boxes from settings and builds a display-friendly array.
+   * Groups boxes by rarity tier in canonical order for sectioned display.
    * @param {object} options - Render options from the AppV2 lifecycle.
-   * @returns {Promise<object>} Template context with boxes array.
+   * @returns {Promise<object>} Template context with rarityGroups array.
    */
   async _prepareContext(options) {
+    const RARITY_ORDER = ["common", "uncommon", "rare", "legendary"];
     const boxes = game.settings.get(MODULE_ID, "boxes");
-    const boxList = Object.entries(boxes).map(([id, box]) => ({
-      id,
-      name: box.name,
-      itemCount: box.items.length,
-      icon: getRarityIcon(box.rarity || "common")
-    }));
-    return { boxes: boxList };
+
+    // Build a map: rarity → array of box display objects
+    const grouped = {};
+    for (const [id, box] of Object.entries(boxes)) {
+      const rarity = box.rarity || "common";
+      if (!grouped[rarity]) grouped[rarity] = [];
+      grouped[rarity].push({
+        id,
+        name: box.name,
+        itemCount: box.items.length,
+        icon: getRarityIcon(rarity)
+      });
+    }
+
+    // Build ordered array, skipping empty groups
+    const rarityGroups = RARITY_ORDER
+      .filter(r => grouped[r]?.length)
+      .map(r => ({
+        rarity: r,
+        label: r.charAt(0).toUpperCase() + r.slice(1),
+        boxes: grouped[r]
+      }));
+
+    return { rarityGroups };
   }
 
   /**

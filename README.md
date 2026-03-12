@@ -109,6 +109,10 @@ You can share your created Mystery Boxes with other worlds. When you import a My
 </p>
 
 <p align="center">
+  <img width="800" src="docs/raffle-mode.webp">
+</p>
+
+<p align="center">
   <img width="900" src="docs/player-view.webp">
 </p>
 

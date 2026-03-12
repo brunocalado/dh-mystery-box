@@ -26,6 +26,26 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+        max-height: 600px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #111111;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #444444;
+            border-radius: 4px;
+
+            &:hover {
+                background: #555555;
+            }
+        }
 
         & .mb-manager-header {
             display: flex;
@@ -80,30 +100,46 @@
 
         & .mb-box-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
-            max-height: 500px;
-            overflow-y: auto;
             padding-right: 4px;
-
-            &::-webkit-scrollbar {
-                width: 8px;
-            }
-
-            &::-webkit-scrollbar-track {
-                background: #111111;
-                border-radius: 4px;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: #444444;
-                border-radius: 4px;
-
-                &:hover {
-                    background: #555555;
-                }
-            }
         }
+
+        & .mb-rarity-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        & .mb-rarity-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 4px solid #888;
+            background: #222;
+        }
+
+        & .mb-rarity-label {
+            font-weight: 700;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #ddd;
+        }
+
+        & .mb-rarity-count {
+            font-size: 0.8em;
+            color: #888;
+            margin-left: auto;
+        }
+
+        /* Per-rarity accent colors on the left border */
+        & .mb-rarity-common    .mb-rarity-header { border-left-color: #aaaaaa; }
+        & .mb-rarity-uncommon  .mb-rarity-header { border-left-color: #1eff00; }
+        & .mb-rarity-rare      .mb-rarity-header { border-left-color: #0070dd; }
+        & .mb-rarity-legendary .mb-rarity-header { border-left-color: #ff8000; }
 
         & .mb-box-entry {
             background: var(--mb-bg-dark);
@@ -202,7 +238,6 @@
             padding: 2rem 1rem;
             color: #888;
             width: 100%;
-            grid-column: 1 / -1; /* Força o empty state a ocupar a grade toda */
 
             & i {
                 font-size: 2.5rem;

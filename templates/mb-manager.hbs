@@ -9,35 +9,43 @@
         </button>
     </div>
 
-    <div class="mb-box-list">
-        {{#if boxes.length}}
-        {{#each boxes as |box|}}
-        <div class="mb-box-entry" data-id="{{box.id}}">
-            <div class="mb-box-info">
-                <img src="{{box.icon}}" class="mb-box-icon" alt="box">
-                <div class="mb-box-details">
-                    <span class="mb-box-name">{{box.name}}</span>
-                    <span class="mb-box-count">{{box.itemCount}} item(s)</span>
-                </div>
+    {{#if rarityGroups.length}}
+        {{#each rarityGroups as |group|}}
+        <div class="mb-rarity-section mb-rarity-{{group.rarity}}">
+            <div class="mb-rarity-header">
+                <span class="mb-rarity-label">{{group.label}}</span>
+                <span class="mb-rarity-count">{{group.boxes.length}} box(es)</span>
             </div>
-            <div class="mb-box-actions">
-                <button type="button" data-action="regenerateItem" data-id="{{box.id}}" title="Regenerate Item">
-                    <i class="fas fa-sync-alt"></i>
-                </button>
-                <button type="button" data-action="editBox" data-id="{{box.id}}" title="Edit">
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="mb-btn-danger" data-action="deleteBox" data-id="{{box.id}}" title="Delete">
-                    <i class="fas fa-trash"></i>
-                </button>
+            <div class="mb-box-list">
+                {{#each group.boxes as |box|}}
+                <div class="mb-box-entry" data-id="{{box.id}}">
+                    <div class="mb-box-info">
+                        <img src="{{box.icon}}" class="mb-box-icon" alt="box">
+                        <div class="mb-box-details">
+                            <span class="mb-box-name">{{box.name}}</span>
+                            <span class="mb-box-count">{{box.itemCount}} item(s)</span>
+                        </div>
+                    </div>
+                    <div class="mb-box-actions">
+                        <button type="button" data-action="regenerateItem" data-id="{{box.id}}" title="Regenerate Item">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button type="button" data-action="editBox" data-id="{{box.id}}" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button type="button" class="mb-btn-danger" data-action="deleteBox" data-id="{{box.id}}" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
         {{/each}}
-        {{else}}
-        <div class="mb-empty-state">
-            <i class="fas fa-box-open"></i>
-            <p>No Mystery Boxes created yet.</p>
-        </div>
-        {{/if}}
+    {{else}}
+    <div class="mb-empty-state">
+        <i class="fas fa-box-open"></i>
+        <p>No Mystery Boxes created yet.</p>
     </div>
+    {{/if}}
 </div>
