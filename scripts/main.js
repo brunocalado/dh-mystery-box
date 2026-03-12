@@ -379,3 +379,51 @@ Hooks.on("renderDaggerheartMenu", (app, html) => {
     element.appendChild(myButton);
   }
 });
+
+/**
+ * Apply shimmer + shake visual effect to Mystery Box item icons on the character sheet.
+ * Triggered by the Foundry `renderCharacterSheet` hook (ApplicationV2 / Foundry v13).
+ * @param {ApplicationV2} app  - The CharacterSheet application instance.
+ * @param {HTMLElement}   html - The rendered root HTML element (native DOM, not jQuery).
+ */
+Hooks.on("renderCharacterSheet", (app, html) => {
+    const actor = app.document;
+    if (!actor || actor.type !== "character") return;
+
+    const form = (html instanceof HTMLElement) ? html : html[0];
+    if (!form) return;
+
+    // Defer until the browser has painted the frame to ensure the DOM is fully settled
+    requestAnimationFrame(() => _applyMysteryBoxIconEffects(form, actor));
+});
+
+/**
+ * Locate every item row whose item carries the dh-mystery-box `boxId` flag,
+ * then wrap its icon element with the shimmer/shake container class.
+ * Triggered indirectly by the `renderCharacterSheet` hook via requestAnimationFrame.
+ * @param {HTMLElement} form  - The root DOM element of the rendered sheet.
+ * @param {Actor}       actor - The actor document.
+ */
+function _applyMysteryBoxIconEffects(form, actor) {
+    const itemRows = form.querySelectorAll("[data-item-id]");
+
+    for (const row of itemRows) {
+        const itemId = row.dataset.itemId;
+        const item = actor.items.get(itemId);
+        if (!item) continue;
+
+        const boxId = item.getFlag(MODULE_ID, "boxId");
+        if (!boxId) continue;
+
+        const iconImg = row.querySelector("img.item-image, .item-icon img, img[src]");
+        if (!iconImg) continue;
+
+        const iconContainer = iconImg.parentElement;
+        if (!iconContainer) continue;
+
+        // Skip if already applied to avoid animation restart on re-renders
+        if (iconContainer.classList.contains("dh-mb-icon-container")) continue;
+
+        iconContainer.classList.add("dh-mb-icon-container");
+    }
+}

@@ -1,0 +1,46 @@
+/* ── Mystery Box Icon Effects (Actor Sheet) ─────────────────────────── */
+
+.dh-mb-icon-container {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    display: inline-block;
+}
+
+.dh-mb-icon-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    animation: dh-mb-shimmer-sweep 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes dh-mb-shimmer-sweep {
+    0%   { left: -100%; }
+    20%  { left: 200%; }
+    100% { left: 200%; }
+}
+
+.dh-mb-icon-container img,
+.dh-mb-icon-container .item-image {
+    animation: dh-mb-intermittent-shake 4s infinite ease-in-out;
+    transform-origin: center;
+}
+
+@keyframes dh-mb-intermittent-shake {
+    0%,  85%                       { transform: rotate(0deg)   scale(1);    }
+    87%, 91%, 95%, 99%             { transform: rotate(-4deg)  scale(1.05); }
+    89%, 93%, 97%                  { transform: rotate(4deg)   scale(1.05); }
+    100%                           { transform: rotate(0deg)   scale(1);    }
+}
