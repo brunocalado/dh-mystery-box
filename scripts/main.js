@@ -285,7 +285,7 @@ Hooks.once("ready", () => {
      * @param {object} options.config - Box configuration.
      * @param {string} options.config.name - Display name for the box (required).
      * @param {"common"|"uncommon"|"rare"|"legendary"} [options.config.rarity="common"] - Rarity tier.
-     * @param {"video"|"confetti"} [options.config.openingStyle="video"] - Opening animation style.
+     * @param {"video"|"confetti"|"sound"|"none"} [options.config.openingStyle="video"] - Opening animation style.
      * @param {"percentage"|"raffle"} [options.config.mode="percentage"] - Item resolution mode.
      * @param {number} [options.config.raffleCount=1] - Number of raffle draws.
      * @param {number} [options.config.raffleMaximum=1] - Maximum raffle winners.

@@ -116,7 +116,6 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
         this._boxName = box.name;
         this._boxRarity = box.rarity ?? "common";
         this._boxOpeningStyle = box.openingStyle ?? "video";
-        if (this._boxOpeningStyle === "none") this._boxOpeningStyle = "confetti";
         this._boxMode = box.mode ?? "percentage";
         this._raffleCount = box.raffleCount ?? 1;
         this._raffleMaximum = box.raffleMaximum ?? 1;
@@ -151,8 +150,10 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
       raffleMaximum: this._raffleMaximum,
       isRaffle: this._boxMode === "raffle",
       openingStyleOptions: {
+        video: "Video",
         confetti: "Confetti",
-        video: "Video"
+        sound: "Sound Only",
+        none: "None"
       },
       rarityOptions: {
         common: "Common",

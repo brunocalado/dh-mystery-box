@@ -1,5 +1,5 @@
-2026/03/12-07:17:01.950 6398 Log #16: 0 ops saved to Table #19 OK
-2026/03/12-07:17:01.951 6398 Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo/000016.log: OK
-2026/03/12-07:17:01.952 6398 Table #18: 28 entries OK
-2026/03/12-07:17:01.954 6398 Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo/MANIFEST-000014: OK
-2026/03/12-07:17:01.956 6398 **** Repaired leveldb C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo; recovered 1 files; 38394 bytes. Some data may have been lost. ****
+2026/03/12-12:40:06.322 695c Log #22: 0 ops saved to Table #25 OK
+2026/03/12-12:40:06.323 695c Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo/000022.log: OK
+2026/03/12-12:40:06.323 695c Table #24: 28 entries OK
+2026/03/12-12:40:06.325 695c Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo/MANIFEST-000020: OK
+2026/03/12-12:40:06.327 695c **** Repaired leveldb C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo; recovered 1 files; 38623 bytes. Some data may have been lost. ****
