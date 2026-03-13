@@ -104,16 +104,28 @@ You can share your created Mystery Boxes with other worlds. When you import a My
 
 ## 🖼️ Images
 
+The **Mystery Box Manager** is the GM's control panel. Here you create new boxes, name them, set their rarity, choose the opening style (Confetti, Video, Sound, or None), and select the box mode (Percentage or Raffle). Once configured, the box is ready to be filled with items.
+
 <p align="center">
   <img width="700" src="docs/manager.webp">
 </p>
+
+In **Raffle Mode**, items are listed with their relative **weights** instead of individual percentages. Items with higher weights are more likely to be drawn. The GM defines how many items the player is guaranteed to receive per opening — useful for prize boxes and structured rewards.
 
 <p align="center">
   <img width="800" src="docs/raffle-mode.webp">
 </p>
 
+The **Player View** shows what happens when a character opens a Mystery Box. The reveal animation plays (confetti burst or rarity video), followed by the list of items won. All rewards are automatically transferred to the character's inventory — no manual work required.
+
 <p align="center">
   <img width="900" src="docs/player-view.webp">
+</p>
+
+The module ships with a collection of **ready-to-use Mystery Boxes**. These premade boxes cover a range of rarities and themes, so you can drop them straight into your session without any setup. They can also be used as templates for your own custom boxes.
+
+<p align="center">
+  <img width="900" src="docs/premade.webp">
 </p>
 
 ## 📥 Installation

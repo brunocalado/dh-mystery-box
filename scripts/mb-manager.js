@@ -26,7 +26,7 @@ export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplic
     window: {
       title: "Mystery Box Manager",
       icon: "fas fa-box-open",
-      resizable: true
+      resizable: false
     },
     position: {
       width: 900,

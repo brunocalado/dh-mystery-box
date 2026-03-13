@@ -254,6 +254,14 @@
 }
 
 /* =========================================
+   Manager Window — Fixed Size
+   ========================================= */
+#dh-mb-manager {
+    width: 900px !important;
+    min-width: 900px !important;
+}
+
+/* =========================================
    Editor Styles
    ========================================= */
 .dh-mystery-box-editor {
