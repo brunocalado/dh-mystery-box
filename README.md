@@ -4,21 +4,22 @@
 
 **Turn loot into an event!**
 
-Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** module lets Game Masters create item boxes—like treasure chests, magical caches, or lucky bags—that players can open to reveal random rewards.
+Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** module lets GMs create item boxes — treasure chests, magical caches, lucky bags — that players open to reveal random rewards. Items land directly in the character's inventory, no manual work needed.
 
 ## ✨ Why use it?
 
-*   **Suspense & Fun:** Players love the anticipation of rolling for loot.
-*   **Visual Flair:** Opening a box triggers exciting animations (confetti or video) and sound effects.
-*   **Automated Rewards:** No more manual copying of items. The module handles the dice rolls and drops the winnings directly into the character's inventory.
-*   **Fully Customizable:** You decide what's in the box and the odds of getting it.
+* **Suspense & Fun:** Players love the anticipation of rolling for loot.
+* **Two reward modes:** Use **Percentage** for variable loot drops (players might get one item, several, or none) or **Raffle** for guaranteed rewards (always N items, weighted by rarity).
+* **Four reveal styles:** Pick Confetti, Video, Sound Only, or Silent — match the drama to the moment.
+* **Fully Customizable:** Set what's in the box, the odds, and the rarity. Export and share boxes across worlds.
 
 ## ⚙️ How it works
 
-1.  📦 **Create a Box:** As a GM, use the Mystery Box Manager to define a new box.
-2.  ✨ **Fill it up:** Drag and drop items you want players to win and set their drop chances (e.g., 10% for a rare sword, 100% for a potion).
-3.  🎁 **Give it to a Player:** Drag the box item to a player's character sheet.
-4.  🎉 **Open & Enjoy:** The player clicks to open, watches the reveal, and collects their loot!
+1. 📦 **Create a Box:** Open the Mystery Box Manager and define a new box — name, rarity, reveal style, and mode.
+2. ✨ **Fill it up:** Drag and drop items. In **Percentage Mode**, set each item's individual drop chance. In **Raffle Mode**, set weights and how many items the player is guaranteed to receive.
+3. 🎁 **Give it to a Player:** Drag the box to a player's character sheet — or pull one from the premade compendium.
+4. 🎉 **Open & Enjoy:** The player clicks to open, the reveal plays, and the loot drops automatically.
+
 
 ## Macros
 
