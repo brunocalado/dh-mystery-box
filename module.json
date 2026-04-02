@@ -1,7 +1,7 @@
 {
   "id": "dh-mystery-box",
   "title": "Daggerheart: 🎁 Mystery Box",
-  "version": "0.1.5",
+  "version": "0.1.6",
   
   "compatibility": {
     "minimum": "13",
@@ -16,6 +16,8 @@
   ],
   
   "description": "Add a thrill of surprise to your Daggerheart sessions. This module lets Game Masters create item boxes—like treasure chests, magical caches, or lucky bags — that players can open to reveal random rewards.",
+
+  "socket": true,
 
   "relationships": {
     "systems": [

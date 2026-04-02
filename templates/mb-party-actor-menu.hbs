@@ -1,0 +1,27 @@
+<div class="d-flex flex-column gap-2" style="padding: 12px;">
+  <p class="mb-notes">
+    <i class="fas fa-info-circle"></i>
+    Only actors where <strong>all non-GM players have Owner permission</strong> are valid choices.
+    Invalid actors are shown but cannot be saved. To fix: open the actor sheet &rarr; Configure &rarr; Permissions &rarr; set all players to <em>Owner</em>.
+  </p>
+
+  <div class="form-group">
+    <label for="partyActorId">Party Actor</label>
+    <select name="partyActorId" id="partyActorId">
+      <option value="">— None —</option>
+      {{#each actors as |actor|}}
+        <option value="{{actor.id}}"
+          {{#if actor.selected}}selected{{/if}}
+          {{#unless actor.isValid}}data-invalid="true"{{/unless}}>
+          {{actor.name}}{{#unless actor.isValid}} ⚠ (missing Owner for some players){{/unless}}
+        </option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="d-flex gap-2" style="justify-content: flex-end; margin-top: 8px;">
+    <button type="submit" class="mb-btn-primary">
+      <i class="fas fa-save"></i> Save
+    </button>
+  </div>
+</div>

@@ -104,7 +104,34 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       });
     }
 
-    return { boxes: available, noActor: false };
+    const partyActorId = game.settings.get(MODULE_ID, "partyActorId");
+    const partyActor = partyActorId ? game.actors.get(partyActorId) : null;
+    const partyActorEnabled = !!partyActor;
+
+    return {
+      boxes: available,
+      noActor: false,
+      partyActorEnabled,
+      partyActorName: partyActor?.name ?? ""
+    };
+  }
+
+  /**
+   * Wire the party toggle button click handler after the template renders.
+   * Triggered by the AppV2 _onRender lifecycle stage.
+   * @param {object} context - Prepared template context.
+   * @param {object} options - Render options.
+   */
+  _onRender(context, options) {
+    const toggleBtn = this.element.querySelector("#mb-party-toggle");
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener("click", () => {
+      const isActive = toggleBtn.dataset.active === "true";
+      const next = !isActive;
+      toggleBtn.dataset.active = String(next);
+      toggleBtn.setAttribute("aria-pressed", String(next));
+    });
   }
 
   /**
@@ -137,6 +164,16 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         "This Mystery Box is not configured in this world. Ask your GM to import the item into the world first."
       );
       return;
+    }
+
+    // Read party toggle state from the opener's own DOM
+    const toggleBtn = this.element?.querySelector("#mb-party-toggle");
+    const sendToParty = toggleBtn?.dataset.active === "true";
+    const partyActorId = sendToParty ? game.settings.get(MODULE_ID, "partyActorId") : null;
+    const partyActor = partyActorId ? game.actors.get(partyActorId) : null;
+
+    if (sendToParty && !partyActor) {
+      ui.notifications.warn("Party actor not found. Opening normally.");
     }
 
     const currentQty = actorItem.system.quantity ?? 1;
@@ -246,7 +283,6 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         foundry.audio.AudioHelper.play({ src: emptySoundPath, volume: 0.8, loop: false }, false);
       }
 
-      const chatMode = game.settings.get(MODULE_ID, "chatMessageMode");
       const titleColor = "#C9A060";
 
       const content = `
@@ -268,7 +304,12 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         style: CONST.CHAT_MESSAGE_STYLES.OTHER
       };
 
-      if (chatMode === "gm") chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+      if (sendToParty && partyActor) {
+        // Party mode: always public
+      } else {
+        const chatMode = game.settings.get(MODULE_ID, "chatMessageMode");
+        if (chatMode === "gm") chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+      }
       await ChatMessage.create(chatData);
 
       this.close();
@@ -277,30 +318,54 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
     const openingStyle = boxConfig.openingStyle ?? "video";
 
-    if (openingStyle === "video") {
-      await MysteryBoxOpener.#playOpeningVideo(boxConfig.rarity);
-    } else if (openingStyle === "confetti") {
-      MysteryBoxOpener.#playOpeningSound(boxConfig.rarity);
-      new MysteryBoxConfetti().play({ intensity: 4, duration: 5000 });
-    } else if (openingStyle === "sound") {
-      MysteryBoxOpener.#playOpeningSound(boxConfig.rarity);
-    } else if (openingStyle === "none") {
-      // no sound, no animation
+    if (sendToParty && partyActor) {
+      // Party mode: play effect locally, then broadcast to all other clients via socket
+      if (openingStyle === "video") {
+        await MysteryBoxOpener._playOpeningVideo(boxConfig.rarity);
+      } else if (openingStyle === "confetti") {
+        MysteryBoxOpener._playOpeningSound(boxConfig.rarity);
+        new MysteryBoxConfetti().play({ intensity: 4, duration: 5000 });
+      } else if (openingStyle === "sound") {
+        MysteryBoxOpener._playOpeningSound(boxConfig.rarity);
+      }
+
+      game.socket.emit("module.dh-mystery-box", {
+        type: "playEffect",
+        openingStyle: boxConfig.openingStyle ?? "video",
+        rarity: boxConfig.rarity ?? "common",
+        senderId: game.user.id
+      });
+    } else {
+      // Original single-user behavior
+      if (openingStyle === "video") {
+        await MysteryBoxOpener._playOpeningVideo(boxConfig.rarity);
+      } else if (openingStyle === "confetti") {
+        MysteryBoxOpener._playOpeningSound(boxConfig.rarity);
+        new MysteryBoxConfetti().play({ intensity: 4, duration: 5000 });
+      } else if (openingStyle === "sound") {
+        MysteryBoxOpener._playOpeningSound(boxConfig.rarity);
+      }
     }
 
+    // Route items to party actor when party mode is active, otherwise to the player's own actor
+    const targetActor = (sendToParty && partyActor) ? partyActor : actor;
+
     try {
-      await actor.createEmbeddedDocuments("Item", resolvedItems);
+      await targetActor.createEmbeddedDocuments("Item", resolvedItems);
     } catch (err) {
-      ui.notifications.error("Failed to add items to your character sheet.");
+      ui.notifications.error("Failed to add items to the target actor.");
       console.error(err);
       return;
     }
 
     // Construct and send chat message
-    const chatMode = game.settings.get(MODULE_ID, "chatMessageMode");
     const titleColor = "#C9A060";
-    
-    // HTML structure based on scan.js style
+    const partyFooter = (sendToParty && partyActor)
+      ? `<div style="margin-top: 8px; padding: 4px 8px; background: rgba(42, 106, 58, 0.3); border-radius: 4px; border-left: 3px solid #4caf50; color: #88cc88; font-size: 0.85em; font-family: 'Aleo', serif;">
+           <i class="fas fa-users"></i> Items sent to <strong>${partyActor.name}</strong>
+         </div>`
+      : "";
+
     const content = `
     <div class="chat-card" style="border: 2px solid ${titleColor}; border-radius: 8px; overflow: hidden;">
         <header class="card-header flexrow" style="background: #191919 !important; padding: 8px; border-bottom: 2px solid ${titleColor};">
@@ -314,18 +379,22 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
                 <img src="${item.img}" style="width: 32px; height: 32px; border: 1px solid #555; border-radius: 4px; object-fit: cover; flex-shrink: 0;">
                 <div style="color: #ffffff; font-size: 1.1em; font-family: 'Aleo', serif; text-shadow: 1px 1px 2px #000;">${item.name}</div>
             </div>`).join("")}
+            ${partyFooter}
         </div>
     </div>`;
 
     const chatData = {
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor }),
-        content: content,
-        style: CONST.CHAT_MESSAGE_STYLES.OTHER
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content: content,
+      style: CONST.CHAT_MESSAGE_STYLES.OTHER
     };
 
-    if (chatMode === "gm") {
-        chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+    if (sendToParty && partyActor) {
+      // Party mode: always public, never whisper, regardless of chatMessageMode setting
+    } else {
+      const chatMode = game.settings.get(MODULE_ID, "chatMessageMode");
+      if (chatMode === "gm") chatData.whisper = ChatMessage.getWhisperRecipients("GM");
     }
 
     await ChatMessage.create(chatData);
@@ -339,7 +408,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
    * Reads the configured path from settings so GMs can override without touching module code.
    * @param {string} [rarity="common"] - The rarity of the box being opened.
    */
-  static #playOpeningSound(rarity = "common") {
+  static _playOpeningSound(rarity = "common") {
     const key = `sound${rarity.charAt(0).toUpperCase()}${rarity.slice(1)}`;
     const src = game.settings.get(MODULE_ID, key);
     if (src) {
@@ -352,7 +421,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
    * @param {string} [rarity="common"] - The rarity of the box to determine which video to play.
    * @returns {Promise<void>} Resolves when the video ends.
    */
-  static async #playOpeningVideo(rarity = "common") {
+  static async _playOpeningVideo(rarity = "common") {
     // Resolve the video path from settings so GMs can override without touching module code.
     const key = `video${rarity.charAt(0).toUpperCase()}${rarity.slice(1)}`;
     const src = game.settings.get(MODULE_ID, key) || `modules/${MODULE_ID}/assets/video/box-${rarity}.webm`;

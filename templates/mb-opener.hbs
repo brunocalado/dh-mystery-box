@@ -11,6 +11,25 @@
             Select a Mystery Box to open. Items inside will be rolled based on their drop chance.
         </p>
 
+        {{#if partyActorEnabled}}
+        <div class="mb-party-toggle-row">
+          <label class="mb-party-toggle-label" for="mb-party-toggle">
+            <i class="fas fa-users"></i>
+            Send loot to party (<em>{{partyActorName}}</em>)
+          </label>
+          <button
+            type="button"
+            id="mb-party-toggle"
+            class="mb-party-toggle-btn"
+            data-active="false"
+            aria-pressed="false"
+            title="When active: items go to the party actor, chat is public, and effects play for all players.">
+            <span class="mb-toggle-off">OFF</span>
+            <span class="mb-toggle-on">ON</span>
+          </button>
+        </div>
+        {{/if}}
+
         <div class="mb-opener-grid">
             {{#each boxes as |box|}}
             <div class="mb-opener-card">

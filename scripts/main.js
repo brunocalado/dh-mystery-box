@@ -2,6 +2,7 @@ import { MysteryBoxManager } from "./mb-manager.js";
 import { MysteryBoxOpener } from "./mb-opener.js";
 import { MysteryBoxEditor } from "./mb-editor.js";
 import { MysteryBoxSettingsApp } from "./mb-settings.js";
+import { MysteryBoxPartyActorMenu } from "./mb-party-actor-menu.js";
 import { debugLog } from "./mb-helpers.js";
 
 const MODULE_ID = "dh-mystery-box";
@@ -148,6 +149,27 @@ Hooks.once("init", () => {
     default: `modules/${MODULE_ID}/assets/video/box-legendary.webm`
   });
 
+  game.settings.register(MODULE_ID, "partyActorId", {
+    name: "Party Actor",
+    hint: "Select the shared party actor that receives loot when the party toggle is active in the opener. " +
+          "IMPORTANT: The chosen actor must have 'Owner' permission set for all non-GM players (Configure \u2192 " +
+          "Permissions \u2192 set every player to 'Owner'). Without this, players cannot receive items on it. " +
+          "The party toggle in the opener will only appear when this setting has a valid actor ID.",
+    scope: "world",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.registerMenu(MODULE_ID, "partyActorMenu", {
+    name: "Party Actor",
+    label: "Select Party Actor",
+    hint: "Choose the actor that will receive items when the party loot toggle is active.",
+    icon: "fas fa-users",
+    type: MysteryBoxPartyActorMenu,
+    restricted: true
+  });
+
   game.settings.registerMenu(MODULE_ID, "defaultAssetsMenu", {
     name: "Default Assets",
     label: "Configure Default Assets",
@@ -164,7 +186,8 @@ Hooks.once("init", () => {
     `modules/${MODULE_ID}/templates/mb-reveal.hbs`,
     `modules/${MODULE_ID}/templates/mb-settings-menu.hbs`,
     `modules/${MODULE_ID}/templates/mb-import-dialog.hbs`,
-    `modules/${MODULE_ID}/templates/mb-editor-config.hbs`
+    `modules/${MODULE_ID}/templates/mb-editor-config.hbs`,
+    `modules/${MODULE_ID}/templates/mb-party-actor-menu.hbs`
   ]);
 });
 
@@ -257,6 +280,24 @@ Hooks.on("createEmbeddedDocuments", async (parent, documents, options, userId) =
  * Triggered by the Foundry `ready` hook.
  */
 Hooks.once("ready", () => {
+
+  // Broadcast listener for party-mode effects (confetti, video, sound) from other clients
+  game.socket.on("module.dh-mystery-box", async (payload) => {
+    if (payload.type === "playEffect") {
+      const { openingStyle, rarity, senderId } = payload;
+      // The sender already played the effect locally; skip re-play on their client
+      if (game.user.id === senderId) return;
+      if (openingStyle === "confetti") {
+        const { MysteryBoxConfetti } = await import("./mb-confetti.js");
+        MysteryBoxOpener._playOpeningSound(rarity);
+        new MysteryBoxConfetti().play({ intensity: 4, duration: 5000 });
+      } else if (openingStyle === "sound") {
+        MysteryBoxOpener._playOpeningSound(rarity);
+      } else if (openingStyle === "video") {
+        await MysteryBoxOpener._playOpeningVideo(rarity);
+      }
+    }
+  });
 
   globalThis.MysteryBox = {
     /**
