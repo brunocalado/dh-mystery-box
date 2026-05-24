@@ -1,13 +1,6 @@
 /* Mystery Box: Editor Config Dialog Styles */
 
 .mb-editor-config {
-    --mbs-accent: #C9A060;
-    --mbs-card-bg: rgba(255, 255, 255, 0.03);
-    --mbs-border: rgba(255, 255, 255, 0.1);
-    --mbs-text-main: #f0f0e0;
-    --mbs-text-dim: #aaa;
-    --mbs-input-bg: rgba(0, 0, 0, 0.3);
-
     & .mb-editor-config-content {
         display: flex;
         flex-direction: column;
@@ -89,11 +82,11 @@
             width: 100%;
             padding: 6px 10px;
             height: 36px;
-            background: #1c1c1c;
+            background: var(--mbs-input-bg);
             border: 1px solid var(--mbs-border);
             border-radius: 4px;
             color: #f0f0e0;
-            font-family: "Signika", sans-serif;
+            font-family: var(--mb-font-ui);
             font-size: 13px;
             transition: border-color 0.2s;
 
@@ -110,7 +103,7 @@
         }
 
         & select option {
-            background: #1c1c1c;
+            background: var(--mbs-input-bg);
             color: #f0f0e0;
         }
     }
@@ -134,7 +127,7 @@
     & .mbs-btn {
         padding: 8px 20px;
         border-radius: 4px;
-        font-family: "Signika", sans-serif;
+        font-family: var(--mb-font-ui);
         font-weight: bold;
         font-size: 13px;
         cursor: pointer;

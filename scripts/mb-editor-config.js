@@ -1,4 +1,4 @@
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Configuration dialog for Mystery Box editor settings.
@@ -16,6 +16,8 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
     super();
     this.parentEditor = parentEditor;
   }
+
+  static BASE_APPLICATION = MysteryBoxEditorConfig;
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-editor-config",

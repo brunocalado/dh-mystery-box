@@ -1,7 +1,7 @@
 import { MysteryBoxImportDialog } from "./mb-import-dialog.js";
 import { MysteryBoxEditorConfig } from "./mb-editor-config.js";
+import { MODULE_ID } from "./constants.js";
 
-const MODULE_ID = "dh-mystery-box";
 const VALID_ITEM_TYPES = new Set(["weapon", "armor", "loot", "consumable", "feature"]);
 
 /**
@@ -71,6 +71,8 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
     this._boxDescription = "";
     this._initialized = false;
   }
+
+  static BASE_APPLICATION = MysteryBoxEditor;
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-editor",

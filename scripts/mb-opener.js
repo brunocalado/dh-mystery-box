@@ -1,8 +1,7 @@
 import { MysteryBoxReveal } from "./mb-reveal.js";
 import { MysteryBoxConfetti } from "./mb-confetti.js";
 import { debugLog } from "./mb-helpers.js";
-
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Selects N unique items from a weighted pool using a seeded RNG.
@@ -48,6 +47,8 @@ function weightedRandomSelection(items, count, rng) {
 export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2
 ) {
+  static BASE_APPLICATION = MysteryBoxOpener;
+
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-opener",
     classes: ["dh-mystery-box-app", "dh-mystery-box-opener"],

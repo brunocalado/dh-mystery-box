@@ -1,5 +1,7 @@
-2026/03/12-12:40:06.322 695c Log #22: 0 ops saved to Table #25 OK
-2026/03/12-12:40:06.323 695c Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo/000022.log: OK
-2026/03/12-12:40:06.323 695c Table #24: 28 entries OK
-2026/03/12-12:40:06.325 695c Archiving C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo/MANIFEST-000020: OK
-2026/03/12-12:40:06.327 695c **** Repaired leveldb C:\Users\Bruno\Documents\VTT\fvttdev\Data\modules\dh-mystery-box\packs\mystery-boxes-demo; recovered 1 files; 38623 bytes. Some data may have been lost. ****
+2026/04/07-18:00:04.267 98c Recovering log #62
+2026/04/07-18:00:04.270 98c Delete type=0 #62
+2026/04/07-18:00:04.270 98c Delete type=3 #61
+2026/04/07-18:04:10.647 6448 Level-0 table #66: started
+2026/04/07-18:04:10.647 6448 Level-0 table #66: 0 bytes OK
+2026/04/07-18:04:10.648 6448 Delete type=0 #64
+2026/04/07-18:04:10.648 6448 Manual compaction at level-0 from '!folders!MK45Sqr1tb1SN5un' @ 72057594037927935 : 1 .. '!items!xkMwa3vzoL7rwwOY' @ 0 : 0; will stop at (end)

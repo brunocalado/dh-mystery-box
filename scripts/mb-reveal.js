@@ -1,4 +1,4 @@
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Display-only UI that shows the player which items they received from a Mystery Box.
@@ -14,6 +14,8 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
     super();
     this._items = items;
   }
+
+  static BASE_APPLICATION = MysteryBoxReveal;
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-reveal",

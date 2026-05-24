@@ -10,17 +10,6 @@
         padding: 10px;
     }
 
-    --mbs-accent: #C9A060;
-    --mbs-card-bg: rgba(255, 255, 255, 0.03);
-    --mbs-border: rgba(255, 255, 255, 0.1);
-    --mbs-text-main: #f0f0e0;
-    --mbs-text-dim: #aaa;
-    --mbs-input-bg: rgba(0, 0, 0, 0.3);
-    --mbs-rarity-common: #b0b0b0;
-    --mbs-rarity-uncommon: #4caf50;
-    --mbs-rarity-rare: #2196f3;
-    --mbs-rarity-legendary: #ff9800;
-
     /* -- NAVIGATION TABS -- */
     & .mbs-nav {
         display: flex;
@@ -85,7 +74,7 @@
             padding-bottom: 5px;
             margin: 0 0 8px 0;
             color: var(--mbs-accent);
-            font-family: "Aleo", serif;
+            font-family: var(--mb-font-display);
             font-size: 1.1em;
             text-transform: uppercase;
             opacity: 0.9;
@@ -116,7 +105,7 @@
             height: 32px;
             padding: 0 10px;
             transition: border-color 0.2s;
-            font-family: "Signika", sans-serif;
+            font-family: var(--mb-font-ui);
             font-size: 12px;
 
             &:focus {
@@ -175,7 +164,7 @@
             border: 1px solid #000;
             color: #e0e0e0;
             padding: 8px 24px;
-            font-family: "Aleo", serif;
+            font-family: var(--mb-font-display);
             font-weight: bold;
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
             cursor: pointer;

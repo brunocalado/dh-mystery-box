@@ -13,16 +13,16 @@
         }
 
         &::-webkit-scrollbar-track {
-            background: #111111;
+            background: var(--mb-bg-input);
             border-radius: 4px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: #444444;
+            background: var(--mb-border-light);
             border-radius: 4px;
 
             &:hover {
-                background: #555555;
+                background: var(--mb-border-hover);
             }
         }
     }
@@ -65,10 +65,10 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        border: 1px solid #444;
+        border: 1px solid var(--mb-border-light);
         border-radius: 4px;
         background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
-        color: #aaa;
+        color: var(--mbs-text-dim);
         transition: all 0.2s;
 
         &:hover {

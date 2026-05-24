@@ -1,4 +1,4 @@
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Logs a debug message if debugLogs setting is enabled.

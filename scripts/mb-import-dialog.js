@@ -1,4 +1,5 @@
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
+
 const VALID_ITEM_TYPES = new Set(["weapon", "armor", "loot", "consumable", "feature"]);
 
 /**
@@ -26,6 +27,8 @@ export class MysteryBoxImportDialog extends foundry.applications.api.HandlebarsA
     this._sourceMode = "compendium"; // "compendium" | "folder"
     this._folderItems = [];
   }
+
+  static BASE_APPLICATION = MysteryBoxImportDialog;
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-import-dialog",

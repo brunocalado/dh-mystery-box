@@ -1,4 +1,4 @@
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Settings menu for configuring default asset paths per rarity tier.
@@ -8,6 +8,8 @@ const MODULE_ID = "dh-mystery-box";
 export class MysteryBoxSettingsApp extends foundry.applications.api.HandlebarsApplicationMixin(
     foundry.applications.api.ApplicationV2
 ) {
+    static BASE_APPLICATION = MysteryBoxSettingsApp;
+
     static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
         id: "dh-mystery-box-settings-app",
         tag: "form",

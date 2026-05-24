@@ -4,8 +4,7 @@ import { MysteryBoxEditor } from "./mb-editor.js";
 import { MysteryBoxSettingsApp } from "./mb-settings.js";
 import { MysteryBoxPartyActorMenu } from "./mb-party-actor-menu.js";
 import { debugLog } from "./mb-helpers.js";
-
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Register module settings and preload Handlebars templates.

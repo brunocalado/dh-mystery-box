@@ -1,4 +1,4 @@
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Settings menu for selecting the shared party actor that receives loot
@@ -9,6 +9,8 @@ const MODULE_ID = "dh-mystery-box";
 export class MysteryBoxPartyActorMenu extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2
 ) {
+  static BASE_APPLICATION = MysteryBoxPartyActorMenu;
+
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-party-actor-menu",
     tag: "form",

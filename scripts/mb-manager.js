@@ -1,6 +1,5 @@
 import { MysteryBoxEditor } from "./mb-editor.js";
-
-const MODULE_ID = "dh-mystery-box";
+import { MODULE_ID } from "./constants.js";
 
 /**
  * Resolves the rarity icon path from settings, falling back to the bundled asset.
@@ -20,6 +19,8 @@ function getRarityIcon(rarity) {
 export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2
 ) {
+  static BASE_APPLICATION = MysteryBoxManager;
+
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-manager",
     classes: ["dh-mystery-box-app", "dh-mystery-box-manager"],

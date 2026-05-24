@@ -2,10 +2,28 @@
    Mystery Box Module - Shared Variables
    ========================================= */
 .dh-mystery-box-app {
+    /* Core palette */
     --mb-accent: #ff6400;
     --mb-bg-dark: #1a1a1a;
     --mb-bg-input: #0f0f0f;
     --mb-border-light: #444444;
+    --mb-border-hover: #555555;
+
+    /* Typography — used across settings and editor-config dialogs */
+    --mb-font-display: 'Aleo', serif;
+    --mb-font-ui: 'Signika', sans-serif;
+
+    /* Shared "mbs" sub-theme (settings menu & editor-config dialog) */
+    --mbs-accent: #C9A060;
+    --mbs-card-bg: rgba(255, 255, 255, 0.03);
+    --mbs-border: rgba(255, 255, 255, 0.1);
+    --mbs-text-main: #f0f0e0;
+    --mbs-text-dim: #aaa;
+    --mbs-input-bg: rgba(0, 0, 0, 0.3);
+    --mbs-rarity-common: #b0b0b0;
+    --mbs-rarity-uncommon: #4caf50;
+    --mbs-rarity-rare: #2196f3;
+    --mbs-rarity-legendary: #ff9800;
 }
 
 /* =========================================
@@ -676,8 +694,8 @@
         }
 
         & .mb-party-toggle-label {
-            color: #c9a060;
-            font-family: 'Aleo', serif;
+            color: var(--mbs-accent);
+            font-family: var(--mb-font-display);
             font-size: 0.95em;
             display: flex;
             align-items: center;
