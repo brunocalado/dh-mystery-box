@@ -1,20 +1,20 @@
 {
   "id": "dh-mystery-box",
   "title": "Daggerheart: 🎁 Mystery Box",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "compatibility": {
     "minimum": "14",
-    "verified": "14"
+    "verified": "14",
+    "maximum": "14"
   },
   "authors": [
     {
       "name": "Mestre Digital",
-      "url": "http://youtube.com/@mestredigital",      
+      "url": "http://youtube.com/@mestredigital",
       "flags": {}
     }
   ],
   "description": "Add a thrill of surprise to your Daggerheart sessions. This module lets Game Masters create item boxes—like treasure chests, magical caches, or lucky bags — that players can open to reveal random rewards.",
-
   "socket": true,
   "relationships": {
     "systems": [
@@ -34,10 +34,17 @@
         "compatibility": {
           "minimum": "6.2.3"
         }
+      },
+      {
+        "id": "dh-unidentified",
+        "type": "module",
+        "title": "Daggerheart: Unidentified Items",
+        "compatibility": {
+          "minimum": "0.1.6"
+        }
       }
     ]
   },
-  
   "media": [
     {
       "type": "setup",
@@ -51,12 +58,24 @@
     "scripts/main.js"
   ],
   "styles": [
-    "styles/mystery-box.css",
-    "styles/mb-reveal.css",
-    "styles/mb-settings.css",
-    "styles/mb-import-dialog.css",
-    "styles/mb-editor-config.css",
-    "styles/mb-actor-sheet.css"
+    {
+      "src": "styles/mystery-box.css"
+    },
+    {
+      "src": "styles/mb-reveal.css"
+    },
+    {
+      "src": "styles/mb-settings.css"
+    },
+    {
+      "src": "styles/mb-import-dialog.css"
+    },
+    {
+      "src": "styles/mb-editor-config.css"
+    },
+    {
+      "src": "styles/mb-actor-sheet.css"
+    }
   ],
   "packs": [
     {

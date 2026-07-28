@@ -8,11 +8,21 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
   foundry.applications.api.ApplicationV2
 ) {
   /**
-   * @param {object[]} items - Plain item data objects (from Item#toObject).
+   * @param {object[]} items - Plain item data objects (from Item#toObject). Real,
+   *   unmasked data — used to locate/recreate the actual item for the magnifier
+   *   button, which relies on dh-unidentified's own sheet masking when present.
+   * @param {{name: string, img: string}[]} [displayItems] - Audience-appropriate
+   *   name/img to render in the list, one per entry in `items`. Defaults to the
+   *   real name/img when omitted (no dh-unidentified integration in play).
+   * @param {Actor} [actor] - The actor that actually received the items (may
+   *   differ from `game.user.character` in party mode). Falls back to the
+   *   current user's character.
    */
-  constructor(items) {
+  constructor(items, displayItems, actor) {
     super();
     this._items = items;
+    this._display = displayItems ?? items.map(i => ({ name: i.name, img: i.img }));
+    this._actor = actor ?? game.user.character;
   }
 
   static BASE_APPLICATION = MysteryBoxReveal;
@@ -48,8 +58,8 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
    */
   async _prepareContext(options) {
     const items = this._items.map((item, index) => ({
-      img: item.img,
-      name: item.name,
+      img: this._display[index]?.img ?? item.img,
+      name: this._display[index]?.name ?? item.name,
       index
     }));
     return { items };
@@ -58,6 +68,9 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
   /**
    * Open the item sheet for inspection when the magnifier button is clicked.
    * Uses the actor's copy of the item (matched by name) so the sheet renders correctly.
+   * Real (unmasked) name/img are used for the match since dh-unidentified never
+   * touches those document fields — masking, if any, is applied by that module's
+   * own sheet-render hook once the real item's sheet opens.
    * @param {PointerEvent} event - The triggering click event.
    * @param {HTMLElement} target - The action button with data-index.
    */
@@ -66,8 +79,8 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
     const itemData = this._items[index];
     if (!itemData) return;
 
-    // Find the actual item on the actor so we get a proper sheet
-    const actor = game.user.character;
+    // Find the actual item on the actor that received it so we get a proper sheet
+    const actor = this._actor;
     if (actor) {
       const actorItem = actor.items.find(i => i.name === itemData.name && i.img === itemData.img);
       if (actorItem) {

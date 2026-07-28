@@ -1,3 +1,13 @@
+# 0.2.1
+
+[Added]
+- Compatibility with the **Unidentified** module: items it has mystified now stay masked (alias name/icon) when drawn from a Mystery Box, both in the "You received" reveal popup and in the opening chat message. Applies whenever the box-opener is not a GM; GMs continue to see real item identity, matching Unidentified's own behavior.
+- Declared **Unidentified** as an optional (`recommends`) relationship in `module.json`, mirroring the existing Dice So Nice! entry. No hard dependency — behavior is unchanged when it isn't installed.
+
+[Fixed]
+- The reveal popup's magnifier (view item) button looked up the drawn item on `game.user.character` even when "send to party" routed it to the party actor instead, so it usually fell back to a detached temporary copy rather than the real actor-owned item. It now looks up the item on whichever actor actually received it.
+
+
 # 0.2.0
 
 - v14 only

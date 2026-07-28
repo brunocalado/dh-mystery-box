@@ -1,6 +1,6 @@
 import { MysteryBoxReveal } from "./mb-reveal.js";
 import { MysteryBoxConfetti } from "./mb-confetti.js";
-import { debugLog } from "./mb-helpers.js";
+import { debugLog, getDisplayIdentity } from "./mb-helpers.js";
 import { MODULE_ID } from "./constants.js";
 
 /**
@@ -367,6 +367,19 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
          </div>`
       : "";
 
+    // Party mode is always public regardless of the chatMessageMode setting.
+    const chatMode = (sendToParty && partyActor) ? "public" : game.settings.get(MODULE_ID, "chatMessageMode");
+
+    // dh-unidentified integration: never leak a mystified item's true name/img,
+    // in the chat card or the reveal popup. Both follow the opener's own role —
+    // real identity only if the person opening the box is themselves a GM.
+    // Whisper target does NOT affect this: even a GM-only whisper must stay
+    // masked when a player opened the box, so the item is a surprise for the
+    // GM's log too, consistent with what the opener sees in the reveal popup.
+    const displayItems = resolvedItems.map(item =>
+      getDisplayIdentity(item, { revealReal: game.user.isGM })
+    );
+
     const content = `
     <div class="chat-card" style="border: 2px solid ${titleColor}; border-radius: 8px; overflow: hidden;">
         <header class="card-header flexrow" style="background: #191919 !important; padding: 8px; border-bottom: 2px solid ${titleColor};">
@@ -375,10 +388,10 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
             </h3>
         </header>
         <div class="card-content" style="background: #222; padding: 20px; min-height: 80px; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 10px;">
-            ${resolvedItems.map(item => `
+            ${displayItems.map(display => `
             <div style="display: flex; align-items: center; gap: 10px; background: rgba(0, 0, 0, 0.3); padding: 6px; border-radius: 4px;">
-                <img src="${item.img}" style="width: 32px; height: 32px; border: 1px solid #555; border-radius: 4px; object-fit: cover; flex-shrink: 0;">
-                <div style="color: #ffffff; font-size: 1.1em; font-family: 'Aleo', serif; text-shadow: 1px 1px 2px #000;">${item.name}</div>
+                <img src="${display.img}" style="width: 32px; height: 32px; border: 1px solid #555; border-radius: 4px; object-fit: cover; flex-shrink: 0;">
+                <div style="color: #ffffff; font-size: 1.1em; font-family: 'Aleo', serif; text-shadow: 1px 1px 2px #000;">${display.name}</div>
             </div>`).join("")}
             ${partyFooter}
         </div>
@@ -391,17 +404,12 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       style: CONST.CHAT_MESSAGE_STYLES.OTHER
     };
 
-    if (sendToParty && partyActor) {
-      // Party mode: always public, never whisper, regardless of chatMessageMode setting
-    } else {
-      const chatMode = game.settings.get(MODULE_ID, "chatMessageMode");
-      if (chatMode === "gm") chatData.whisper = ChatMessage.getWhisperRecipients("GM");
-    }
+    if (chatMode === "gm") chatData.whisper = ChatMessage.getWhisperRecipients("GM");
 
     await ChatMessage.create(chatData);
 
     this.close();
-    new MysteryBoxReveal(resolvedItems).render(true);
+    new MysteryBoxReveal(resolvedItems, displayItems, targetActor).render(true);
   }
 
   /**

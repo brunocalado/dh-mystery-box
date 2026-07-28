@@ -46,3 +46,25 @@ export function computeRaffleProbability(itemChance, items, raffleCount) {
 Handlebars.registerHelper("raffleProbability", function(itemChance, items, raffleCount) {
   return computeRaffleProbability(itemChance, items, raffleCount);
 });
+
+/**
+ * Returns the name/img that should be shown for `item`, deferring to the
+ * dh-unidentified module's mask when it is active and the item is unidentified.
+ * A no-op (returns the real values) when dh-unidentified is absent, the item
+ * is identified, or `revealReal` is set — so boxes behave exactly as before
+ * wherever the audience is trusted with the truth (e.g. the GM).
+ * @param {object} item - Plain item data or an Item document; only `.name`,
+ *   `.img` and `.flags` are read.
+ * @param {{revealReal?: boolean}} [options] - Pass `revealReal: true` for an
+ *   audience that should always see the real identity (mirrors dh-unidentified's
+ *   own "GM always sees the truth" rule).
+ * @returns {{name: string, img: string}}
+ */
+export function getDisplayIdentity(item, { revealReal = false } = {}) {
+  if (revealReal) return { name: item.name, img: item.img };
+  const api = game.modules.get("dh-unidentified")?.active
+    ? game.modules.get("dh-unidentified").api
+    : null;
+  if (!api) return { name: item.name, img: item.img };
+  return { name: api.getDisplayName(item), img: api.getDisplayImg(item) };
+}
