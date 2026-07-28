@@ -1,13 +1,12 @@
 # 🎁 Mystery Box
 
-
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Donate-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/mestredigital) [![More Modules](https://img.shields.io/badge/Foundry%20VTT-More%20Modules-red?style=for-the-badge&logo=gamepad)](https://mestredigital.online/pages/projetos-en)
-
 ## for Daggerheart
 
 **Turn loot into an event!**
 
 Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** module lets GMs create item boxes — treasure chests, magical caches, lucky bags — that players open to reveal random rewards. Items land directly in the character's inventory, no manual work needed.
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Donate-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/mestredigital) [![More Modules](https://img.shields.io/badge/Foundry%20VTT-More%20Modules-red?style=for-the-badge&logo=gamepad)](https://mestredigital.online/pages/projetos-en)
 
 ## ✨ Why use it?
 
