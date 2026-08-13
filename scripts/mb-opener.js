@@ -427,13 +427,15 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
   /**
    * Plays the box opening video overlay.
+   * No-ops if the GM hasn't configured a video for this rarity — the module ships no bundled videos.
    * @param {string} [rarity="common"] - The rarity of the box to determine which video to play.
-   * @returns {Promise<void>} Resolves when the video ends.
+   * @returns {Promise<void>} Resolves when the video ends (or immediately if none is configured).
    */
   static async _playOpeningVideo(rarity = "common") {
     // Resolve the video path from settings so GMs can override without touching module code.
     const key = `video${rarity.charAt(0).toUpperCase()}${rarity.slice(1)}`;
-    const src = game.settings.get(MODULE_ID, key) || `modules/${MODULE_ID}/assets/video/box-${rarity}.webm`;
+    const src = game.settings.get(MODULE_ID, key);
+    if (!src) return;
 
     return new Promise((resolve) => {
       const video = document.createElement("video");

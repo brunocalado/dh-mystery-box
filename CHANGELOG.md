@@ -1,3 +1,14 @@
+# 0.2.2
+
+[Removed]
+- All AI-generated art. Default rarity icons now use Foundry's own core icon library instead of bundled artwork; `banner.webp` and `thumbnail.webp` are now plain black placeholders; the box-opening video style has no bundled default video (GMs can still supply their own via **Configure Default Assets**).
+- The `icons/` (detailed variants and unused `avatar.webp`) and `video/` asset folders, and the unused rarity images under `images/`.
+
+[Changed]
+- The Mystery Boxes Demo compendium items now use Foundry core chest icons instead of the removed bundled icons.
+
+See `docs/updating-assets-after-ai-removal.md` for how to refresh icons on world items created before this change — this is a manual, opt-in macro, not an automatic migration.
+
 # 0.2.1
 
 [Added]

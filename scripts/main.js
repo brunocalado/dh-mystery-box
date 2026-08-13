@@ -92,60 +92,62 @@ Hooks.once("init", () => {
   });
 
   // --- Default Asset Paths (managed via settings menu) ---
+  // Defaults use Foundry's own core icons so the module ships no bundled art.
   game.settings.register(MODULE_ID, "iconCommon", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/icons/box-common.webp`
+    default: "icons/containers/chest/chest-simple-box-brown.webp"
   });
 
   game.settings.register(MODULE_ID, "iconUncommon", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/icons/box-uncommon.webp`
+    default: "icons/containers/chest/chest-reinforced-steel-green.webp"
   });
 
   game.settings.register(MODULE_ID, "iconRare", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/icons/box-rare.webp`
+    default: "icons/containers/chest/chest-simple-box-blue.webp"
   });
 
   game.settings.register(MODULE_ID, "iconLegendary", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/icons/box-legendary.webp`
+    default: "icons/containers/chest/chest-simple-box-gold-brown.webp"
   });
 
+  // No bundled opening videos ship with the module; GMs can set their own via the settings menu.
   game.settings.register(MODULE_ID, "videoCommon", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/video/box-common.webm`
+    default: ""
   });
 
   game.settings.register(MODULE_ID, "videoUncommon", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/video/box-uncommon.webm`
+    default: ""
   });
 
   game.settings.register(MODULE_ID, "videoRare", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/video/box-rare.webm`
+    default: ""
   });
 
   game.settings.register(MODULE_ID, "videoLegendary", {
     scope: "world",
     config: false,
     type: String,
-    default: `modules/${MODULE_ID}/assets/video/box-legendary.webm`
+    default: ""
   });
 
   game.settings.register(MODULE_ID, "partyActorId", {

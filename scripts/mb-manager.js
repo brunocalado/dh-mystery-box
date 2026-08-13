@@ -1,15 +1,23 @@
 import { MysteryBoxEditor } from "./mb-editor.js";
 import { MODULE_ID } from "./constants.js";
 
+// Mirrors the settings registered in main.js — used only as a fallback if a setting is unset.
+const DEFAULT_RARITY_ICONS = {
+  common: "icons/containers/chest/chest-simple-box-brown.webp",
+  uncommon: "icons/containers/chest/chest-reinforced-steel-green.webp",
+  rare: "icons/containers/chest/chest-simple-box-blue.webp",
+  legendary: "icons/containers/chest/chest-simple-box-gold-brown.webp"
+};
+
 /**
- * Resolves the rarity icon path from settings, falling back to the bundled asset.
+ * Resolves the rarity icon path from settings, falling back to Foundry's core icon.
  * Allows GMs to override icons without touching module code.
  * @param {string} rarity - The rarity tier (common, uncommon, rare, legendary).
  * @returns {string} The configured or default icon path.
  */
 function getRarityIcon(rarity) {
   const key = `icon${rarity.charAt(0).toUpperCase()}${rarity.slice(1)}`;
-  return game.settings.get(MODULE_ID, key) || `modules/${MODULE_ID}/assets/icons/box-${rarity}.webp`;
+  return game.settings.get(MODULE_ID, key) || DEFAULT_RARITY_ICONS[rarity];
 }
 
 /**

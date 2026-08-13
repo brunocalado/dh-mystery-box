@@ -149,7 +149,7 @@ https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json
 
 * **Code License:** GNU GPLv3.
 
-* **Assets:** AI images and videos provided are [CC0 1.0 Universal Public Domain](https://creativecommons.org/publicdomain/zero/1.0/).
+* **Icons:** Default rarity icons are Foundry VTT's own bundled core icons — no custom art ships with this module.
 
 * **empty.mp3, box-common.mp3, box-uncommon.mp3, box-rare.mp3, box-legendary.mp3:** [License](https://pixabay.com/service/license-summary/)
 
