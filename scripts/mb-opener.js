@@ -1,6 +1,6 @@
 import { MysteryBoxReveal } from "./mb-reveal.js";
 import { MysteryBoxConfetti } from "./mb-confetti.js";
-import { debugLog, getDisplayIdentity } from "./mb-helpers.js";
+import { debugLog, getDisplayIdentity, usesNiceSheets } from "./mb-helpers.js";
 import { MODULE_ID } from "./constants.js";
 
 /**
@@ -100,6 +100,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
         boxId: flagBoxId,
         boxName: item.name.length > maxCharacters ? item.name.slice(0, maxCharacters) + "..." : item.name,
         img: item.img,
+        rarity: boxConfig.rarity ?? "common",
         itemCount: boxConfig.items.length,
         quantity: item.system.quantity ?? 1
       });
@@ -118,12 +119,15 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
   }
 
   /**
-   * Wire the party toggle button click handler after the template renders.
+   * Match the opening user's character sheet, then wire the party toggle button click handler.
    * Triggered by the AppV2 _onRender lifecycle stage.
    * @param {object} context - Prepared template context.
    * @param {object} options - Render options.
    */
   _onRender(context, options) {
+    // Re-checked on every render, so a sheet switch shows on the next open.
+    this.element.classList.toggle("dh-mb-nice", usesNiceSheets());
+
     const toggleBtn = this.element.querySelector("#mb-party-toggle");
     if (!toggleBtn) return;
 

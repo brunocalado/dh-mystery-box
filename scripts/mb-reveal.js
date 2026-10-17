@@ -1,4 +1,5 @@
 import { MODULE_ID } from "./constants.js";
+import { usesNiceSheets } from "./mb-helpers.js";
 
 /**
  * Display-only UI that shows the player which items they received from a Mystery Box.
@@ -63,6 +64,17 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
       index
     }));
     return { items };
+  }
+
+  /**
+   * Match the opening user's character sheet. Keyed on `game.user.character` even in party mode:
+   * the window is shown to the user who opened the box, so it follows that user's sheet.
+   * Triggered by the AppV2 _onRender lifecycle stage.
+   * @param {object} context - Prepared template context.
+   * @param {object} options - Render options.
+   */
+  _onRender(context, options) {
+    this.element.classList.toggle("dh-mb-nice", usesNiceSheets());
   }
 
   /**

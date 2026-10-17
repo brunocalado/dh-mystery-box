@@ -32,7 +32,7 @@
 
         <div class="mb-opener-grid">
             {{#each boxes as |box|}}
-            <div class="mb-opener-card">
+            <div class="mb-opener-card" data-mb-rarity="{{box.rarity}}">
                 <img src="{{box.img}}" class="mb-opener-img" alt="{{box.boxName}}">
                 <div class="mb-opener-info">
                     <span class="mb-opener-name">{{box.boxName}}</span>

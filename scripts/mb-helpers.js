@@ -1,4 +1,4 @@
-import { MODULE_ID } from "./constants.js";
+import { MODULE_ID, NICE_SHEETS_ID } from "./constants.js";
 
 /**
  * Logs a debug message if debugLogs setting is enabled.
@@ -67,4 +67,15 @@ export function getDisplayIdentity(item, { revealReal = false } = {}) {
     : null;
   if (!api) return { name: item.name, img: item.img };
   return { name: api.getDisplayName(item), img: api.getDisplayImg(item) };
+}
+/**
+ * Whether the actor is shown with the Daggerheart: Nice Sheets character sheet. Reads the
+ * resolved sheet's classes rather than its class name, which a build step could rename.
+ * `actor.sheet` builds the sheet instance if none exists yet; it does not render it.
+ * @param {Actor|null} [actor=game.user.character]
+ * @returns {boolean}
+ */
+export function usesNiceSheets(actor = game.user.character) {
+  if (!actor || !game.modules.get(NICE_SHEETS_ID)?.active) return false;
+  return actor.sheet?.options.classes.includes(NICE_SHEETS_ID) ?? false;
 }

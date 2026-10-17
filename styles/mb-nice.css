@@ -37,10 +37,12 @@
     --mbn-legendary-rgb: var(--mbn-gold-rgb);
 }
 
-.dh-nice-sheets [data-mb-rarity="common"]    { --mb-rarity: var(--mbn-common);    --mb-rarity-rgb: var(--mbn-common-rgb); }
-.dh-nice-sheets [data-mb-rarity="uncommon"]  { --mb-rarity: var(--mbn-uncommon);  --mb-rarity-rgb: var(--mbn-uncommon-rgb); }
-.dh-nice-sheets [data-mb-rarity="rare"]      { --mb-rarity: var(--mbn-rare);      --mb-rarity-rgb: var(--mbn-rare-rgb); }
-.dh-nice-sheets [data-mb-rarity="legendary"] { --mb-rarity: var(--mbn-legendary); --mb-rarity-rgb: var(--mbn-legendary-rgb); }
+.dh-nice-sheets, .dh-mystery-box-app.dh-mb-nice {
+    & [data-mb-rarity="common"]    { --mb-rarity: var(--mbn-common);    --mb-rarity-rgb: var(--mbn-common-rgb); }
+    & [data-mb-rarity="uncommon"]  { --mb-rarity: var(--mbn-uncommon);  --mb-rarity-rgb: var(--mbn-uncommon-rgb); }
+    & [data-mb-rarity="rare"]      { --mb-rarity: var(--mbn-rare);      --mb-rarity-rgb: var(--mbn-rare-rgb); }
+    & [data-mb-rarity="legendary"] { --mb-rarity: var(--mbn-legendary); --mb-rarity-rgb: var(--mbn-legendary-rgb); }
+}
 
 /* ── Box rows in the Nice Sheet ── */
 
@@ -105,4 +107,273 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     vertical-align: middle;
+}
+
+/* ── Opener and Reveal windows, when the opening user's character uses the Nice Sheet ── */
+
+/* Every colour is set here rather than inherited, so the skin looks the same whatever core theme
+   the user picked: Nice Sheets is dark only. Selectors carry the same containers as
+   mystery-box.css and mb-reveal.css, so they outrank those rules instead of tying with them. */
+.application.dh-mystery-box-app.dh-mb-nice {
+    border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+    border-radius: 10px;
+    background:
+        radial-gradient(120% 70% at 50% -10%, rgba(var(--mbn-gold-rgb), 0.14), transparent 60%),
+        radial-gradient(90% 60% at 50% 110%, rgba(0, 0, 0, 0.35), transparent 60%),
+        var(--mbn-ink);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.6);
+    color: var(--mbn-text);
+
+    .window-header {
+        background: transparent;
+        border-bottom: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+        color: var(--mbn-gold);
+        letter-spacing: 0.06em;
+
+        .window-title {
+            color: var(--mbn-gold);
+            font-family: var(--mbn-font-display);
+            font-weight: 700;
+        }
+
+        .window-icon,
+        .header-control {
+            color: var(--mbn-gold-dim);
+        }
+
+        .header-control:hover {
+            color: var(--mbn-gold-bright);
+        }
+    }
+
+    .window-content {
+        background: transparent;
+        color: var(--mbn-text);
+        font-family: var(--mbn-font-body);
+    }
+}
+
+/* ── Opener ── */
+.dh-mystery-box-app.dh-mb-nice.dh-mystery-box-opener .dh-mb-opener-content {
+    background: transparent;
+
+    & .mb-notes {
+        border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+        border-radius: 6px;
+        background: linear-gradient(180deg, var(--mbn-ink-3), var(--mbn-ink-2));
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.35);
+        color: var(--mbn-text);
+        font-family: var(--mbn-font-body);
+
+        & i {
+            color: var(--mbn-gold);
+        }
+    }
+
+    & .mb-notes-warning {
+        border-color: rgba(232, 137, 74, 0.5);
+
+        & i {
+            color: #e8894a;
+        }
+    }
+
+    & .mb-opener-card {
+        border: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+        border-radius: 8px;
+        background: rgba(var(--mbn-gold-rgb), 0.045);
+        transition: border-color 0.25s var(--mbn-ease), box-shadow 0.25s var(--mbn-ease);
+
+        &:hover {
+            border-color: rgba(var(--mbn-gold-rgb), 0.45);
+            box-shadow: 0 0 12px rgba(var(--mbn-gold-rgb), 0.15);
+        }
+    }
+
+    & .mb-opener-img {
+        border: none;
+        border-radius: 6px;
+        box-shadow: 0 0 0 1px var(--mb-rarity), 0 0 12px rgba(var(--mb-rarity-rgb), 0.5);
+    }
+
+    & .mb-opener-name {
+        color: var(--mbn-text);
+        font-family: var(--mbn-font-display);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+    }
+
+    & .mb-opener-meta {
+        color: var(--mbn-text-muted);
+        font-family: var(--mbn-font-body);
+    }
+
+    /* Lit like Nice Sheets' hovered round buttons: a bright spot fading to the dim gold. */
+    & .mb-btn-open {
+        border: 1px solid var(--mbn-gold-dim);
+        border-radius: 4px;
+        background: radial-gradient(120% 180% at 35% 20%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
+        color: var(--mbn-ink);
+        font-family: var(--mbn-font-display);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: box-shadow 0.25s var(--mbn-ease), filter 0.25s var(--mbn-ease);
+
+        &:hover {
+            background: radial-gradient(120% 180% at 35% 20%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
+            box-shadow: 0 0 12px rgba(var(--mbn-gold-rgb), 0.55);
+            filter: brightness(1.06);
+        }
+    }
+
+    & .mb-empty-state {
+        color: var(--mbn-text-muted);
+
+        & i {
+            color: var(--mbn-gold);
+        }
+    }
+
+    & .mb-party-toggle-row {
+        border: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+        background: rgba(var(--mbn-gold-rgb), 0.045);
+    }
+
+    & .mb-party-toggle-label {
+        color: var(--mbn-gold);
+        font-family: var(--mbn-font-display);
+    }
+
+    & .mb-party-toggle-btn {
+        border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+        background: var(--mbn-ink);
+
+        & .mb-toggle-off {
+            color: var(--mbn-text-muted);
+        }
+
+        & .mb-toggle-on {
+            color: var(--mbn-ink);
+        }
+
+        &[data-active="true"] {
+            border-color: var(--mbn-gold-dim);
+            background: radial-gradient(120% 180% at 35% 20%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
+            box-shadow: 0 0 8px rgba(var(--mbn-gold-rgb), 0.45);
+        }
+    }
+
+    & .mb-opener-grid::-webkit-scrollbar-track {
+        background: var(--mbn-ink);
+    }
+
+    & .mb-opener-grid::-webkit-scrollbar-thumb {
+        background: var(--mbn-gold-dim);
+    }
+}
+
+/* ── Reveal ── */
+.dh-mystery-box-app.dh-mb-nice.dh-mystery-box-reveal {
+    & .dh-mb-reveal-list {
+        gap: 6px;
+        padding: 10px;
+        background: transparent;
+
+        &::-webkit-scrollbar-track {
+            background: var(--mbn-ink);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--mbn-gold-dim);
+        }
+    }
+
+    /* Rows rise in one after another, like Nice Sheets' entrance. */
+    & .dh-mb-reveal-row {
+        position: relative;
+        gap: 10px;
+        padding: 6px 8px;
+        border: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+        border-radius: 8px;
+        background: rgba(var(--mbn-gold-rgb), 0.045);
+        animation: dh-mb-nice-rise 0.45s var(--mbn-ease) both;
+        animation-delay: calc(var(--mb-index, 0) * 40ms);
+
+        &:last-child {
+            border-bottom: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+        }
+
+        /* One pass of gold light over the icon once the row has landed. It sits over the image,
+           which cannot carry pseudo-elements of its own. */
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 8px;
+            width: 36px;
+            height: 36px;
+            margin-top: -18px;
+            border-radius: 6px;
+            background: linear-gradient(115deg, transparent 32%, rgba(255, 238, 200, 0.9) 50%, transparent 68%) 150% 0 / 250% 100% no-repeat;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            animation: dh-mb-nice-glint 0.9s var(--mbn-ease) both;
+            animation-delay: calc(var(--mb-index, 0) * 40ms + 0.35s);
+        }
+    }
+
+    & .dh-mb-reveal-img {
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: 6px;
+        box-shadow: 0 0 0 1px rgba(var(--mbn-gold-rgb), 0.35);
+    }
+
+    & .dh-mb-reveal-name {
+        color: var(--mbn-text);
+        font-family: var(--mbn-font-display);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+    }
+
+    & .dh-mb-reveal-view {
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+        border-radius: 50%;
+        background: var(--mbn-ink-3);
+        color: var(--mbn-gold);
+        transition: background 0.2s var(--mbn-ease), color 0.2s var(--mbn-ease), box-shadow 0.2s var(--mbn-ease);
+
+        &:hover {
+            border-color: transparent;
+            background: radial-gradient(circle at 35% 30%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
+            color: var(--mbn-ink);
+            box-shadow: 0 0 8px rgba(var(--mbn-gold-rgb), 0.45);
+        }
+    }
+}
+
+/* Not reused by name from Nice Sheets, for the same reason as the sweep above. */
+@keyframes dh-mb-nice-rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dh-mb-nice-glint {
+    from { background-position: 150% 0; }
+    to   { background-position: -50% 0; }
+}
+
+/* Nice Sheets' own reduced-motion override is scoped to its sheet, and these windows are not
+   inside it. */
+@media (prefers-reduced-motion: reduce) {
+    .dh-mb-nice *,
+    .dh-mb-nice *::before,
+    .dh-mb-nice *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
 }
