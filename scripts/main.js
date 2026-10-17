@@ -467,5 +467,18 @@ function _applyMysteryBoxIconEffects(form, actor) {
         if (iconContainer.classList.contains("dh-mb-icon-container")) continue;
 
         iconContainer.classList.add("dh-mb-icon-container");
+        iconContainer.dataset.mbRarity = item.getFlag(MODULE_ID, "config")?.rarity ?? "common";
+        // A real element, not ::after: sheets draw their own layers on the portrait's pseudo-elements
+        // (Nice Sheets puts its Hope/Fear dice there), and two rules on one pseudo-element merge.
+        const shimmer = document.createElement("span");
+        shimmer.className = "dh-mb-shimmer";
+        shimmer.inert = true;
+        iconContainer.append(shimmer);
+
+        // A re-render replaces the row, and new elements start their loops from zero. Pinning them
+        // to the document timeline keeps the sweep and the shake in phase across renders.
+        for (const animation of iconContainer.getAnimations({ subtree: true })) {
+            if (animation instanceof CSSAnimation) animation.startTime = 0;
+        }
     }
 }

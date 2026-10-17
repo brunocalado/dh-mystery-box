@@ -2,13 +2,18 @@
 
 .dh-mb-icon-container {
     position: relative;
-    overflow: hidden;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    display: inline-block;
 }
 
-.dh-mb-icon-container::after {
+.dh-mb-icon-container > .dh-mb-shimmer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.dh-mb-shimmer::before {
     content: '';
     position: absolute;
     top: 0;
@@ -23,7 +28,6 @@
     );
     transform: skewX(-20deg);
     animation: dh-mb-shimmer-sweep 3s infinite;
-    pointer-events: none;
 }
 
 @keyframes dh-mb-shimmer-sweep {
@@ -32,15 +36,15 @@
     100% { left: 200%; }
 }
 
-.dh-mb-icon-container img,
-.dh-mb-icon-container .item-image {
+/* Only the item art shakes — not a sheet's roll overlay. `rotate`/`scale` are separate
+   properties, so a sheet's hover `transform` still applies on top of the shake. */
+.dh-mb-icon-container > .item-img {
     animation: dh-mb-intermittent-shake 4s infinite ease-in-out;
-    transform-origin: center;
 }
 
 @keyframes dh-mb-intermittent-shake {
-    0%,  85%                       { transform: rotate(0deg)   scale(1);    }
-    87%, 91%, 95%, 99%             { transform: rotate(-4deg)  scale(1.05); }
-    89%, 93%, 97%                  { transform: rotate(4deg)   scale(1.05); }
-    100%                           { transform: rotate(0deg)   scale(1);    }
+    0%,  85%                       { rotate: 0deg;  scale: 1;    }
+    87%, 91%, 95%, 99%             { rotate: -4deg; scale: 1.05; }
+    89%, 93%, 97%                  { rotate: 4deg;  scale: 1.05; }
+    100%                           { rotate: 0deg;  scale: 1;    }
 }
