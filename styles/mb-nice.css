@@ -1,0 +1,108 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
+/* ── Daggerheart: Nice Sheets look ──────────────────────────────────── */
+
+/* Values copied from Daggerheart: Nice Sheets so a box looks native inside its sheet and our
+   windows match it. Kept in step by hand; theirs are scoped to their sheet. */
+.dh-nice-sheets,
+.dh-mystery-box-app.dh-mb-nice {
+    --mbn-gold: #f3c267;
+    --mbn-gold-rgb: 243, 194, 103;
+    --mbn-gold-bright: #ffe3a3;
+    --mbn-gold-dim: #b8893a;
+    --mbn-ink: #0f0d1b;
+    --mbn-ink-2: #171430;
+    --mbn-ink-3: #211d3d;
+    --mbn-text: #efe6d8;
+    --mbn-text-muted: rgba(239, 230, 216, 0.62);
+    --mbn-font-display: "Cinzel", serif;
+    --mbn-font-title: "Cinzel Decorative", "Cinzel", serif;
+    --mbn-font-body: "Montserrat", sans-serif;
+    --mbn-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    /* Rarity hues: common steel, uncommon emerald, rare sapphire, legendary gold. The channels
+       are kept beside each hue for translucent glows, as Nice Sheets does with its gold. */
+    --mbn-common: #9fb3c8;
+    --mbn-common-rgb: 159, 179, 200;
+    --mbn-uncommon: #4fbf7f;
+    --mbn-uncommon-rgb: 79, 191, 127;
+    --mbn-rare: #6fa8ff;
+    --mbn-rare-rgb: 111, 168, 255;
+    --mbn-legendary: var(--mbn-gold);
+    --mbn-legendary-rgb: var(--mbn-gold-rgb);
+}
+
+.dh-nice-sheets [data-mb-rarity="common"]    { --mb-rarity: var(--mbn-common);    --mb-rarity-rgb: var(--mbn-common-rgb); }
+.dh-nice-sheets [data-mb-rarity="uncommon"]  { --mb-rarity: var(--mbn-uncommon);  --mb-rarity-rgb: var(--mbn-uncommon-rgb); }
+.dh-nice-sheets [data-mb-rarity="rare"]      { --mb-rarity: var(--mbn-rare);      --mb-rarity-rgb: var(--mbn-rare-rgb); }
+.dh-nice-sheets [data-mb-rarity="legendary"] { --mb-rarity: var(--mbn-legendary); --mb-rarity-rgb: var(--mbn-legendary-rgb); }
+
+/* ── Box rows in the Nice Sheet ── */
+
+/* Kept below Nice Sheets' hover selector in specificity, so its gold hover ring replaces ours. */
+.dh-nice-sheets .dh-mb-icon-container[data-mb-rarity] {
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px var(--mb-rarity), 0 0 10px rgba(var(--mb-rarity-rgb), 0.45);
+}
+
+.dh-nice-sheets .dh-mb-shimmer::before {
+    background: linear-gradient(
+        to right,
+        rgba(var(--mb-rarity-rgb), 0) 0%,
+        rgba(var(--mb-rarity-rgb), 0.35) 35%,
+        rgba(255, 244, 214, 0.45) 50%,
+        rgba(var(--mb-rarity-rgb), 0.35) 65%,
+        rgba(var(--mb-rarity-rgb), 0) 100%
+    );
+    animation: dh-mb-nice-sweep 10s ease-in-out infinite;
+}
+
+/* Nice Sheets' own rhythm (their `nice-sheen`): one slow pass, then a long rest. Not reused by
+   name — a rename there would silently stop ours. */
+@keyframes dh-mb-nice-sweep {
+    0%, 82% { left: -100%; }
+    100%    { left: 200%; }
+}
+
+/* Legendary breathes. On the portrait's filter rather than its box-shadow: an animated
+   box-shadow would win over Nice Sheets' hover ring, since animations outrank declarations. */
+.dh-nice-sheets .dh-mb-icon-container[data-mb-rarity="legendary"] {
+    animation: dh-mb-nice-breathe 3.5s ease-in-out infinite;
+}
+
+.dh-nice-sheets .dh-mb-icon-container[data-mb-rarity="legendary"]:hover {
+    animation: none;
+}
+
+@keyframes dh-mb-nice-breathe {
+    0%, 100% { filter: drop-shadow(0 0 1px rgba(var(--mbn-gold-rgb), 0.2)); }
+    50%      { filter: drop-shadow(0 0 7px rgba(var(--mbn-gold-rgb), 0.85)); }
+}
+
+/* Rarity plaque after the name, Inventory tab only. Added by the script on every sheet and
+   shown only here. */
+.dh-mb-rarity-tag {
+    display: none;
+}
+
+.dh-nice-sheets .dh-mb-rarity-tag {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0 5px;
+    border: 1px solid rgba(var(--mb-rarity-rgb), 0.6);
+    border-radius: 3px;
+    background: rgba(var(--mb-rarity-rgb), 0.1);
+    color: var(--mb-rarity);
+    font-family: var(--mbn-font-display);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: middle;
+}

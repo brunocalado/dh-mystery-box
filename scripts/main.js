@@ -466,14 +466,27 @@ function _applyMysteryBoxIconEffects(form, actor) {
         // Skip if already applied to avoid animation restart on re-renders
         if (iconContainer.classList.contains("dh-mb-icon-container")) continue;
 
+        const rarity = item.getFlag(MODULE_ID, "config")?.rarity ?? "common";
         iconContainer.classList.add("dh-mb-icon-container");
-        iconContainer.dataset.mbRarity = item.getFlag(MODULE_ID, "config")?.rarity ?? "common";
+        iconContainer.dataset.mbRarity = rarity;
         // A real element, not ::after: sheets draw their own layers on the portrait's pseudo-elements
         // (Nice Sheets puts its Hope/Fear dice there), and two rules on one pseudo-element merge.
         const shimmer = document.createElement("span");
         shimmer.className = "dh-mb-shimmer";
         shimmer.inert = true;
         iconContainer.append(shimmer);
+
+        // Full inventory rows only — compact sidebar rows have no `.item-label`. The tag is added
+        // on every sheet and only sheets that style it show it (CSS hides it elsewhere).
+        const itemName = row.querySelector(".item-label .item-name");
+        if (itemName) {
+            const tag = document.createElement("span");
+            tag.className = "dh-mb-rarity-tag";
+            tag.dataset.mbRarity = rarity;
+            tag.textContent = rarity.charAt(0).toUpperCase() + rarity.slice(1);
+            // Before the system's hover chevron, which closes the name.
+            itemName.insertBefore(tag, itemName.querySelector(":scope > .expanded-icon"));
+        }
 
         // A re-render replaces the row, and new elements start their loops from zero. Pinning them
         // to the document timeline keeps the sweep and the shake in phase across renders.
