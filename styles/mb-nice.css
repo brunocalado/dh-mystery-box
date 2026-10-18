@@ -9,7 +9,9 @@
 /* ── Daggerheart: Nice Sheets look ──────────────────────────────────── */
 
 /* Values copied from Daggerheart: Nice Sheets so a box looks native inside its sheet and our
-   windows match it. Kept in step by hand; theirs are scoped to their sheet. */
+   windows match it. Kept in step by hand; theirs are scoped to their sheet. Our windows don't
+   borrow the `dh-nice-sheets` class to inherit them: that module nests its sheet layout rules
+   under the class, so a window carrying it would pick up a character sheet's layout. */
 .dh-nice-sheets,
 .dh-mystery-box-app.dh-mb-nice {
     --mbn-gold: #f3c267;

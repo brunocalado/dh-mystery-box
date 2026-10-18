@@ -72,6 +72,8 @@ export function getDisplayIdentity(item, { revealReal = false } = {}) {
  * Whether the actor is shown with the Daggerheart: Nice Sheets character sheet. Reads the
  * resolved sheet's classes rather than its class name, which a build step could rename.
  * `actor.sheet` builds the sheet instance if none exists yet; it does not render it.
+ * There is no setting for the Nice style on purpose: the player already chose it by picking
+ * the sheet.
  * @param {Actor|null} [actor=game.user.character]
  * @returns {boolean}
  */
