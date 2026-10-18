@@ -1,3 +1,9 @@
+# 0.2.4
+
+[Changed]
+- New versions are now released by a GitHub workflow and published on foundryvtt.com. The manifest and download links point to the latest GitHub release (`releases/latest/download/module.json`). Installs that still use the old manifest link keep updating, because that link now serves the new manifest.
+- The compendiums are kept in the repository as JSON under `packs/_source/` and compiled into the release zip.
+
 # 0.2.3
 
 [Added]
