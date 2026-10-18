@@ -1,0 +1,87 @@
+{
+  "name": "Common Armor Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Common (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Full Plate Armor</li><li>Chainmail Armor</li><li>Leather Armor</li><li>Gambeson Armor</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "WFyrZsp5olEB9y8O": {
+        "type": "macro",
+        "_id": "WFyrZsp5olEB9y8O",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "woOGbbMiLnucJYr4",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "rQudoTFcWMhRRrQ5",
+      "config": {
+        "name": "Common Armor Stash",
+        "rarity": "common",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Common (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Full Plate Armor</li><li>Chainmail Armor</li><li>Leather Armor</li><li>Gambeson Armor</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.UdUJNa31WxFW2noa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.haULhuEg37zUUvhb",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.nibfdNtp2PtxvbVz",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.yJFp1bfpecDcStVK",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "ZhlQ9zC1zw308aJu",
+  "sort": 100000,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331605727,
+    "modifiedTime": 1773331623332,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!ZhlQ9zC1zw308aJu"
+}

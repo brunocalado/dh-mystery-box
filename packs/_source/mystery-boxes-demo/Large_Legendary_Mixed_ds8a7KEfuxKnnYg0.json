@@ -1,0 +1,167 @@
+{
+  "name": "Large Legendary Mixed",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-gold-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Legendary (Mixed: Loot and Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Lakestrider Boots</li><li>Clay Companion</li><li>Mythic Dust Recipe</li><li>Shard of Memory</li><li>Gem of Alacrity</li><li>Gem of Might</li><li>Gem of Precision</li><li>Gem of Insight</li><li>Gem of Audacity</li><li>Gem of Sagacity</li><li>Ring of Unbreakable Resolve</li><li>Belt of Unity</li><li>Bridge Seed</li><li>Sleeping Sap</li><li>Feast of Xuria</li><li>Bonding Honey</li><li>Shrinking Potion</li><li>Growing Potion</li><li>Knowledge Stone</li><li>Sweet Moss</li><li>Blinding Orb</li><li>Death Tea</li><li>Mirror of Marigold</li><li>Stardrop</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "fC5GghlmHRBakrCa": {
+        "type": "macro",
+        "_id": "fC5GghlmHRBakrCa",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "MK45Sqr1tb1SN5un",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "w7B99b8FuZYwaQjQ",
+      "config": {
+        "name": "Large Legendary Mixed",
+        "rarity": "legendary",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 2,
+        "raffleMaximum": 2,
+        "description": "<p><strong>Legendary (Mixed: Loot and Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Lakestrider Boots</li><li>Clay Companion</li><li>Mythic Dust Recipe</li><li>Shard of Memory</li><li>Gem of Alacrity</li><li>Gem of Might</li><li>Gem of Precision</li><li>Gem of Insight</li><li>Gem of Audacity</li><li>Gem of Sagacity</li><li>Ring of Unbreakable Resolve</li><li>Belt of Unity</li><li>Bridge Seed</li><li>Sleeping Sap</li><li>Feast of Xuria</li><li>Bonding Honey</li><li>Shrinking Potion</li><li>Growing Potion</li><li>Knowledge Stone</li><li>Sweet Moss</li><li>Blinding Orb</li><li>Death Tea</li><li>Mirror of Marigold</li><li>Stardrop</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.NgvmrJYKpA2PrRSo",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.lGIk9vBNz0jvskXD",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.5YZls8XH3MB7twNa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.2ULPgNyqCrxea0v0",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.zecFwBUSWtB3HW8X",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.rtSInNPc4B3ChBUZ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.CrvJ7vb4s40YgEcy",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.TbgeT9ZxKHqFqJSN",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.hMu9It3ThCLCXuCA",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.ua351S7CsH22X1x2",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.kn71qCQY0DnjmQBJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.gFzkUGCjkRJtyoe9",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.RrIasiMCt6mqVTps",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.XZavUVlHEvE2srEt",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.aX6NyxkNzu0LcJpt",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.PfQvqopXgvroBklL",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.HGixKenQwhyRAYNk",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.fl2f3ees8RFMze9t",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.nL9IALzm9BNi5oSt",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.GrDrRqWgv7gvl9vn",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.eAXHdzA5qNPldOpn",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.xDnJeF1grkmKck8Q",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.UFQVwgYOUZ88UxcH",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.y4c1jrlHrf0wBWOq",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332866224,
+    "modifiedTime": 1773332866244,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "ds8a7KEfuxKnnYg0",
+  "sort": 200000,
+  "_key": "!items!ds8a7KEfuxKnnYg0"
+}

@@ -1,0 +1,111 @@
+{
+  "name": "Legendary Armor Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-gold-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Legendary (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Full Fortified Armor</li><li>Savior Chainmail</li><li>Legendary Chainmail Armor</li><li>Veritas Opal Armor</li><li>Legendary Full Plate Armor</li><li>Legendary Leather Armor</li><li>Emberwoven Armor</li><li>Legendary Gambeson Armor</li><li>Dunamis Silkchain</li><li>Channeling Armor</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "T6EgdqPqywFjQqFb": {
+        "type": "macro",
+        "_id": "T6EgdqPqywFjQqFb",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "woOGbbMiLnucJYr4",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "xMa5Wy258x1YC2cn",
+      "config": {
+        "name": "Legendary Armor Stash",
+        "rarity": "legendary",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Legendary (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Full Fortified Armor</li><li>Savior Chainmail</li><li>Legendary Chainmail Armor</li><li>Veritas Opal Armor</li><li>Legendary Full Plate Armor</li><li>Legendary Leather Armor</li><li>Emberwoven Armor</li><li>Legendary Gambeson Armor</li><li>Dunamis Silkchain</li><li>Channeling Armor</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.7emTSt6nhZuTlvt5",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.8X16lJQ3xltTwynm",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.EsIN5OLKe9ZYFNXZ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.OvzgUTYy2RCN85vV",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.SXWjUR2aUR6bYvdl",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.Tptgl5WOj76TyFn7",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.bcQUh4QG3qFX0Vx6",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.c6tMXz4rPf9ioQrf",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.hAY6UgdGT7dj22Pr",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.vMJxEWz1srfwMsoj",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "KPUXkUvfLo49uEHx",
+  "sort": 150000,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331605727,
+    "modifiedTime": 1773331650083,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!KPUXkUvfLo49uEHx"
+}

@@ -1,0 +1,119 @@
+{
+  "name": "Large Rare Consumable",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Rare (Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Hopehold Flare</li><li>Major Arcane Shard</li><li>Featherbone</li><li>Circle of the Void</li><li>Sun Tree Sap</li><li>Dripfang Poison</li><li>Major Health Potion</li><li>Major Stamina Potion</li><li>Ogre Musk</li><li>Wingsprout</li><li>Jar of Lost Voices</li><li>Dragonbloom Tea</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "0tgV0JgiySM1aczk": {
+        "type": "macro",
+        "_id": "0tgV0JgiySM1aczk",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "cKq0k4RuSpucMWrg",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "x9Dgerm6y36Agd70",
+      "config": {
+        "name": "Large Rare Consumable",
+        "rarity": "rare",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 2,
+        "raffleMaximum": 2,
+        "description": "<p><strong>Rare (Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Hopehold Flare</li><li>Major Arcane Shard</li><li>Featherbone</li><li>Circle of the Void</li><li>Sun Tree Sap</li><li>Dripfang Poison</li><li>Major Health Potion</li><li>Major Stamina Potion</li><li>Ogre Musk</li><li>Wingsprout</li><li>Jar of Lost Voices</li><li>Dragonbloom Tea</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.EhaQCPJ8oiqpRIwB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.AA7bmiwv00lshPrC",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.DpxEMpwfasEBpORU",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.elsyP6VhHw1JjGSl",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.kwexUzdM9wm1Qums",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.eU8VpbWB2NHIL47n",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.cM7pHe8bBAxSZ2xR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.I4cQ03xbxnc81EGa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.qr1bosjFcUfuwq4B",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.n10vozlmosVR6lo4",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.yUol6M5b8jsbk9za",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.wM18PWWW2Ami4fBG",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332845290,
+    "modifiedTime": 1773332847854,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "Kp2hIz1tAgA9sjA4",
+  "sort": 100000,
+  "_key": "!items!Kp2hIz1tAgA9sjA4"
+}

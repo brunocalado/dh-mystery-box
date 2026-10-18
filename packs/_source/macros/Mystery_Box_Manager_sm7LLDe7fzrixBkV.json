@@ -1,0 +1,30 @@
+{
+  "name": "Mystery Box Manager",
+  "type": "script",
+  "scope": "global",
+  "author": "1XySCPpaFX8RnFhs",
+  "img": "icons/containers/chest/chest-reinforced-steel-red.webp",
+  "command": "MysteryBox.Manager();",
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1772921167918,
+    "modifiedTime": 1772921167918,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "folder": null,
+  "ownership": {
+    "default": 3,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "sm7LLDe7fzrixBkV",
+  "sort": 0,
+  "_key": "!macros!sm7LLDe7fzrixBkV"
+}

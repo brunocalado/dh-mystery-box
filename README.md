@@ -145,7 +145,7 @@ MysteryBox.Manager();
 Install it from the Foundry VTT module browser, or use this manifest link:
 
 ```
-https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json
+https://github.com/brunocalado/dh-mystery-box/releases/latest/download/module.json
 ```
 
 It needs Foundry VTT v14 and the Daggerheart system 2.2.6 or later.

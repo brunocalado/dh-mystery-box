@@ -1,0 +1,119 @@
+{
+  "name": "Large Rare Loot",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Rare (Loot)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Paragon’s Chain</li><li>Elusive Amulet</li><li>Hopekeeper Locket</li><li>Infinite Bag</li><li>Stride Relic</li><li>Bolster Relic</li><li>Control Relic</li><li>Attune Relic</li><li>Charm Relic</li><li>Enlighten Relic</li><li>Honing Relic</li><li>Flickerfly Pendant</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "n96HnXXtXvqA9Fbv": {
+        "type": "macro",
+        "_id": "n96HnXXtXvqA9Fbv",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "cKq0k4RuSpucMWrg",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "yKUWwQbJl60CO0M8",
+      "config": {
+        "name": "Large Rare Loot",
+        "rarity": "rare",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 2,
+        "raffleMaximum": 2,
+        "description": "<p><strong>Rare (Loot)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Paragon’s Chain</li><li>Elusive Amulet</li><li>Hopekeeper Locket</li><li>Infinite Bag</li><li>Stride Relic</li><li>Bolster Relic</li><li>Control Relic</li><li>Attune Relic</li><li>Charm Relic</li><li>Enlighten Relic</li><li>Honing Relic</li><li>Flickerfly Pendant</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.F4hoRfvVdZq5bhhI",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.PkmTZXRMZL022O75",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.9DcFR75tsnBYIp6Z",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.Iedjw1LVWEozVh0J",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.FfJISMzYATaPQPLc",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.m3EpxlDgxn2tCDDR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.QPGBDItjrRhXU6iJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.vK6bKyQTT3m8WvMh",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.9P9jqGSlxVCbTdLe",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.vSGx1f9SYUiA29L3",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.SAAnEAeXDnhBbLjB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.9VKYSBQxN9XFWlAm",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332846655,
+    "modifiedTime": 1773332847854,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "lBszu9vYuMM3HiSd",
+  "sort": 300000,
+  "_key": "!items!lBszu9vYuMM3HiSd"
+}

@@ -1,0 +1,111 @@
+{
+  "name": "Legendary Side Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-gold-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Legendary (Side Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Legendary Hand Crossbow</li><li>Legendary Round Shield</li><li>Legendary Grappler</li><li>Legendary Tower Shield</li><li>Legendary Small Dagger</li><li>Braveshield</li><li>Knuckle Claws</li><li>Primer Shard</li><li>Legendary Whip</li><li>Legendary Shortsword</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "UnTCqxsXsnympfbZ": {
+        "type": "macro",
+        "_id": "UnTCqxsXsnympfbZ",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "VNdh3q2uZIrJD6ij",
+      "config": {
+        "name": "Legendary Side Weapon Stash",
+        "rarity": "legendary",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Legendary (Side Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Legendary Hand Crossbow</li><li>Legendary Round Shield</li><li>Legendary Grappler</li><li>Legendary Tower Shield</li><li>Legendary Small Dagger</li><li>Braveshield</li><li>Knuckle Claws</li><li>Primer Shard</li><li>Legendary Whip</li><li>Legendary Shortsword</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.32nYyMaeDWaakSxz",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.A28WL9E2lJ3iLZHW",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.IrtUj0UntBMNn49G",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.MaJIROht7A9LxIZx",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Px3Rh3kIvAqyISxJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.QEvgVoz9xKBSKsGi",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.SFqganS8Du4aEKjQ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.SxcblanBvqaest3A",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Wcdbf6yS3LEt7nsg",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.dEumq3BIZBk5xYTk",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "Xjno2KsHpiq4AteC",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!Xjno2KsHpiq4AteC"
+}

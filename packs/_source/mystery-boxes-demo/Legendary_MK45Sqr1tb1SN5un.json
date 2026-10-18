@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Legendary",
+  "color": null,
+  "sorting": "a",
+  "_id": "MK45Sqr1tb1SN5un",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332636620,
+    "modifiedTime": 1773332797803,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!folders!MK45Sqr1tb1SN5un"
+}

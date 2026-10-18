@@ -1,0 +1,167 @@
+{
+  "name": "Large Common Consumable",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Common (Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Stride Potion</li><li>Bolster Potion</li><li>Control Potion</li><li>Attune Potion</li><li>Charm Potion</li><li>Enlighten Potion</li><li>Minor Health Potion</li><li>Minor Stamina Potion</li><li>Grindletooth Venom</li><li>Varik Leaves</li><li>Vial of Moondrip</li><li>Unstable Arcane Shard</li><li>Potion of Stability</li><li>Improved Grindletooth Venom</li><li>Morphing Clay</li><li>Vial of Darksmoke</li><li>Jumping Root</li><li>Snap Powder</li><li>Health Potion</li><li>Stamina Potion</li><li>Armor Stitcher</li><li>Gill Salve</li><li>Replication Parchment</li><li>Improved Arcane Shard</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "FPtdBFlXCuMyq9kR": {
+        "type": "macro",
+        "_id": "FPtdBFlXCuMyq9kR",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "iu9U2ko0C7A66Gu5",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "b4ZOaEm4dlbmd0Di",
+      "config": {
+        "name": "Large Common Consumable",
+        "rarity": "common",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 2,
+        "raffleMaximum": 2,
+        "description": "<p><strong>Common (Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Stride Potion</li><li>Bolster Potion</li><li>Control Potion</li><li>Attune Potion</li><li>Charm Potion</li><li>Enlighten Potion</li><li>Minor Health Potion</li><li>Minor Stamina Potion</li><li>Grindletooth Venom</li><li>Varik Leaves</li><li>Vial of Moondrip</li><li>Unstable Arcane Shard</li><li>Potion of Stability</li><li>Improved Grindletooth Venom</li><li>Morphing Clay</li><li>Vial of Darksmoke</li><li>Jumping Root</li><li>Snap Powder</li><li>Health Potion</li><li>Stamina Potion</li><li>Armor Stitcher</li><li>Gill Salve</li><li>Replication Parchment</li><li>Improved Arcane Shard</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.lNtcrkgFGOJNaroE",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.FOPQNqXbiVO0ilYL",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.eeBhZSGLjuNZuJuI",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.JGD3M9hBHtVAA8XP",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.CVBbFfOY75YwyQsp",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.aWHSO2AqDufi7nL4",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.tPfKtKRRjv8qdSqy",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.b6vGSPFWOlzZZDLO",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.8WkhvSzeOmLdnoLJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.hvy5BkG3F6iOIXTx",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.VqEX5YwK5oL3r1t6",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.mUepnLbkvFk0ha4Z",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.dvL8oaxpEF6jKvYN",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.BqBWXXe9T07AMV4u",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.f1NHVSIHJJCIOaBl",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.Nwv5ydGf0MWnzq1n",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.c2putn9apuurJhWX",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.cg6VtQ0eVZjDdcK0",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.Aruc2NLutWuVIjP1",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.hf3k1POoVSooJyN2",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.VlbsCjvvLNfTzNXb",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.Nvbb9mze6o5D0AEg",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.yJkwz4AP6yhGo8Vj",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.nQTo6mNoPTEVBtkm",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332815816,
+    "modifiedTime": 1773332815816,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "Cp4zEVROMNhO0YwO",
+  "sort": 0,
+  "_key": "!items!Cp4zEVROMNhO0YwO"
+}

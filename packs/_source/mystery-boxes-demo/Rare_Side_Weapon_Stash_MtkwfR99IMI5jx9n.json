@@ -1,0 +1,111 @@
+{
+  "name": "Rare Side Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Rare (Side Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Advanced Whip</li><li>Advanced Small Dagger</li><li>Advanced Grappler</li><li>Buckler</li><li>Advanced Hand Crossbow</li><li>Advanced Tower Shield</li><li>Hand Sling</li><li>Powered Gauntlet</li><li>Advanced Round Shield</li><li>Advanced Shortsword</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "fe79QKKUkBQTG6BI": {
+        "type": "macro",
+        "_id": "fe79QKKUkBQTG6BI",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "WMnGOvYieI76FLkT",
+      "config": {
+        "name": "Rare Side Weapon Stash",
+        "rarity": "rare",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Rare (Side Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Advanced Whip</li><li>Advanced Small Dagger</li><li>Advanced Grappler</li><li>Buckler</li><li>Advanced Hand Crossbow</li><li>Advanced Tower Shield</li><li>Hand Sling</li><li>Powered Gauntlet</li><li>Advanced Round Shield</li><li>Advanced Shortsword</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.01izMUSJcAUo79IX",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.0thN0BpN05KT8Avx",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.7vvhVl4TDJHtjpFK",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.EmFTp9wzT6MHSaNz",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Lsvocst8aGqkBj7g",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.OfOzQbs4hg6QbfTG",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.RAIaoMi6iO1PKIlK",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.bW3xw5S9DbaLCN3E",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.hiEOGF2reabGLUoi",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.p3nz5CaGUoyuGVg0",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "MtkwfR99IMI5jx9n",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!MtkwfR99IMI5jx9n"
+}

@@ -1,0 +1,167 @@
+{
+  "name": "Common Loot",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Common (Loot)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Premium Bedroll</li><li>Piper Whistle</li><li>Charging Quiver</li><li>Alistair’s Torch</li><li>Speaking Orbs</li><li>Manacles</li><li>Arcane Cloak</li><li>Woven Net</li><li>Fire Jar</li><li>Suspended Rod</li><li>Glamour Stone</li><li>Empty Chest</li><li>Companion Case</li><li>Piercing Arrows</li><li>Valorstone</li><li>Skeleton Key</li><li>Arcane Prism</li><li>Minor Stamina Potion Recipe</li><li>Minor Health Potion Recipe</li><li>Homing Compasses</li><li>Corrector Sprite</li><li>Gecko Gloves</li><li>Lorekeeper</li><li>Vial of Darksmoke Recipe</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "3P92oV79XNeABkzR": {
+        "type": "macro",
+        "_id": "3P92oV79XNeABkzR",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "iu9U2ko0C7A66Gu5",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "mw9CCOZG7O920keK",
+      "config": {
+        "name": "Common Loot",
+        "rarity": "common",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Common (Loot)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Premium Bedroll</li><li>Piper Whistle</li><li>Charging Quiver</li><li>Alistair’s Torch</li><li>Speaking Orbs</li><li>Manacles</li><li>Arcane Cloak</li><li>Woven Net</li><li>Fire Jar</li><li>Suspended Rod</li><li>Glamour Stone</li><li>Empty Chest</li><li>Companion Case</li><li>Piercing Arrows</li><li>Valorstone</li><li>Skeleton Key</li><li>Arcane Prism</li><li>Minor Stamina Potion Recipe</li><li>Minor Health Potion Recipe</li><li>Homing Compasses</li><li>Corrector Sprite</li><li>Gecko Gloves</li><li>Lorekeeper</li><li>Vial of Darksmoke Recipe</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.QGYPNBIufpBguwjC",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.v4PIoCCEjeE3acys",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.gsUDP90d4SRtLEUn",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.MeEg57T6MKpw3sme",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.LZrG6CFiSjpLA2F1",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.GkmATIuemyFtQX1D",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.4STt98biZwjFoKOe",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.ARuv48PWUGJGBC4n",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.X6RMkIt89wf7qX2E",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.nnj12RiFanq7s5zv",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.Pj17cvdJ1XG1jv6I",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.p2yy61uKsyIsl8cU",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.V25uXkAQvK3hUta4",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.I63LTFD6GXHgyGpR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.7yywua9TmQ4WP5WH",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.edkNgwy4xghZreBa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.Mn1eo2Mdtu1kzyxB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.1TLpFsp3PLDsqoTw",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.PQxvxAVBbkt0TleC",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.yrAGYlDyoe4OYl7d",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.G0RktbmtnuAlKCRH",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.CGzjBpHJRG8KSt5Y",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.JsPYzrqpITqGj23I",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.MhCo8i0cRXzdnXbA",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332813359,
+    "modifiedTime": 1773332814811,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "hKVQC7hRqhQJ6aqW",
+  "sort": 300000,
+  "_key": "!items!hKVQC7hRqhQJ6aqW"
+}

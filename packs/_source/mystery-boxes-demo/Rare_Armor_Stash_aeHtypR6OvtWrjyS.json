@@ -1,0 +1,111 @@
+{
+  "name": "Rare Armor Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Rare (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Monett's Cloak</li><li>Advanced Chainmail Armor</li><li>Runes of Fortification</li><li>Spiked Plate Armor</li><li>Bellamoi Fine Armor</li><li>Advanced Full Plate Armor</li><li>Advanced Gambeson Armor</li><li>Advanced Leather Armor</li><li>Bladefare Armor</li><li>Dragonscale Armor</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "frDpZlB4AjfhQx85": {
+        "type": "macro",
+        "_id": "frDpZlB4AjfhQx85",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "woOGbbMiLnucJYr4",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "S8DfMrQu30OmFIWm",
+      "config": {
+        "name": "Rare Armor Stash",
+        "rarity": "rare",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Rare (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Monett's Cloak</li><li>Advanced Chainmail Armor</li><li>Runes of Fortification</li><li>Spiked Plate Armor</li><li>Bellamoi Fine Armor</li><li>Advanced Full Plate Armor</li><li>Advanced Gambeson Armor</li><li>Advanced Leather Armor</li><li>Bladefare Armor</li><li>Dragonscale Armor</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.AQzU2RsqS5V5bd1v",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.LzLOJ9EVaHWAjoq9",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.P4qAEDJUoNLgVRsA",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.QjwsIhXKqnlvRBMv",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.WuoVwZA53XRAIt6d",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.crIbCb9NZ4K0VpoU",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.epkAmlZVk7HOfUUT",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.itSOp2GCyem0f7oM",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.mNN6pvcsS10ChrWF",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.mdQ69eFHyAQUDmE7",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "aeHtypR6OvtWrjyS",
+  "sort": 200000,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331605727,
+    "modifiedTime": 1773331646148,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!aeHtypR6OvtWrjyS"
+}

@@ -1,0 +1,167 @@
+{
+  "name": "Rare Mixed",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Rare (Mixed: Loot and Consumable)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Paragon’s Chain</li><li>Elusive Amulet</li><li>Hopekeeper Locket</li><li>Infinite Bag</li><li>Stride Relic</li><li>Bolster Relic</li><li>Control Relic</li><li>Attune Relic</li><li>Charm Relic</li><li>Enlighten Relic</li><li>Honing Relic</li><li>Flickerfly Pendant</li><li>Hopehold Flare</li><li>Major Arcane Shard</li><li>Featherbone</li><li>Circle of the Void</li><li>Sun Tree Sap</li><li>Dripfang Poison</li><li>Major Health Potion</li><li>Major Stamina Potion</li><li>Ogre Musk</li><li>Wingsprout</li><li>Jar of Lost Voices</li><li>Dragonbloom Tea</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "x8rTHROA6RhkNR4q": {
+        "type": "macro",
+        "_id": "x8rTHROA6RhkNR4q",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "cKq0k4RuSpucMWrg",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "NsabWzoj8GGiD0kT",
+      "config": {
+        "name": "Rare Mixed",
+        "rarity": "rare",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Rare (Mixed: Loot and Consumable)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Paragon’s Chain</li><li>Elusive Amulet</li><li>Hopekeeper Locket</li><li>Infinite Bag</li><li>Stride Relic</li><li>Bolster Relic</li><li>Control Relic</li><li>Attune Relic</li><li>Charm Relic</li><li>Enlighten Relic</li><li>Honing Relic</li><li>Flickerfly Pendant</li><li>Hopehold Flare</li><li>Major Arcane Shard</li><li>Featherbone</li><li>Circle of the Void</li><li>Sun Tree Sap</li><li>Dripfang Poison</li><li>Major Health Potion</li><li>Major Stamina Potion</li><li>Ogre Musk</li><li>Wingsprout</li><li>Jar of Lost Voices</li><li>Dragonbloom Tea</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.F4hoRfvVdZq5bhhI",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.PkmTZXRMZL022O75",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.9DcFR75tsnBYIp6Z",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.Iedjw1LVWEozVh0J",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.FfJISMzYATaPQPLc",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.m3EpxlDgxn2tCDDR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.QPGBDItjrRhXU6iJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.vK6bKyQTT3m8WvMh",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.9P9jqGSlxVCbTdLe",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.vSGx1f9SYUiA29L3",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.SAAnEAeXDnhBbLjB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.9VKYSBQxN9XFWlAm",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.EhaQCPJ8oiqpRIwB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.AA7bmiwv00lshPrC",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.DpxEMpwfasEBpORU",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.elsyP6VhHw1JjGSl",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.kwexUzdM9wm1Qums",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.eU8VpbWB2NHIL47n",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.cM7pHe8bBAxSZ2xR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.I4cQ03xbxnc81EGa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.qr1bosjFcUfuwq4B",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.n10vozlmosVR6lo4",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.yUol6M5b8jsbk9za",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.wM18PWWW2Ami4fBG",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332850789,
+    "modifiedTime": 1773332850789,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "QGEfYXxkaP4NjoHS",
+  "sort": 0,
+  "_key": "!items!QGEfYXxkaP4NjoHS"
+}

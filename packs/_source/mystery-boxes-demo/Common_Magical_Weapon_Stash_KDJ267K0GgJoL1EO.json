@@ -1,0 +1,111 @@
+{
+  "name": "Common Magical Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Common (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Hand Runes</li><li>Returning Blade</li><li>Scepter</li><li>Wand</li><li>Arcane Gauntlets</li><li>Hallowed Axe</li><li>Greatstaff</li><li>Dualstaff</li><li>Shortstaff</li><li>Glowing Rings</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "u1i3fsfuZ6Gnh59o": {
+        "type": "macro",
+        "_id": "u1i3fsfuZ6Gnh59o",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "639DznPIKQwOoL6e",
+      "config": {
+        "name": "Common Magical Weapon Stash",
+        "rarity": "common",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Common (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Hand Runes</li><li>Returning Blade</li><li>Scepter</li><li>Wand</li><li>Arcane Gauntlets</li><li>Hallowed Axe</li><li>Greatstaff</li><li>Dualstaff</li><li>Shortstaff</li><li>Glowing Rings</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.3whiedn0jBMNRdIb",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.4fQpVfQ3NVwTHStA",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.GZh345N8fmuS4Jeh",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.ItWisJFNGMNWeaCV",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.PC5EyEIq7NWBV0n5",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Vayg7CnRTFBrunjM",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Yk8pTEmyLLi4095S",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.j8cdNeIUYxxzFVji",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.vHDHG3STcxTEfYAM",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.wG9f5NpCwSbaLy8t",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "KDJ267K0GgJoL1EO",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!KDJ267K0GgJoL1EO"
+}

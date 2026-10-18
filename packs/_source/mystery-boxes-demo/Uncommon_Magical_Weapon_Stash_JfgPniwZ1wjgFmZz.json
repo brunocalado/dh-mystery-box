@@ -1,0 +1,147 @@
+{
+  "name": "Uncommon Magical Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-reinforced-steel-green.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Uncommon (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Yutari Bloodbow</li><li>Hammer of Exota</li><li>Casting Sword</li><li>Improved Wand</li><li>Devouring Dagger</li><li>Ego Blade</li><li>Elder Bow</li><li>Improved Greatstaff</li><li>Improved Shortstaff</li><li>Improved Glowing Rings</li><li>Improved Returning Blade</li><li>Scepter of Elias</li><li>Improved Dualstaff</li><li>Improved Hand Runes</li><li>Improved Arcane Gauntlets</li><li>Keeper's Staff</li><li>Wand of Enthrallment</li><li>Improved Scepter</li><li>Improved Hallowed Axe</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "oDjKUjFCSe51XAr0": {
+        "type": "macro",
+        "_id": "oDjKUjFCSe51XAr0",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "QC6Y9q7WQ7qFCCfp",
+      "config": {
+        "name": "Uncommon Magical Weapon Stash",
+        "rarity": "uncommon",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Uncommon (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Yutari Bloodbow</li><li>Hammer of Exota</li><li>Casting Sword</li><li>Improved Wand</li><li>Devouring Dagger</li><li>Ego Blade</li><li>Elder Bow</li><li>Improved Greatstaff</li><li>Improved Shortstaff</li><li>Improved Glowing Rings</li><li>Improved Returning Blade</li><li>Scepter of Elias</li><li>Improved Dualstaff</li><li>Improved Hand Runes</li><li>Improved Arcane Gauntlets</li><li>Keeper's Staff</li><li>Wand of Enthrallment</li><li>Improved Scepter</li><li>Improved Hallowed Axe</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.0XpSBYXxtywvBFQi",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.0lAkBEUvbM9Osmqb",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.2Fbf2cxLfbdGkU4I",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.6d9B2b5X2d2U56jt",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.C5wSGglR8e0euQnY",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.G7rH31KQ5eEZXcv0",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.JdWcn9W1edhAEInL",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.LCuTrYXi4lhg6LqW",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Mn8ja5Oi1sXvvPSk",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.N5amhkxR1xn3B7r2",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.SKNwkW23eVQjN4Zy",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.acPGwIaUhx3R0mTq",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.f7hhHlZ5nL3AhYEM",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.jMEukC3VpNDz5AOD",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.kENTDpa1hr5LDhIT",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.q382JqMkqLaaFLIr",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.tP6vmnrmTq2h5sj7",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.tj26lbNkwy8bORF4",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.wFOXMN2uiX4j6Gd9",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "JfgPniwZ1wjgFmZz",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!JfgPniwZ1wjgFmZz"
+}

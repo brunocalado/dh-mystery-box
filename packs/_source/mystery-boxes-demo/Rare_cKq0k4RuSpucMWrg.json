@@ -1,0 +1,23 @@
+{
+  "type": "Item",
+  "folder": null,
+  "name": "Rare",
+  "color": null,
+  "sorting": "a",
+  "_id": "cKq0k4RuSpucMWrg",
+  "description": "",
+  "sort": 0,
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332626857,
+    "modifiedTime": 1773332793357,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!folders!cKq0k4RuSpucMWrg"
+}

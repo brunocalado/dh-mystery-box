@@ -1,0 +1,179 @@
+{
+  "name": "Legendary Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-gold-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Legendary (Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Legendary Longsword</li><li>Legendary Halberd</li><li>Legendary Crossbow</li><li>Legendary Quarterstaff</li><li>Swinging Ropeblade</li><li>Legendary Battleaxe</li><li>Legendary Spear</li><li>Legendary Rapier</li><li>Ricochet Axes</li><li>Curved Dagger</li><li>Legendary Dagger</li><li>Hand Cannon</li><li>Sledge Axe</li><li>Legendary Cutlass</li><li>Legendary Mace</li><li>Legendary Heavy-Frame Wheelchair</li><li>Legendary Longbow</li><li>Legendary Warhammer</li><li>Legendary Light-Frame Wheelchair</li><li>Impact Gauntlet</li><li>Extended Polearm</li><li>Legendary Arcane-Frame Wheelchair</li><li>Aantari Bow</li><li>Legendary Shortbow</li><li>Dual-Ended Sword</li><li>Legendary Broadsword</li><li>Legendary Greatsword</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "2yc6bDQke1s9jTrg": {
+        "type": "macro",
+        "_id": "2yc6bDQke1s9jTrg",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "xynYfQahE4V5HQYZ",
+      "config": {
+        "name": "Legendary Weapon Stash",
+        "rarity": "legendary",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Legendary (Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Legendary Longsword</li><li>Legendary Halberd</li><li>Legendary Crossbow</li><li>Legendary Quarterstaff</li><li>Swinging Ropeblade</li><li>Legendary Battleaxe</li><li>Legendary Spear</li><li>Legendary Rapier</li><li>Ricochet Axes</li><li>Curved Dagger</li><li>Legendary Dagger</li><li>Hand Cannon</li><li>Sledge Axe</li><li>Legendary Cutlass</li><li>Legendary Mace</li><li>Legendary Heavy-Frame Wheelchair</li><li>Legendary Longbow</li><li>Legendary Warhammer</li><li>Legendary Light-Frame Wheelchair</li><li>Impact Gauntlet</li><li>Extended Polearm</li><li>Legendary Arcane-Frame Wheelchair</li><li>Aantari Bow</li><li>Legendary Shortbow</li><li>Dual-Ended Sword</li><li>Legendary Broadsword</li><li>Legendary Greatsword</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.14abPqQcROJfDChR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1AuMNiJz96Ez9fur",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1G6xX2QL9O0Rsgz7",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1ZciqG7vIKLYpKsP",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1jOJHHKdtk3s2jaY",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1nztpLzoHGfbKf5x",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.4e5pWxi2qohuGsWh",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.BakN97v4jTePcXiZ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.E9QDh5o9eQ1Qx0kH",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Fk69R40svV0kanZD",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.GmTg3Fdne1UPNs8t",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.MyGz8nd5sieRQ7zl",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.OxsEmffWriiQmqJK",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Rpyz0jbFJ1SwqfyD",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.RsDsy7tIhrhaAQQc",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.S6nB0CNlzdU05o5U",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Utt1GpoH1fhaTOtN",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.W9ymfEDck2icfvla",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Xt8tVSn5Fu6ly6LF",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Zg6IutksQVOqAg8K",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.fJHKMxZokVP34MCi",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.gA2tiET9VHGhwMoO",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.ijodu5yNBoMxpkHV",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.j7kp36jaetfn5jb3",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.nXjuBa215H1sTUK3",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.y3hfTPfZhMognyaJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.zMZ46F9VR7zdTxb9",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "EOUuzQ7zq7Sl3nSV",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!EOUuzQ7zq7Sl3nSV"
+}

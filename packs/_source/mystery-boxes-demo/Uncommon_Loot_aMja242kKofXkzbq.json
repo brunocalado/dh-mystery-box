@@ -1,0 +1,119 @@
+{
+  "name": "Uncommon Loot",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-reinforced-steel-green.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Uncommon (Loot)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Bloodstone</li><li>Greatstone</li><li>Glider</li><li>Ring of Silence</li><li>Calming Pendant</li><li>Dual Flask</li><li>Bag of Ficklesand</li><li>Ring of Resistance</li><li>Phoenix Feather</li><li>Box of Many Goods</li><li>Airblade Charm</li><li>Portal Seed</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "Y1hVuyo8qGHGZQhi": {
+        "type": "macro",
+        "_id": "Y1hVuyo8qGHGZQhi",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "Nonuv76hIBs3WpQY",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "GNFoj3qK4F9N3DAr",
+      "config": {
+        "name": "Uncommon Loot",
+        "rarity": "uncommon",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Uncommon (Loot)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Bloodstone</li><li>Greatstone</li><li>Glider</li><li>Ring of Silence</li><li>Calming Pendant</li><li>Dual Flask</li><li>Bag of Ficklesand</li><li>Ring of Resistance</li><li>Phoenix Feather</li><li>Box of Many Goods</li><li>Airblade Charm</li><li>Portal Seed</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.oMd78vhL2x2NO8Mg",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.y7zABzR0Q2fRskTw",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.CiXwelozmBDcPY48",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.K1ysGnTpNyxPu5Au",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.tgFFMxpuRSiRrrEB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.HCvcAu3sdHCspGMP",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.v758j4FwNVAurhYK",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.aUqRifqR5JXXa1dN",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.QNtzJSVENww63THa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.bZyT7Qw7iafswlTY",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.cTYvyaSKBxosM9Y9",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.loot.Item.eRd5Gk7J7hPCqp11",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332835841,
+    "modifiedTime": 1773332835841,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "aMja242kKofXkzbq",
+  "sort": 0,
+  "_key": "!items!aMja242kKofXkzbq"
+}

@@ -1,0 +1,143 @@
+{
+  "name": "Common Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Common (Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Broadsword</li><li>Greatsword</li><li>Cutlass</li><li>Longsword</li><li>Spear</li><li>Arcane-Frame Wheelchair</li><li>Heavy-Frame Wheelchair</li><li>Longbow</li><li>Warhammer</li><li>Mace</li><li>Crossbow</li><li>Battleaxe</li><li>Dagger</li><li>Light-Frame Wheelchair</li><li>Quarterstaff</li><li>Shortbow</li><li>Halberd</li><li>Rapier</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "JeVE1Mz61a9Oejq7": {
+        "type": "macro",
+        "_id": "JeVE1Mz61a9Oejq7",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "OgX3yE9k8uGjMvLN",
+      "config": {
+        "name": "Common Weapon Stash",
+        "rarity": "common",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Common (Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Broadsword</li><li>Greatsword</li><li>Cutlass</li><li>Longsword</li><li>Spear</li><li>Arcane-Frame Wheelchair</li><li>Heavy-Frame Wheelchair</li><li>Longbow</li><li>Warhammer</li><li>Mace</li><li>Crossbow</li><li>Battleaxe</li><li>Dagger</li><li>Light-Frame Wheelchair</li><li>Quarterstaff</li><li>Shortbow</li><li>Halberd</li><li>Rapier</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1cwWNt4sqlgA8gCT",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.70ysaFJDREwTgvZa",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.CWrbnethuILXrEpA",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.Iv8BZM1R24QMT72M",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.TF85tKJetUjLwh54",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.XRChepscgr75Uug7",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.XjPQjhRCH08VUIbr",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.YfVs6Se903az4Yet",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.ZXh1GQahBiODfSTC",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.cKQCDyM2UopDL9zF",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.cw7HG1Z7hp7OOLD0",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.fbDYUja3ll9vCtrB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.iStO0BbeMTTR0rQi",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.iaGnlUkShBgdeMo0",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.mlIj88p1wcQNjEDG",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.p9tdjQr2AZP19RYm",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.qT7FfmauAumOjJoq",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.zkAgEW6zMkRZalEm",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "ThRHEegv4LxafCb8",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!ThRHEegv4LxafCb8"
+}

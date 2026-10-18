@@ -1,0 +1,147 @@
+{
+  "name": "Legendary Magical Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-gold-brown.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Legendary (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Legendary Hallowed Axe</li><li>Siphoning Gauntlets</li><li>Floating Bladeshards</li><li>Midas Scythe</li><li>Legendary Shortstaff</li><li>Legendary Hand Runes</li><li>Thistlebow</li><li>Legendary Scepter</li><li>Bloodstaff</li><li>Legendary Glowing Rings</li><li>Sword of Light &amp; Flame</li><li>Wand of Essek</li><li>Legendary Greatstaff</li><li>Magus Revolver</li><li>Legendary Returning Blade</li><li>Legendary Dualstaff</li><li>Fusion Gloves</li><li>Legendary Arcane Gauntlets</li><li>Legendary Wand</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "FayzqL843bSORqRJ": {
+        "type": "macro",
+        "_id": "FayzqL843bSORqRJ",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "i8ipDFV7p8Gy7vR0",
+      "config": {
+        "name": "Legendary Magical Weapon Stash",
+        "rarity": "legendary",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Legendary (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Legendary Hallowed Axe</li><li>Siphoning Gauntlets</li><li>Floating Bladeshards</li><li>Midas Scythe</li><li>Legendary Shortstaff</li><li>Legendary Hand Runes</li><li>Thistlebow</li><li>Legendary Scepter</li><li>Bloodstaff</li><li>Legendary Glowing Rings</li><li>Sword of Light & Flame</li><li>Wand of Essek</li><li>Legendary Greatstaff</li><li>Magus Revolver</li><li>Legendary Returning Blade</li><li>Legendary Dualstaff</li><li>Fusion Gloves</li><li>Legendary Arcane Gauntlets</li><li>Legendary Wand</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.0HmhnZnv1I6uX69c",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.1N1jggda5DfdzdMj",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.3vti3xfo0wJND7ew",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.BdLfy5i488VZgkjP",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.D3SbNvNJZAFuzfhg",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.DWLkswhluXuMy3bB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.I1nDGpulg29GpWOW",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.IZ4CWNxfuM46JeCN",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.IoMVDz92WVvfGGdc",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.PReWrfuPjoNQuieo",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.TVPCWnSELOVBv6G1",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.ZrRGNjGCgZTTfgDG",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.jDtvEabkHY1GFgfc",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.jGykNGQiKm63tCiE",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.mcj3CPkcSSDdAcBB",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.o3rsLvImcLAx5TvD",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.uK1RhtYAsDeoPNGx",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.umADDPYCaykXDc1v",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.wPjg0LufJH9vUfVM",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "sRyGjVHokMv6puE7",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!sRyGjVHokMv6puE7"
+}

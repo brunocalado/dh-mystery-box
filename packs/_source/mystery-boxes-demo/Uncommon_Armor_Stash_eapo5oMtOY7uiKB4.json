@@ -1,0 +1,111 @@
+{
+  "name": "Uncommon Armor Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-reinforced-steel-green.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Uncommon (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Improved Full Plate Armor</li><li>Improved Chainmail Armor</li><li>Tyris Soft Armor</li><li>Elundrian Chain Armor</li><li>Harrowbone Armor</li><li>Improved Gambeson Armor</li><li>Improved Leather Armor</li><li>Runetan Floating Armor</li><li>Rosewild Armor</li><li>Irontree Breastplate Armor</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "PCVVsZFoXFlqnseK": {
+        "type": "macro",
+        "_id": "PCVVsZFoXFlqnseK",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "woOGbbMiLnucJYr4",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "LRIoDAIIaEtPF9jU",
+      "config": {
+        "name": "Uncommon Armor Stash",
+        "rarity": "uncommon",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Uncommon (Armor)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Improved Full Plate Armor</li><li>Improved Chainmail Armor</li><li>Tyris Soft Armor</li><li>Elundrian Chain Armor</li><li>Harrowbone Armor</li><li>Improved Gambeson Armor</li><li>Improved Leather Armor</li><li>Runetan Floating Armor</li><li>Rosewild Armor</li><li>Irontree Breastplate Armor</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.9f7RozpPTqrzJS1m",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.K5WkjS0NGqHYmhU3",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.PSW3BxCGmtLeWOxM",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.Q6LxmtFetDDkoZVZ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.dvyQeUVRLc9y6rnt",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.jphnMZjnS2FkOH3s",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.t91M61pSCMKStTNt",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.tHlBUDQC24YMZqd6",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.tN8kAeBvNKM3EBFo",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.armors.Item.tzZntboNtHL5C6VM",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "eapo5oMtOY7uiKB4",
+  "sort": 125000,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331605727,
+    "modifiedTime": 1773331657992,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!eapo5oMtOY7uiKB4"
+}

@@ -1,0 +1,119 @@
+{
+  "name": "Large Uncommon Consumable",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-reinforced-steel-green.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Uncommon (Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Major Stride Potion</li><li>Major Bolster Potion</li><li>Major Control Potion</li><li>Major Attune Potion</li><li>Major Charm Potion</li><li>Major Enlighten Potion</li><li>Blood of the Yorgi</li><li>Homet’s Secret Potion</li><li>Redthorn Saliva</li><li>Channelstone</li><li>Mythic Dust</li><li>Acidpaste</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "kR2xti4U4tMc0j9E": {
+        "type": "macro",
+        "_id": "kR2xti4U4tMc0j9E",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "Nonuv76hIBs3WpQY",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "eQT6MOCMgBubd6OO",
+      "config": {
+        "name": "Large Uncommon Consumable",
+        "rarity": "uncommon",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 2,
+        "raffleMaximum": 2,
+        "description": "<p><strong>Uncommon (Consumable)</strong></p><p><strong>2 of the items below are drawn:</strong></p><ul><li>Major Stride Potion</li><li>Major Bolster Potion</li><li>Major Control Potion</li><li>Major Attune Potion</li><li>Major Charm Potion</li><li>Major Enlighten Potion</li><li>Blood of the Yorgi</li><li>Homet’s Secret Potion</li><li>Redthorn Saliva</li><li>Channelstone</li><li>Mythic Dust</li><li>Acidpaste</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.yK6eEDUrsPbZA8G0",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.mnyQDRtngWWQeRXF",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.80s1FLmTLtohZ5GH",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.CCPFm5iXXwvyYYwR",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.IJLAUlQymbSjzsri",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.SDdv1G2veMLKrxcJ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.pDGzmczoTlKGmKgd",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.VSwa1LpQ9PjZKsWF",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.s2Exl2XFuoOhtIov",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.IKMVQ6VwtapwoUim",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.Zsh2AvZr8EkGtLyw",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.consumables.Item.cfVFmS8vT9dbq9s1",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773332830553,
+    "modifiedTime": 1773332832655,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_id": "oellw93UTNtIBkh7",
+  "sort": 100000,
+  "_key": "!items!oellw93UTNtIBkh7"
+}

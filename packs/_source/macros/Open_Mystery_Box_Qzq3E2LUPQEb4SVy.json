@@ -1,0 +1,30 @@
+{
+  "name": "Open Mystery Box",
+  "type": "script",
+  "scope": "global",
+  "author": "1XySCPpaFX8RnFhs",
+  "img": "icons/containers/chest/chest-simple-walnut.webp",
+  "command": "// WARNING: This can only work if the user has a Linked Actor and the GM created a Mystery Box\nMysteryBox.Open();",
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1772921026957,
+    "modifiedTime": 1772921130767,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "folder": null,
+  "ownership": {
+    "default": 3,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "Qzq3E2LUPQEb4SVy",
+  "sort": 0,
+  "_key": "!macros!Qzq3E2LUPQEb4SVy"
+}

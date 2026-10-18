@@ -1,0 +1,111 @@
+{
+  "name": "Uncommon Side Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-reinforced-steel-green.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Uncommon (Side Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Improved Grappler</li><li>Improved Round Shield</li><li>Returning Axe</li><li>Improved Hand Crossbow</li><li>Improved Tower Shield</li><li>Improved Whip</li><li>Improved Small Dagger</li><li>Improved Shortsword</li><li>Parrying Dagger</li><li>Spiked Shield</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "qF2aa4cPxd6Eg9kd": {
+        "type": "macro",
+        "_id": "qF2aa4cPxd6Eg9kd",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "IsHUsrAYBYFeNGXK",
+      "config": {
+        "name": "Uncommon Side Weapon Stash",
+        "rarity": "uncommon",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Uncommon (Side Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Improved Grappler</li><li>Improved Round Shield</li><li>Returning Axe</li><li>Improved Hand Crossbow</li><li>Improved Tower Shield</li><li>Improved Whip</li><li>Improved Small Dagger</li><li>Improved Shortsword</li><li>Parrying Dagger</li><li>Spiked Shield</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.3T3o9zfe61t22L1H",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.DlinEBGZfIlvreO3",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.FtsQGwOg3r8uUCST",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.XEDRkuw3BhMoVBn9",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.bxt3NsbMqTSdI5ab",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.ftTp8VlsBQ1r4LFD",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.nMuF8ZDZ2aXZVTg6",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.rSyBNRwemBVuTo3H",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.taAZDkDCpeNgxhnn",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.vzyzFwLUniWZV1rt",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "coKqFYtPfXbk1MBj",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!coKqFYtPfXbk1MBj"
+}

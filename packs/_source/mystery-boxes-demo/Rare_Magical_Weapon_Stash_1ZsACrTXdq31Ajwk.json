@@ -1,0 +1,143 @@
+{
+  "name": "Rare Magical Weapon Stash",
+  "type": "loot",
+  "img": "icons/containers/chest/chest-simple-box-blue.webp",
+  "system": {
+    "attribution": {},
+    "description": "<p><strong>Rare (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Advanced Scepter</li><li>Advanced Greatstaff</li><li>Widogast Pendant</li><li>Advanced Hallowed Axe</li><li>Firestaff</li><li>Runes of Ruination</li><li>Advanced Glowing Rings</li><li>Advanced Hand Runes</li><li>Advanced Shortstaff</li><li>Ilmari's Rifle</li><li>Advanced Dualstaff</li><li>Mage Orb</li><li>Axe of Fortunis</li><li>Gilded Bow</li><li>Advanced Arcane Gauntlets</li><li>Advanced Wand</li><li>Blessed Anlace</li><li>Advanced Returning Blade</li></ul>",
+    "quantity": 1,
+    "actions": {
+      "wRZmf4UztDqPJrjL": {
+        "type": "macro",
+        "_id": "wRZmf4UztDqPJrjL",
+        "systemPath": "actions",
+        "baseAction": false,
+        "description": "",
+        "chatDisplay": true,
+        "originItem": {
+          "type": "itemCollection"
+        },
+        "actionType": "action",
+        "triggers": [],
+        "cost": [],
+        "uses": {
+          "value": null,
+          "max": "",
+          "recovery": null,
+          "consumeOnSuccess": false
+        },
+        "macro": "Compendium.dh-mystery-box.macros.Macro.Qzq3E2LUPQEb4SVy",
+        "name": "Open",
+        "range": ""
+      }
+    }
+  },
+  "effects": [],
+  "folder": "e2kVMJip1j7yPsfJ",
+  "flags": {
+    "dh-mystery-box": {
+      "boxId": "MhcxpFABii1PYOLg",
+      "config": {
+        "name": "Rare Magical Weapon Stash",
+        "rarity": "rare",
+        "openingStyle": "confetti",
+        "mode": "raffle",
+        "raffleCount": 1,
+        "raffleMaximum": 1,
+        "description": "<p><strong>Rare (Magical Weapon)</strong></p><p><strong>1 of the items below can be drawn:</strong></p><ul><li>Advanced Scepter</li><li>Advanced Greatstaff</li><li>Widogast Pendant</li><li>Advanced Hallowed Axe</li><li>Firestaff</li><li>Runes of Ruination</li><li>Advanced Glowing Rings</li><li>Advanced Hand Runes</li><li>Advanced Shortstaff</li><li>Ilmari's Rifle</li><li>Advanced Dualstaff</li><li>Mage Orb</li><li>Axe of Fortunis</li><li>Gilded Bow</li><li>Advanced Arcane Gauntlets</li><li>Advanced Wand</li><li>Blessed Anlace</li><li>Advanced Returning Blade</li></ul>",
+        "items": [
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.2Khzuj768yoWN9QK",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.4UzxqfkwF8gDSdu7",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.8Z5QrThfwkYPXNco",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.BiyXKX2Mo1TQbKgk",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.BtCm2RhWEfs00g38",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.EG6mZhr3ib56r974",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.InQoh8mZPnwarQkX",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.PQACczSghZIVTdgZ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.T5exRCqOXhrjSYnI",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.TMrUzVC3KvcHmdt8",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.X5x3sC7v2f3L9sjL",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.XKBmBUEoGLdLcuqQ",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.YcS1rHgfnSlla8Xf",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.ctTgFfMbM3YtmsYU",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.hXR56fTKwZ6s1obs",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.jU9jWIardjtdAQcs",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.n1oPTk5czTIGTkVj",
+            "chance": 100
+          },
+          {
+            "uuid": "Compendium.daggerheart.weapons.Item.sIGXA4KMeYBUjcEO",
+            "chance": 100
+          }
+        ]
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "1XySCPpaFX8RnFhs": 3
+  },
+  "_id": "1ZsACrTXdq31Ajwk",
+  "sort": 0,
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "daggerheart",
+    "systemVersion": "1.8.0",
+    "createdTime": 1773331531632,
+    "modifiedTime": 1773331531632,
+    "lastModifiedBy": "1XySCPpaFX8RnFhs"
+  },
+  "_key": "!items!1ZsACrTXdq31Ajwk"
+}
