@@ -1,3 +1,14 @@
+# 0.2.3
+
+[Added]
+- Compatibility with **Nice Sheets**. On a character using that sheet, Mystery Box rows get a ring and glow in the box's rarity color, a slower tinted shimmer, a breathing glow on legendary boxes, and a rarity tag after the name in the Inventory tab. When the opening player's character uses Nice Sheets, the Open Mystery Box and "You received" windows switch to the sheet's gold-on-dark style, with rarity-colored cards. Detection follows the character's current sheet, so there is nothing to configure.
+
+[Fixed]
+- The box shimmer on the character sheet was drawn on the item portrait's `::after`, which sheets that decorate that pseudo-element overwrote: on Nice Sheets the shimmer never showed and only one of the two hover dice appeared. The shimmer now has its own element, and the shake moves only the item art, so a sheet's hover zoom still applies.
+
+[Changed]
+- README rewritten. It now documents party loot and the settings, and says that the Video opening style plays only the videos the GM sets in **Configure Default Assets**.
+
 # 0.2.2
 
 [Removed]

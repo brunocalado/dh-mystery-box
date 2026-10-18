@@ -2,26 +2,123 @@
 
 ## for Daggerheart
 
-**Turn loot into an event!**
+Mystery Box lets the GM hand out loot as a box instead of a list. The player clicks the box on their character sheet and opens it, the module rolls for what is inside, a confetti burst, sound or video plays, and the items they won go straight into their inventory.
 
-Add a thrill of surprise to your Daggerheart sessions. The **Mystery Box** module lets GMs create item boxes — treasure chests, magical caches, lucky bags — that players open to reveal random rewards. Items land directly in the character's inventory, no manual work needed.
+The GM decides what each box holds, the chance of each item, and whether the box can come out empty or always gives a set number of items.
+
+<p align="center">
+  <img width="900" src="docs/player-view.webp" alt="A player opening a Mystery Box: the reveal plays and the window lists the items won">
+</p>
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-Donate-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/mestredigital) [![More Modules](https://img.shields.io/badge/Foundry%20VTT-More%20Modules-red?style=for-the-badge&logo=gamepad)](https://mestredigital.online/pages/projetos-en)
 
-## ✨ Why use it?
+Players like the wait before the result, and the GM no longer has to move items into each sheet by hand. Boxes can be exported and shared between worlds.
 
-* **Suspense & Fun:** Players love the anticipation of rolling for loot.
-* **Two reward modes:** Use **Percentage** for variable loot drops (players might get one item, several, or none) or **Raffle** for guaranteed rewards (always N items, weighted by rarity).
-* **Four reveal styles:** Pick Confetti, Video, Sound Only, or Silent — match the drama to the moment.
-* **Fully Customizable:** Set what's in the box, the odds, and the rarity. Export and share boxes across worlds.
+## How to use it
 
-## ⚙️ How it works
+1. Open the Mystery Box Manager with **Manage Mystery Boxes** in the Daggerheart Menu, or with the `MysteryBox.Manager()` macro. Create a box and give it a name, a rarity, an opening style and a mode.
+2. Drag items into the box. In **Percentage** mode you set each item's own drop chance. In **Raffle** mode you set a weight for each item and how many items the player receives.
+3. Drag the box onto a player's character sheet, or take one from the premade compendium.
+4. The player clicks the box on their sheet and then **Open**. The reveal plays, the items go into their inventory, and a message is posted in the chat.
 
-1. 📦 **Create a Box:** Open the Mystery Box Manager and define a new box — name, rarity, reveal style, and mode.
-2. ✨ **Fill it up:** Drag and drop items. In **Percentage Mode**, set each item's individual drop chance. In **Raffle Mode**, set weights and how many items the player is guaranteed to receive.
-3. 🎁 **Give it to a Player:** Drag the box to a player's character sheet — or pull one from the premade compendium.
-4. 🎉 **Open & Enjoy:** The player clicks to open, the reveal plays, and the loot drops automatically.
+The Manager is the GM's control panel. There you create boxes, name them, set their rarity, choose the opening style (Confetti, Video, Sound Only or None) and the mode (Percentage or Raffle). Once configured, the box is ready to be filled with items.
 
+<p align="center">
+  <img width="700" src="docs/manager.webp" alt="The Mystery Box Manager listing boxes grouped by rarity">
+</p>
+
+## Box modes
+
+When you create a box, you choose how it decides what the player receives.
+
+### Percentage mode
+
+Each item in the box has its own chance of being given to the player.
+
+When the player opens the box, the module rolls 1d100 for each item separately:
+- If the roll is equal to or lower than the item's chance, the player receives that item.
+- If not, that item is skipped.
+
+So the player can receive several items at once, just one, or nothing, depending on the rolls.
+
+> For example, a box contains three items:
+> - Rare Sword, 10% chance
+> - Healing Potion, 80% chance
+> - Magic Scroll, 50% chance
+>
+> Each one is rolled on its own. The player could walk away with all three, only the Potion, or nothing at all.
+
+Items set to 100% are always given, with no roll.
+
+### Raffle mode
+
+The box draws a fixed number of items from the pool, like a raffle. The player always receives exactly that number of items, or a number within the range the GM set.
+
+Instead of each item rolling against its own chance, all items compete in one weighted draw:
+- Items with higher weights are more likely to be picked.
+- Items with lower weights are rarer picks.
+- The same item cannot be drawn twice in one opening.
+
+A visible 1d100 is rolled first, and its result seeds the random number generator. Then the weighted draw happens.
+
+> For example, a box has 5 items, each with a different weight, and is set to draw 2 items. The player always gets exactly 2, but which 2 depends on the weights and the draw.
+
+Use this mode when you want a fixed number of rewards but still want chance to decide which ones.
+
+In Raffle mode the box lists each item with its weight instead of a percentage, and the GM sets how many items each opening gives.
+
+<p align="center">
+  <img width="800" src="docs/raffle-mode.webp" alt="A box in Raffle mode, with a weight next to each item and the number of items to draw">
+</p>
+
+### Quick comparison
+
+| | Percentage | Raffle |
+|---|---|---|
+| Items received | 0 to all | Fixed count (N) |
+| Each item rolled? | Yes, independently | No, all compete together |
+| Can get nothing? | Yes | No (unless pool is empty) |
+| Best for | Loot drops with variable results | Prize boxes with guaranteed rewards |
+
+## Opening styles
+
+Each box has an opening style, which decides how the reveal looks to the player.
+
+### Confetti
+A burst of confetti fills the screen while the rarity sound plays.
+
+### Video
+Plays the video you chose for the box's rarity in **Default Assets**, then shows the items. The module does not include any videos. If no video is set for that rarity, nothing plays, not even the sound.
+
+### Sound Only
+Plays the rarity sound with no animation, so the reveal does not interrupt play.
+
+### None
+No animation and no sound. The items are shown right away.
+
+> Video suits a big reward, Confetti an everyday box, Sound Only a moment where you want the sound without anything on screen, and None a fast reveal.
+
+## Party loot
+
+Under **Game Settings**, **Party Actor** lets you pick a shared actor for the group. Once it is set, the Open window shows a **Send loot to party** switch. With it on, the items go to the party actor instead of the player's character, the chat message is public, and the opening effect plays for every player.
+
+All players must be **Owner** of that actor, or they cannot add items to it.
+
+## Settings
+
+- **Chat Message Visibility** decides who sees the message when a box is opened: everyone, or only the GM as a whisper (the default).
+- **Default Assets** has four tabs: the icon for each rarity, the opening video for each rarity, the sound for each rarity plus the sound for an empty box, and the opening style and mode that new boxes start with.
+- **Debug Logs** prints each roll to the console: the item, its chance and the result.
+
+## Premade boxes, export and import
+
+The module comes with a compendium of ready-to-use Mystery Boxes in several rarities and themes. You can drag one straight onto a character sheet, or use it as a starting point for your own boxes.
+
+<p align="center">
+  <img width="900" src="docs/premade.webp" alt="The Mystery Boxes Demo compendium with premade boxes of different rarities">
+</p>
+
+You can also share the boxes you create with other worlds. When you import a Mystery Box item into a world, the module sets up the box's settings for you.
 
 ## Macros
 
@@ -36,114 +133,22 @@ MysteryBox.Manager();
 ### Developers
 [API](https://github.com/brunocalado/dh-mystery-box/wiki/API)
 
-## 🎲 Box Modes
+## Compatibility
 
-When creating a Mystery Box, you choose how it decides what the player receives. There are two modes:
+- System: Daggerheart.
+- Dice So Nice! (optional): shows 3D dice for the box's opening rolls.
+- Unidentified (optional): items that Unidentified has masked keep their masked name and icon when they come out of a Mystery Box, in the reveal window and in the chat message. The player only sees the real item after identifying it through Unidentified. GMs always see the real item, as everywhere else in Unidentified.
+- Nice Sheets (optional): on a character using that sheet, each box gets a ring and a tag in its rarity color, and the Open and reveal windows switch to the sheet's gold-on-dark style.
 
-### 🎯 Percentage Mode
+## Installation
 
-Each item in the box has its **own independent chance** of being given to the player.
-
-When the player opens the box, the module rolls a 1–100 dice **for each item separately**:
-- If the roll is equal to or lower than the item's chance, the player **receives** that item.
-- If not, that item is **skipped**.
-
-This means the player can receive **multiple items at once**, **just one**, or even **nothing** — depending on how lucky the rolls are.
-
-> **Example:** A box contains three items:
-> - 🗡️ Rare Sword → 10% chance
-> - 🧪 Healing Potion → 80% chance
-> - 📜 Magic Scroll → 50% chance
->
-> Each one is rolled independently. The player could walk away with all three, only the Potion, or nothing at all.
-
-**Items set to 100% are always given** — no dice roll needed.
-
-### 🎟️ Raffle Mode
-
-The box draws a **fixed number of items** from the pool — like a raffle ticket. The player is **guaranteed to receive exactly N items** (or whatever range the GM configured).
-
-Instead of each item fighting its own odds, all items compete against each other in a weighted draw:
-- Items with **higher weights** are more likely to be picked.
-- Items with **lower weights** are rarer picks.
-- The same item **cannot be drawn twice** in a single opening.
-
-A visible 1d100 dice is rolled first (its result seeds the random number generator), then the weighted draw happens behind the scenes.
-
-> **Example:** A box has 5 items, all with different weights, and is set to draw **2 items**. The player will always get exactly 2, but which 2 depends on the weighted randomness.
-
-**Use this mode when you want to guarantee a fixed number of rewards** but still want randomness in *which* rewards are given.
-
-### 📊 Quick Comparison
-
-| | Percentage | Raffle |
-|---|---|---|
-| Items received | 0 to all | Fixed count (N) |
-| Each item rolled? | Yes, independently | No — all compete together |
-| Can get nothing? | Yes | No (unless pool is empty) |
-| Best for | Loot drops with variable results | Prize boxes with guaranteed rewards |
-
-## 🎬 Opening Styles
-
-When creating a Mystery Box, you can choose how the reveal is presented to the player.
-
-### 🎉 Confetti
-A burst of colorful confetti fills the screen. Lightweight and festive — works for any occasion.
-
-### 🎥 Video
-Plays a short animated video tied to the box's rarity before revealing the contents. The higher the rarity, the more dramatic the intro.
-
-### 🔊 Sound Only
-Plays the rarity sound effect without any visual animation. Good for a subtle reveal that doesn't interrupt the flow of play.
-
-### 🚫 None
-No animation or sound. The contents are revealed immediately and silently.
-
-> **Tip:** Use **Video** for dramatic high-rarity rewards, **Confetti** for a fun everyday feel, **Sound Only** when you want atmosphere without distraction, and **None** for a fast no-frills experience.
-
-## 🧩 Compatibility
-
-* **System:** Daggerheart.
-* **Dice So Nice!** *(optional)* — 3D dice are shown for the box's opening rolls when installed.
-* **Unidentified** *(optional)* — items that Unidentified has mystified stay masked (alias name/icon) when drawn from a Mystery Box, in both the reveal popup and the opening chat message. The true item is only revealed once the player identifies it through Unidentified's own flow; GMs always see the real identity, same as elsewhere in Unidentified.
-
-## Export and Import Boxes 
-
-You can share your created Mystery Boxes with other worlds. When you import a Mystery Box item into a world, the module automatically configures the necessary settings for you. You can also drag items directly from a compendium onto a player's character sheet.
-
-## 🖼️ Images
-
-The **Mystery Box Manager** is the GM's control panel. Here you create new boxes, name them, set their rarity, choose the opening style (Confetti, Video, Sound, or None), and select the box mode (Percentage or Raffle). Once configured, the box is ready to be filled with items.
-
-<p align="center">
-  <img width="700" src="docs/manager.webp">
-</p>
-
-In **Raffle Mode**, items are listed with their relative **weights** instead of individual percentages. Items with higher weights are more likely to be drawn. The GM defines how many items the player is guaranteed to receive per opening — useful for prize boxes and structured rewards.
-
-<p align="center">
-  <img width="800" src="docs/raffle-mode.webp">
-</p>
-
-The **Player View** shows what happens when a character opens a Mystery Box. The reveal animation plays (confetti burst or rarity video), followed by the list of items won. All rewards are automatically transferred to the character's inventory — no manual work required.
-
-<p align="center">
-  <img width="900" src="docs/player-view.webp">
-</p>
-
-The module ships with a collection of **ready-to-use Mystery Boxes**. These premade boxes cover a range of rarities and themes, so you can drop them straight into your session without any setup. They can also be used as templates for your own custom boxes.
-
-<p align="center">
-  <img width="900" src="docs/premade.webp">
-</p>
-
-## 📥 Installation
-
-Install via the Foundry VTT Module browser or use this manifest link:
+Install it from the Foundry VTT module browser, or use this manifest link:
 
 ```
 https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json
 ```
+
+It needs Foundry VTT v14 and the Daggerheart system 2.2.6 or later.
 
 ## ⚖️ Credits & License
 
@@ -171,9 +176,10 @@ https://raw.githubusercontent.com/brunocalado/dh-mystery-box/main/module.json
 | 😱 [**Fear Tracker**](https://github.com/brunocalado/daggerheart-fear-tracker) | Adds an animated slider bar with configurable fear tokens to the UI. |
 | 🧟 [**Horde**](https://github.com/brunocalado/dh-horde) | Explode single horde tokens into dozens of individual tokens and manage their movement and stats automatically. |
 | 🎁 [**Mystery Box**](https://github.com/brunocalado/dh-mystery-box) | Introduces mystery box mechanics for random loot and surprises. |
+| 📝 [**Nice Sheets**](https://github.com/brunocalado/dh-nice-sheets) | An alternative character sheet with a resource sidebar, ranked trait plaques, and the character's art filling the background. |
 | ⚡ [**Quick Actions**](https://github.com/brunocalado/daggerheart-quickactions) | Quick access to common mechanics like Falling Damage, Downtime, etc. |
 | 📜 [**Quick Rules**](https://github.com/brunocalado/daggerheart-quickrules) | Fast and accessible reference guide for the core rules. |
-| 🤖 [**Resource Macros**](https://github.com/brunocalado/daggerheart-fear-macros) | Automatically executes macros when the Fear or Hope resources change. |
+| 🤖 [**Resource Macros**](https://github.com/brunocalado/daggerheart-fear-macros) | Automatically executes macros when the Fear, Hope, Stress, HP, or Armor resources change. |
 | 🎲 [**Stats**](https://github.com/brunocalado/daggerheart-stats) | Tracks dice rolls from GM and Players. |
 | 🧠 [**Stats Toolbox**](https://github.com/brunocalado/dh-statblock-importer) | Import actors using a statblock. |
 | 🛒 [**Store**](https://github.com/brunocalado/daggerheart-store) | A dynamic, interactive, and fully configurable in-game store. |
