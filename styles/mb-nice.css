@@ -77,6 +77,10 @@
 
 /* ── Opener and Reveal windows, when the opening user's character uses the Nice Sheet ── */
 
+/* A richer step of the same ink-and-gold design every window wears. It stays on these two
+   windows only: it is how the module shows that the opener's sheet is Nice Sheets, and its
+   uppercase display type and animation suit a moment of reward, not the GM's dense editors. */
+
 /* Every colour is set here rather than inherited, so the skin looks the same whatever core theme
    the user picked: Nice Sheets is dark only. Selectors carry the same containers as
    mystery-box.css and mb-reveal.css, so they outrank those rules instead of tying with them. */

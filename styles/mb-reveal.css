@@ -1,10 +1,18 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 .dh-mystery-box-reveal {
     & .dh-mb-reveal-list {
         display: flex;
         flex-direction: column;
         gap: 4px;
         padding: 8px;
-        background: var(--mb-bg-dark);
+        background: transparent;
         max-height: 400px;
         overflow-y: auto;
 
@@ -13,17 +21,13 @@
         }
 
         &::-webkit-scrollbar-track {
-            background: var(--mb-bg-input);
+            background: var(--mb-ink);
             border-radius: 4px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: var(--mb-border-light);
+            background: var(--mb-gold-dim);
             border-radius: 4px;
-
-            &:hover {
-                background: var(--mb-border-hover);
-            }
         }
     }
 
@@ -31,12 +35,10 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        padding: 4px 0;
-        border-bottom: 1px solid var(--mb-border-light);
-
-        &:last-child {
-            border-bottom: none;
-        }
+        padding: 4px 6px;
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
+        border-radius: 6px;
+        background: var(--mb-ink-2);
     }
 
     & .dh-mb-reveal-img {
@@ -54,7 +56,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         font-weight: 600;
-        color: #fff;
+        color: var(--mb-text);
     }
 
     & .dh-mb-reveal-view {
@@ -65,17 +67,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        border: 1px solid var(--mb-border-light);
         border-radius: 4px;
-        background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
-        color: var(--mbs-text-dim);
         transition: all 0.2s;
-
-        &:hover {
-            background: linear-gradient(to bottom, var(--mb-accent), #d55400);
-            border-color: var(--mb-accent);
-            color: #fff;
-            box-shadow: 0 0 6px rgba(255, 100, 0, 0.4);
-        }
     }
 }

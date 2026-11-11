@@ -7,6 +7,7 @@
 - [Fixed] Mystery Box Manager: a long box name no longer widens its column.
 - [Changed] Mystery Box Editor: the raffle chance moved below the item name, so names have room, and Save is now the most prominent button. Delete and Remove turn red only on hover.
 - [Changed] The Mystery Box Manager, Editor, Box Configuration, Import, Default Assets and Party Actor windows share one dark ink-and-gold look, matching the Daggerheart system's gold, in place of the mix of grey, orange, blue and green.
+- [Changed] Open Mystery Box and "You received" share the ink-and-gold look in every sheet, and each box in Open Mystery Box has a ring in its rarity colour. Characters using Nice Sheets keep the richer gold skin.
 
 # 0.2.4
 

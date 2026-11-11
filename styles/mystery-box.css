@@ -67,11 +67,12 @@
    Shared roles
    ========================================= */
 /* Three button roles shared by every window. Per-window rules keep size and spacing only, so
-   nothing there outranks these. :is() takes its most specific argument, so `.mb-box-actions
+   nothing there outranks these. Grouped selectors rather than role classes in the templates:
+   one place to change, and the markup stays as it is. :is() takes its most specific argument, so `.mb-box-actions
    button` lifts both lists to (0,2,1); every Nice skin rule still outranks them through
    `.dh-mb-nice`. */
 .dh-mystery-box-app :is(.mb-btn-create, .mb-form-footer button, .mb-import-btn,
-                        .mbs-save-btn, .mbs-btn-primary, .mb-btn-primary) {
+                        .mbs-save-btn, .mbs-btn-primary, .mb-btn-primary, .mb-btn-open) {
     background: var(--mb-gold);
     border: 1px solid var(--mb-gold-dim);
     color: var(--mb-ink);
@@ -85,7 +86,7 @@
 
 .dh-mystery-box-app :is(.mb-add-btn, .mb-config-btn, .mb-box-actions button, .mb-import-toggle-btn,
                         .mb-import-load-btn, .mb-source-toggle-btn, .mbs-file-picker-btn,
-                        .mbs-btn-secondary, .mb-item-remove) {
+                        .mbs-btn-secondary, .mb-item-remove, .dh-mb-reveal-view) {
     background: var(--mb-ink-3);
     border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
     color: var(--mb-text);
@@ -547,47 +548,26 @@
 /* =========================================
    Opener Styles
    ========================================= */
-/* The default Opener and Reveal still read these older tokens. */
-.dh-mystery-box-opener,
-.dh-mystery-box-reveal {
-    --mb-accent: #ff6400;
-    --mb-bg-dark: #1a1a1a;
-    --mb-bg-input: #0f0f0f;
-    --mb-border-light: #444444;
-    --mb-border-hover: #555555;
-    --mbs-accent: #C9A060;
-    --mbs-text-dim: #aaa;
-}
-
 .dh-mystery-box-opener {
     & .dh-mb-opener-content {
-        background: var(--mb-bg-dark);
+        background: transparent;
         padding: 10px;
         & .mb-notes {
             margin-bottom: 1.5rem;
             padding: 10px 12px;
-            background: #112233;
-            border-left: 4px solid #1e90ff;
-            border-radius: 4px;
-            color: #e0e0e0;
             font-size: 0.95em;
-            display: flex;
-            align-items: center;
             gap: 0.8em;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
             & i {
-                color: #1e90ff;
                 font-size: 1.2em;
             }
         }
 
         & .mb-notes-warning {
-            background: #332200;
-            border-left-color: #ffa500;
+            border-left-color: #e8894a;
 
             & i {
-                color: #ffa500;
+                color: #e8894a;
             }
         }
 
@@ -604,23 +584,19 @@
             }
 
             &::-webkit-scrollbar-track {
-                background: #111111;
+                background: var(--mb-ink);
                 border-radius: 4px;
             }
 
             &::-webkit-scrollbar-thumb {
-                background: #444444;
+                background: var(--mb-gold-dim);
                 border-radius: 4px;
-
-                &:hover {
-                    background: #555555;
-                }
             }
         }
 
         & .mb-opener-card {
-            background: var(--mb-bg-dark);
-            border: 1px solid var(--mb-border-light);
+            background: var(--mb-ink-2);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             border-radius: 8px;
             padding: 10px;
             display: flex;
@@ -631,16 +607,17 @@
             transition: border-color 0.2s, box-shadow 0.2s;
 
             &:hover {
-                border-color: #993c00;
-                box-shadow: 0 0 8px rgba(255, 100, 0, 0.15);
+                border-color: rgba(var(--mb-gold-rgb), 0.45);
             }
         }
 
+        /* A flat ring in the box's rarity. The Nice skin adds the glow. */
         & .mb-opener-img {
             width: 48px;
             height: 48px;
             border-radius: 6px;
-            border: 1px solid var(--mb-border-light);
+            border: none;
+            box-shadow: 0 0 0 1px var(--mb-rarity);
             object-fit: cover;
         }
 
@@ -653,8 +630,9 @@
         /* Clamped here rather than cut in JS: a character count cannot know the rendered width.
            The full name is in the title. */
         & .mb-opener-name {
+            font-family: var(--mb-font-display);
             font-weight: 700;
-            color: #fff;
+            color: var(--mb-text);
             font-size: 1.05em;
             display: -webkit-box;
             -webkit-box-orient: vertical;
@@ -664,32 +642,23 @@
 
         & .mb-opener-meta {
             font-size: 0.8em;
-            color: #b0b0b0;
+            color: var(--mb-text-muted);
         }
 
         & .mb-btn-open {
-            background: linear-gradient(to bottom, var(--mb-accent), #d55400);
-            border: 1px solid var(--mb-accent);
-            color: #fff;
             padding: 6px 16px;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s;
-            font-weight: 600;
             width: 100%;
             /* Pinned to the card's bottom, so buttons line up when a name wraps. */
             margin-top: auto;
-
-            &:hover {
-                background: linear-gradient(to bottom, #ff7b1a, var(--mb-accent));
-                box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
-            }
         }
 
         & .mb-empty-state {
             text-align: center;
             padding: 2rem 1rem;
-            color: #888;
+            color: var(--mb-text-muted);
 
             & i {
                 font-size: 2.5rem;
@@ -709,13 +678,14 @@
             justify-content: space-between;
             gap: 8px;
             padding: 6px 8px;
-            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
+            background: var(--mb-ink-2);
             border-radius: 6px;
             margin-bottom: 8px;
         }
 
         & .mb-party-toggle-label {
-            color: var(--mbs-accent);
+            color: var(--mb-gold);
             font-family: var(--mb-font-display);
             font-size: 0.95em;
             display: flex;
@@ -728,8 +698,8 @@
             width: 52px;
             height: 26px;
             border-radius: 13px;
-            border: 2px solid #555;
-            background: #333;
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
+            background: var(--mb-ink);
             cursor: pointer;
             flex-shrink: 0;
             transition: background 0.2s, border-color 0.2s;
@@ -746,18 +716,18 @@
 
             & .mb-toggle-off {
                 right: 5px;
-                color: #888;
+                color: var(--mb-text-muted);
             }
 
             & .mb-toggle-on {
                 left: 5px;
-                color: #fff;
+                color: var(--mb-ink);
                 display: none;
             }
 
             &[data-active="true"] {
-                background: #2a6a3a;
-                border-color: #4caf50;
+                background: var(--mb-gold);
+                border-color: var(--mb-gold-dim);
 
                 & .mb-toggle-off {
                     display: none;
