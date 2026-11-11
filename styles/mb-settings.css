@@ -24,13 +24,14 @@
         gap: 10px;
         padding: 0 10px;
         margin-bottom: 15px;
-        border-bottom: 2px solid var(--mbs-accent);
+        border-bottom: 2px solid var(--mb-gold);
 
         & .mbs-nav-item {
             padding: 10px 20px;
             border-radius: 6px 6px 0 0;
             background: transparent;
-            color: var(--mbs-text-dim);
+            color: var(--mb-text-muted);
+            font-family: var(--mb-font-display);
             font-weight: bold;
             font-size: 14px;
             text-transform: uppercase;
@@ -41,15 +42,15 @@
             cursor: pointer;
 
             &:hover {
-                color: #fff;
-                background: rgba(255, 255, 255, 0.05);
+                color: var(--mb-text);
+                background: rgba(var(--mb-gold-rgb), 0.05);
             }
 
             &.active {
-                color: var(--mbs-accent);
-                border-color: var(--mbs-border);
+                color: var(--mb-gold);
+                border-color: rgba(var(--mb-gold-rgb), 0.22);
                 box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-                background: rgba(255, 255, 255, 0.05);
+                background: rgba(var(--mb-gold-rgb), 0.05);
             }
         }
     }
@@ -72,8 +73,8 @@
 
     /* -- CONFIG CARDS -- */
     & .mbs-config-card {
-        background: var(--mbs-card-bg);
-        border: 1px solid var(--mbs-border);
+        background: var(--mb-ink-2);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         border-radius: 8px;
         padding: 15px;
         margin-bottom: 15px;
@@ -81,7 +82,7 @@
         & .mbs-card-title {
             padding-bottom: 5px;
             margin: 0 0 8px 0;
-            color: var(--mbs-accent);
+            color: var(--mb-gold);
             font-family: var(--mb-font-display);
             font-size: 1.1em;
             text-transform: uppercase;
@@ -91,7 +92,7 @@
 
     & .mbs-card-hint {
         font-size: 12px;
-        color: var(--mbs-text-dim);
+        color: var(--mb-text-muted);
         font-style: italic;
         margin: 0 0 15px 0;
         line-height: 1.4;
@@ -106,42 +107,24 @@
 
         & .mbs-path-input {
             flex: 1;
-            background: var(--mbs-input-bg);
-            border: 1px solid var(--mbs-border);
-            color: #fff;
             border-radius: 4px;
             height: 32px;
             padding: 0 10px;
             transition: border-color 0.2s;
             font-family: var(--mb-font-ui);
             font-size: 12px;
-
-            &:focus {
-                outline: none;
-                border-color: var(--mbs-accent);
-                box-shadow: 0 0 5px rgba(201, 160, 96, 0.2);
-            }
         }
 
         & .mbs-file-picker-btn {
             flex-shrink: 0;
             width: 32px;
             height: 32px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--mbs-border);
-            color: var(--mbs-text-dim);
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            &:hover {
-                color: var(--mbs-accent);
-                border-color: var(--mbs-accent);
-                background: rgba(201, 160, 96, 0.1);
-            }
         }
     }
 
@@ -159,27 +142,16 @@
 
     /* -- FOOTER -- */
     & .mbs-footer {
-        border-top: 1px solid var(--mbs-border);
+        border-top: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         padding-top: 15px;
         margin-top: auto;
         justify-content: flex-end;
 
         & .mbs-save-btn {
-            background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
-            border: 1px solid #000;
-            color: #e0e0e0;
             padding: 8px 24px;
             font-family: var(--mb-font-display);
-            font-weight: bold;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
             cursor: pointer;
             transition: all 0.2s;
-
-            &:hover {
-                color: #fff;
-                box-shadow: 0 0 10px var(--mbs-accent);
-                border-color: var(--mbs-accent);
-            }
         }
     }
 }
@@ -187,7 +159,7 @@
 /* Shared window override for this app — matches existing module pattern */
 .application.dh-mystery-box-settings > .window-content {
     padding: 0;
-    background: var(--mb-bg-dark);
+    background: var(--mb-ink);
     display: flex;
     flex-direction: column;
 }

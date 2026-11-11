@@ -1,9 +1,17 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 /* =========================================
    Import Dialog Styles
    ========================================= */
 .dh-mystery-box-import {
     & .dh-mb-import-content {
-        background: var(--mb-bg-dark);
+        background: var(--mb-ink);
         padding: 10px;
         display: flex;
         flex-direction: column;
@@ -20,9 +28,6 @@
             }
 
             & .mb-import-load-btn {
-                background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
-                border: 1px solid #555;
-                color: #ccc;
                 padding: 4px 12px;
                 border-radius: 4px;
                 cursor: pointer;
@@ -33,25 +38,19 @@
                 gap: 5px;
                 white-space: nowrap;
                 flex-shrink: 0;
-
-                &:hover {
-                    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
-                    border-color: var(--mb-accent);
-                    color: #fff;
-                }
             }
         }
 
         & .mb-folder-drop-zone {
             flex: 1;
             min-height: 30px;
-            border: 2px dashed #555;
+            border: 2px dashed rgba(var(--mb-gold-rgb), 0.45);
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            color: #777;
+            color: var(--mb-text-muted);
             font-style: italic;
             cursor: default;
             transition: all 0.2s;
@@ -64,21 +63,21 @@
 
             & span {
                 font-size: 0.9em;
-                color: #777;
+                color: var(--mb-text-muted);
             }
 
             &.drag-over {
-                border-color: var(--mb-accent);
-                background: #331a00;
-                color: #fff;
+                border-color: var(--mb-gold);
+                background: rgba(var(--mb-gold-rgb), 0.1);
+                color: var(--mb-text);
 
                 & i {
                     opacity: 1;
-                    color: var(--mb-accent);
+                    color: var(--mb-gold);
                 }
 
                 & span {
-                    color: #fff;
+                    color: var(--mb-text);
                 }
             }
         }
@@ -89,7 +88,7 @@
             justify-content: space-between;
             gap: 8px;
             padding: 6px 0;
-            border-bottom: 1px solid var(--mb-border-light);
+            border-bottom: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         }
 
         & .mb-import-toolbar-left {
@@ -105,9 +104,6 @@
         }
 
         & .mb-import-toggle-btn {
-            background: linear-gradient(to bottom, #2a3a4a, #1b2b3b);
-            border: 1px solid #3a5a7a;
-            color: #88bbee;
             padding: 3px 10px;
             border-radius: 4px;
             cursor: pointer;
@@ -117,34 +113,28 @@
             align-items: center;
             gap: 4px;
             white-space: nowrap;
-
-            &:hover {
-                background: linear-gradient(to bottom, #3a5a7a, #2a4a6a);
-                border-color: #88bbee;
-                color: #aaddff;
-            }
         }
 
         & .mb-import-count {
             font-size: 0.8em;
-            color: #999;
+            color: var(--mb-text-muted);
             margin-left: 4px;
         }
 
         & .mb-import-chance-label {
             font-size: 0.85em;
-            color: #ccc;
+            color: var(--mb-text);
             white-space: nowrap;
         }
 
         & .mb-import-chance-slider {
             width: 100px;
-            accent-color: var(--mb-accent);
+            accent-color: var(--mb-gold);
         }
 
         & .mb-import-chance-value {
             font-size: 0.8em;
-            color: var(--mb-accent);
+            color: var(--mb-gold);
             font-weight: 700;
             min-width: 32px;
             text-align: right;
@@ -164,17 +154,13 @@
             }
 
             &::-webkit-scrollbar-track {
-                background: #111111;
+                background: var(--mb-ink);
                 border-radius: 4px;
             }
 
             &::-webkit-scrollbar-thumb {
-                background: #444444;
+                background: var(--mb-gold-dim);
                 border-radius: 4px;
-
-                &:hover {
-                    background: #555555;
-                }
             }
         }
 
@@ -183,21 +169,21 @@
             align-items: center;
             gap: 8px;
             padding: 6px 8px;
-            background: var(--mb-bg-dark);
-            border: 1px solid var(--mb-border-light);
+            background: var(--mb-ink-2);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s;
 
             &:hover {
-                border-color: #666;
-                background: #222;
+                border-color: rgba(var(--mb-gold-rgb), 0.45);
+                background: var(--mb-ink-3);
             }
 
             &.selected {
-                border-color: var(--mb-accent);
-                background: #2a1a0a;
-                box-shadow: 0 0 4px rgba(255, 100, 0, 0.2);
+                border-color: var(--mb-gold);
+                background: rgba(var(--mb-gold-rgb), 0.12);
+                box-shadow: 0 0 4px rgba(var(--mb-gold-rgb), 0.2);
             }
         }
 
@@ -205,14 +191,14 @@
             width: 32px;
             height: 32px;
             border-radius: 4px;
-            border: 1px solid var(--mb-border-light);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             object-fit: cover;
             flex-shrink: 0;
             cursor: zoom-in;
 
             &:hover {
-                border-color: var(--mb-accent);
-                box-shadow: 0 0 4px rgba(255, 100, 0, 0.4);
+                border-color: var(--mb-gold);
+                box-shadow: 0 0 4px rgba(var(--mb-gold-rgb), 0.4);
             }
         }
 
@@ -226,7 +212,7 @@
 
         & .mb-import-item-name {
             font-weight: 600;
-            color: #fff;
+            color: var(--mb-text);
             font-size: 0.85em;
             white-space: nowrap;
             overflow: hidden;
@@ -235,50 +221,41 @@
 
         & .mb-import-item-type {
             font-size: 0.7em;
-            color: #999;
+            color: var(--mb-text-muted);
             text-transform: capitalize;
         }
 
         & .mb-import-item-check {
-            color: #555;
+            color: rgba(var(--mb-gold-rgb), 0.45);
             font-size: 1em;
             flex-shrink: 0;
         }
 
         & .mb-import-item.selected .mb-import-item-check {
-            color: var(--mb-accent);
+            color: var(--mb-gold);
         }
 
         & .mb-import-footer {
             padding-top: 8px;
-            border-top: 1px solid var(--mb-border-light);
+            border-top: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         }
 
         & .mb-import-btn {
             width: 100%;
-            background: linear-gradient(to bottom, var(--mb-accent), #d55400);
-            border: 1px solid var(--mb-accent);
-            color: #fff;
             padding: 8px 0;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s;
-            font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-
-            &:hover {
-                background: linear-gradient(to bottom, #ff7b1a, var(--mb-accent));
-                box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
-            }
         }
 
         & .mb-empty-state {
             text-align: center;
             padding: 3rem 1rem;
-            color: #888;
+            color: var(--mb-text-muted);
             flex: 1;
             display: flex;
             flex-direction: column;

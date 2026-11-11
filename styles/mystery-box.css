@@ -10,23 +10,8 @@
    Mystery Box Module - Shared Variables
    ========================================= */
 .dh-mystery-box-app {
-    /* Core palette */
-    --mb-accent: #ff6400;
-    --mb-bg-dark: #1a1a1a;
-    --mb-bg-input: #0f0f0f;
-    --mb-border-light: #444444;
-    --mb-border-hover: #555555;
-
     /* Typography — used across settings and editor-config dialogs */
     --mb-font-ui: 'Signika', sans-serif;
-
-    /* Shared "mbs" sub-theme (settings menu & editor-config dialog) */
-    --mbs-accent: #C9A060;
-    --mbs-card-bg: rgba(255, 255, 255, 0.03);
-    --mbs-border: rgba(255, 255, 255, 0.1);
-    --mbs-text-main: #f0f0e0;
-    --mbs-text-dim: #aaa;
-    --mbs-input-bg: rgba(0, 0, 0, 0.3);
 }
 
 /* Values copied from Daggerheart: Nice Sheets so a box looks native inside its sheet and every
@@ -75,7 +60,79 @@
    ApplicationV2 window carries it in v14. */
 .application.dh-mystery-box-app > .window-content {
     padding: 0;
-    background: var(--mb-bg-dark);
+    background: var(--mb-ink);
+}
+
+/* =========================================
+   Shared roles
+   ========================================= */
+/* Three button roles shared by every window. Per-window rules keep size and spacing only, so
+   nothing there outranks these. :is() takes its most specific argument, so `.mb-box-actions
+   button` lifts both lists to (0,2,1); every Nice skin rule still outranks them through
+   `.dh-mb-nice`. */
+.dh-mystery-box-app :is(.mb-btn-create, .mb-form-footer button, .mb-import-btn,
+                        .mbs-save-btn, .mbs-btn-primary, .mb-btn-primary) {
+    background: var(--mb-gold);
+    border: 1px solid var(--mb-gold-dim);
+    color: var(--mb-ink);
+    font-weight: 700;
+
+    &:hover {
+        background: var(--mb-gold-bright);
+        box-shadow: 0 0 8px rgba(var(--mb-gold-rgb), 0.45);
+    }
+}
+
+.dh-mystery-box-app :is(.mb-add-btn, .mb-config-btn, .mb-box-actions button, .mb-import-toggle-btn,
+                        .mb-import-load-btn, .mb-source-toggle-btn, .mbs-file-picker-btn,
+                        .mbs-btn-secondary, .mb-item-remove) {
+    background: var(--mb-ink-3);
+    border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
+    color: var(--mb-text);
+
+    &:hover {
+        border-color: var(--mb-gold);
+        color: var(--mb-gold-bright);
+    }
+}
+
+/* Each argument carries its container so this outranks the secondary hover above at (0,3,1). */
+.dh-mystery-box-app :is(.mb-box-actions .mb-btn-danger, .mb-item-controls .mb-item-remove):hover {
+    border-color: var(--mb-danger);
+    background: rgba(var(--mb-danger-rgb), 0.12);
+    color: var(--mb-danger);
+}
+
+/* Text fields and selects in every window: ink, with the gold as focus. */
+.dh-mystery-box-app :is(input[type="text"], input[type="number"], select, textarea) {
+    background: var(--mb-ink);
+    border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
+    color: var(--mb-text);
+
+    &:focus {
+        outline: none;
+        border-color: var(--mb-gold);
+        box-shadow: 0 0 5px rgba(var(--mb-gold-rgb), 0.3);
+    }
+}
+
+.dh-mystery-box-app .mb-notes {
+    padding: 6px 10px;
+    background: var(--mb-ink-3);
+    border-left: 4px solid var(--mb-gold-dim);
+    border-radius: 4px;
+    color: var(--mb-text);
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    & i {
+        color: var(--mb-gold);
+        font-size: 1.1em;
+        flex-shrink: 0;
+    }
 }
 
 /* =========================================
@@ -83,7 +140,7 @@
    ========================================= */
 .dh-mystery-box-manager {
     & .dh-mb-manager-content {
-        background: var(--mb-bg-dark);
+        background: var(--mb-ink);
         padding: 10px;
         display: flex;
         flex-direction: column;
@@ -96,17 +153,13 @@
         }
 
         &::-webkit-scrollbar-track {
-            background: #111111;
+            background: var(--mb-ink);
             border-radius: 4px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: #444444;
+            background: var(--mb-gold-dim);
             border-radius: 4px;
-
-            &:hover {
-                background: #555555;
-            }
         }
 
         & .mb-manager-header {
@@ -119,28 +172,9 @@
         & .mb-notes {
             flex: 1;
             margin: 0;
-            padding: 6px 10px;
-            background: #112233;
-            border-left: 4px solid #1e90ff;
-            border-radius: 4px;
-            color: #e0e0e0;
-            font-size: 0.85em;
-            display: flex;
-            align-items: center;
-            gap: 0.6em;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-            & i {
-                color: #1e90ff;
-                font-size: 1.1em;
-                flex-shrink: 0;
-            }
         }
 
         & .mb-btn-create {
-            background: linear-gradient(to bottom, #2a4a2a, #1b2b1b);
-            border: 1px solid #3a5a3a;
-            color: #88cc88;
             padding: 5px 12px;
             border-radius: 4px;
             cursor: pointer;
@@ -152,12 +186,6 @@
             white-space: nowrap;
             flex-shrink: 0;
             height: 28px;
-
-            &:hover {
-                background: linear-gradient(to bottom, #3a5a3a, #2a4a2a);
-                border-color: #66ff66;
-                color: #66ff66;
-            }
         }
 
         & .mb-box-list {
@@ -181,27 +209,28 @@
             gap: 8px;
             padding: 4px 8px;
             border-radius: 4px;
-            border-left: 4px solid var(--mb-rarity, #888);
-            background: #222;
+            border-left: 4px solid var(--mb-rarity, var(--mb-text-muted));
+            background: var(--mb-ink-2);
         }
 
         & .mb-rarity-label {
+            font-family: var(--mb-font-display);
             font-weight: 700;
             font-size: 0.95em;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: #ddd;
+            color: var(--mb-text);
         }
 
         & .mb-rarity-count {
             font-size: 0.8em;
-            color: #888;
+            color: var(--mb-text-muted);
             margin-left: auto;
         }
 
         & .mb-box-entry {
-            background: var(--mb-bg-dark);
-            border: 1px solid var(--mb-border-light);
+            background: var(--mb-ink-2);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             border-radius: 6px;
             padding: 8px;
             display: flex;
@@ -211,7 +240,7 @@
             transition: border-color 0.2s;
 
             &:hover {
-                border-color: #666666;
+                border-color: rgba(var(--mb-gold-rgb), 0.45);
             }
         }
 
@@ -226,7 +255,7 @@
             width: 28px;
             height: 28px;
             border-radius: 4px;
-            border: 1px solid var(--mb-border-light);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             object-fit: cover;
             flex-shrink: 0;
         }
@@ -241,7 +270,7 @@
 
         & .mb-box-name {
             font-weight: 700;
-            color: #fff;
+            color: var(--mb-text);
             font-size: 0.9em;
             white-space: nowrap;
             overflow: hidden;
@@ -250,7 +279,7 @@
 
         & .mb-box-count {
             font-size: 0.8em;
-            color: #b0b0b0;
+            color: var(--mb-text-muted);
         }
 
         & .mb-box-actions {
@@ -259,9 +288,6 @@
 
             & button {
                 flex: 1;
-                background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
-                border: 1px solid #444;
-                color: #aaa;
                 border-radius: 4px;
                 cursor: pointer;
                 transition: all 0.2s;
@@ -269,28 +295,13 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
-                &:hover {
-                    background: linear-gradient(to bottom, var(--mb-accent), #d55400);
-                    border-color: var(--mb-accent);
-                    color: #fff;
-                    box-shadow: 0 0 6px rgba(255, 100, 0, 0.4);
-                }
-            }
-
-            /* Same neutral as its neighbours at rest; red only once hovered. */
-            & .mb-btn-danger:hover {
-                background: linear-gradient(to bottom, #662020, #4a2020);
-                border-color: #ff6666;
-                color: #ff4444;
-                box-shadow: 0 0 6px rgba(255, 100, 100, 0.4);
             }
         }
 
         & .mb-empty-state {
             text-align: center;
             padding: 2rem 1rem;
-            color: #888;
+            color: var(--mb-text-muted);
             width: 100%;
 
             & i {
@@ -320,7 +331,7 @@
    ========================================= */
 .dh-mystery-box-editor {
     & .dh-mb-editor-content {
-        background: var(--mb-bg-dark);
+        background: var(--mb-ink);
         padding: 10px;
         display: flex;
         flex-direction: column;
@@ -333,27 +344,19 @@
             padding: 4px 0;
 
             & label {
+                font-family: var(--mb-font-display);
                 font-weight: 600;
-                color: #ddd;
+                color: var(--mb-text);
                 white-space: nowrap;
             }
         }
 
         & .mb-input {
-            background: var(--mb-bg-input);
-            border: 1px solid #444;
-            color: #fff;
             border-radius: 4px;
             padding: 4px 8px;
             transition: border-color 0.2s;
             height: 28px;
             flex: 1;
-
-            &:focus {
-                outline: none;
-                border-color: var(--mb-accent);
-                box-shadow: 0 0 5px rgba(255, 100, 0, 0.3);
-            }
         }
 
         & .mb-item-list {
@@ -366,8 +369,8 @@
         }
 
         & .mb-item-row {
-            background: var(--mb-bg-dark);
-            border: 1px solid var(--mb-border-light);
+            background: var(--mb-ink-2);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             border-radius: 6px;
             padding: 8px;
             display: flex;
@@ -376,7 +379,7 @@
             transition: border-color 0.2s;
 
             &:hover {
-                border-color: #666666;
+                border-color: rgba(var(--mb-gold-rgb), 0.45);
             }
         }
 
@@ -387,10 +390,10 @@
             min-width: 0;
 
             &.empty {
-                border: 2px dashed #555;
+                border: 2px dashed rgba(var(--mb-gold-rgb), 0.45);
                 border-radius: 4px;
                 padding: 6px 8px;
-                color: #777;
+                color: var(--mb-text-muted);
                 cursor: default;
                 transition: all 0.2s;
 
@@ -403,22 +406,22 @@
                 & .mb-item-name {
                     font-style: italic;
                     font-weight: normal;
-                    color: #777;
+                    color: var(--mb-text-muted);
                 }
             }
 
             &.empty.drag-over {
-                border-color: var(--mb-accent);
-                background: #331a00;
-                color: #fff;
+                border-color: var(--mb-gold);
+                background: rgba(var(--mb-gold-rgb), 0.1);
+                color: var(--mb-text);
 
                 & i {
                     opacity: 1;
-                    color: var(--mb-accent);
+                    color: var(--mb-gold);
                 }
 
                 & .mb-item-name {
-                    color: #fff;
+                    color: var(--mb-text);
                 }
             }
         }
@@ -427,14 +430,14 @@
             width: 28px;
             height: 28px;
             border-radius: 4px;
-            border: 1px solid var(--mb-border-light);
+            border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             object-fit: cover;
             flex-shrink: 0;
         }
 
         & .mb-item-name {
             font-weight: 600;
-            color: #fff;
+            color: var(--mb-text);
             font-size: 0.9em;
             white-space: nowrap;
             overflow: hidden;
@@ -451,12 +454,12 @@
             & .chance-slider {
                 flex: 1;
                 min-width: 0;
-                accent-color: var(--mb-accent);
+                accent-color: var(--mb-gold);
             }
 
             & .chance-value {
                 font-size: 0.8em;
-                color: var(--mb-accent);
+                color: var(--mb-gold);
                 font-weight: 700;
                 min-width: 32px;
                 text-align: right;
@@ -465,9 +468,6 @@
         }
 
         & .mb-item-remove {
-            background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
-            border: 1px solid #444;
-            color: #aaa;
             padding: 3px 5px;
             border-radius: 3px;
             cursor: pointer;
@@ -478,12 +478,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            &:hover {
-                background: linear-gradient(to bottom, #662020, #4a2020);
-                border-color: #ff6666;
-                color: #ff4444;
-            }
         }
 
         & .mb-mode-select {
@@ -499,9 +493,6 @@
         }
 
         & .mb-config-btn {
-            background: linear-gradient(to bottom, #3a3a4a, #2a2a3a);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #C9A060;
             padding: 5px 10px;
             border-radius: 4px;
             cursor: pointer;
@@ -513,18 +504,9 @@
             flex-shrink: 0;
             height: 28px;
             width: 28px;
-
-            &:hover {
-                color: #fff;
-                border-color: #C9A060;
-                box-shadow: 0 0 8px rgba(201, 160, 96, 0.3);
-            }
         }
 
         & .mb-add-btn {
-            background: linear-gradient(to bottom, #3a3a4a, #2a2a3a);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #C9A060;
             padding: 5px 12px;
             border-radius: 4px;
             cursor: pointer;
@@ -536,42 +518,25 @@
             white-space: nowrap;
             flex-shrink: 0;
             height: 28px;
-
-            &:hover {
-                color: #fff;
-                border-color: #C9A060;
-                box-shadow: 0 0 8px rgba(201, 160, 96, 0.3);
-            }
         }
 
         & .mb-form-footer {
             margin-top: 0.5rem;
             padding-top: 0.8rem;
-            border-top: 1px solid var(--mb-border-light);
+            border-top: 1px solid rgba(var(--mb-gold-rgb), 0.22);
             display: flex;
 
             & button {
                 flex: 1;
-                background: linear-gradient(to bottom, var(--mb-accent), #d55400);
-                border: 1px solid var(--mb-accent);
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-                color: #fff;
-                font-weight: 600;
                 padding: 10px 0;
                 border-radius: 4px;
                 cursor: pointer;
                 transition: all 0.2s;
-
-                &:hover {
-                    background: linear-gradient(to bottom, #ff7b1a, var(--mb-accent));
-                    color: #fff;
-                    box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
-                }
             }
         }
 
         & .raffle-prob {
-            color: var(--color-text-light-highlight, #aaaaaa);
+            color: var(--mb-text-muted);
             font-size: 0.85em;
             white-space: nowrap;
             padding-right: 6px;
@@ -582,6 +547,18 @@
 /* =========================================
    Opener Styles
    ========================================= */
+/* The default Opener and Reveal still read these older tokens. */
+.dh-mystery-box-opener,
+.dh-mystery-box-reveal {
+    --mb-accent: #ff6400;
+    --mb-bg-dark: #1a1a1a;
+    --mb-bg-input: #0f0f0f;
+    --mb-border-light: #444444;
+    --mb-border-hover: #555555;
+    --mbs-accent: #C9A060;
+    --mbs-text-dim: #aaa;
+}
+
 .dh-mystery-box-opener {
     & .dh-mb-opener-content {
         background: var(--mb-bg-dark);

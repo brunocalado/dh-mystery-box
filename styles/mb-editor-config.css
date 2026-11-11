@@ -23,13 +23,14 @@
         gap: 10px;
         padding: 0 10px;
         margin-bottom: 15px;
-        border-bottom: 2px solid var(--mbs-accent);
+        border-bottom: 2px solid var(--mb-gold);
 
         & .mbs-nav-item {
             padding: 10px 20px;
             border-radius: 6px 6px 0 0;
             background: transparent;
-            color: var(--mbs-text-dim);
+            color: var(--mb-text-muted);
+            font-family: var(--mb-font-display);
             font-weight: bold;
             font-size: 14px;
             text-transform: uppercase;
@@ -40,15 +41,15 @@
             cursor: pointer;
 
             &:hover {
-                color: #fff;
-                background: rgba(255, 255, 255, 0.05);
+                color: var(--mb-text);
+                background: rgba(var(--mb-gold-rgb), 0.05);
             }
 
             &.active {
-                color: var(--mbs-accent);
-                border-color: var(--mbs-border);
+                color: var(--mb-gold);
+                border-color: rgba(var(--mb-gold-rgb), 0.22);
                 box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-                background: rgba(255, 255, 255, 0.05);
+                background: rgba(var(--mb-gold-rgb), 0.05);
             }
         }
     }
@@ -70,8 +71,8 @@
     }
 
     & .mbs-config-card {
-        background: var(--mbs-card-bg);
-        border: 1px solid var(--mbs-border);
+        background: var(--mb-ink-2);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         border-radius: 8px;
         padding: 15px;
         margin-bottom: 15px;
@@ -80,7 +81,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: var(--mbs-text-main);
+            color: var(--mb-text);
             font-size: 13px;
         }
 
@@ -90,19 +91,10 @@
             width: 100%;
             padding: 6px 10px;
             height: 36px;
-            background: var(--mbs-input-bg);
-            border: 1px solid var(--mbs-border);
             border-radius: 4px;
-            color: #f0f0e0;
             font-family: var(--mb-font-ui);
             font-size: 13px;
             transition: border-color 0.2s;
-
-            &:focus {
-                outline: none;
-                border-color: var(--mbs-accent);
-                box-shadow: 0 0 5px rgba(201, 160, 96, 0.2);
-            }
         }
 
         & textarea {
@@ -111,14 +103,14 @@
         }
 
         & select option {
-            background: var(--mbs-input-bg);
-            color: #f0f0e0;
+            background: var(--mb-ink);
+            color: var(--mb-text);
         }
     }
 
     & .mbs-field-hint {
         font-size: 12px;
-        color: var(--mbs-text-dim);
+        color: var(--mb-text-muted);
         margin: 8px 0 0 0;
         font-style: italic;
         line-height: 1.4;
@@ -129,7 +121,7 @@
         gap: 10px;
         justify-content: flex-end;
         padding-top: 15px;
-        border-top: 1px solid var(--mbs-border);
+        border-top: 1px solid rgba(var(--mb-gold-rgb), 0.22);
     }
 
     & .mbs-btn {
@@ -140,31 +132,6 @@
         font-size: 13px;
         cursor: pointer;
         transition: all 0.2s;
-        border: 1px solid transparent;
-    }
-
-    & .mbs-btn-primary {
-        background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
-        border-color: #000;
-        color: #e0e0e0;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-
-        &:hover {
-            color: #fff;
-            box-shadow: 0 0 10px var(--mbs-accent);
-            border-color: var(--mbs-accent);
-        }
-    }
-
-    & .mbs-btn-secondary {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: var(--mbs-border);
-        color: var(--mbs-text-dim);
-
-        &:hover {
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
     }
 }
 
@@ -183,5 +150,5 @@
 /* Window content override for dark theme consistency */
 .application.mb-editor-config > .window-content {
     padding: 0;
-    background: var(--mb-bg-dark);
+    background: var(--mb-ink);
 }
