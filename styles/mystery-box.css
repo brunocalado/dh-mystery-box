@@ -18,9 +18,6 @@
     --mb-border-hover: #555555;
 
     /* Typography — used across settings and editor-config dialogs */
-    /* Shipped by the required Daggerheart system. Not fetched from a web font service: that
-       would be a third-party request from every client and would break offline games. */
-    --mb-font-display: "Cinzel", serif;
     --mb-font-ui: 'Signika', sans-serif;
 
     /* Shared "mbs" sub-theme (settings menu & editor-config dialog) */
@@ -32,12 +29,34 @@
     --mbs-input-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Rarity hues for every window and for box rows on a Nice Sheets character: steel, emerald,
-   sapphire, gold. The channels sit beside each hue for translucent glows. This is the Nice
-   Sheets palette, chosen over the older green/blue/orange hues because it sits beside the
-   system's gold and is what players with that sheet already see. */
+/* Values copied from Daggerheart: Nice Sheets so a box looks native inside its sheet and every
+   window matches it; the gold is the Daggerheart system's own. Kept in step by hand. Our windows
+   don't borrow the `dh-nice-sheets` class to inherit them: that module nests its sheet layout
+   rules under the class, so a window carrying it would pick up a character sheet's layout. */
 .dh-mystery-box-app,
 .dh-nice-sheets {
+    --mb-gold: #f3c267;
+    --mb-gold-rgb: 243, 194, 103;
+    --mb-gold-bright: #ffe3a3;
+    --mb-gold-dim: #b8893a;
+    --mb-ink: #0f0d1b;
+    --mb-ink-2: #171430;
+    --mb-ink-3: #211d3d;
+    --mb-text: #efe6d8;
+    --mb-text-muted: rgba(239, 230, 216, 0.62);
+    /* Shipped by the required Daggerheart system. Not fetched from a web font service: that
+       would be a third-party request from every client and would break offline games. */
+    --mb-font-display: "Cinzel", serif;
+    --mb-font-title: "Cinzel Decorative", "Cinzel", serif;
+    --mb-font-body: "Montserrat", sans-serif;
+    --mb-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --mb-danger: #e06c6c;
+    --mb-danger-rgb: 224, 108, 108;
+
+    /* Rarity hues: steel, emerald, sapphire, gold. The channels sit beside each hue for
+       translucent glows. This is the Nice Sheets palette, chosen over the older
+       green/blue/orange hues because it sits beside the system's gold and is what players
+       with that sheet already see. */
     --mb-common: #9fb3c8;    --mb-common-rgb: 159, 179, 200;
     --mb-uncommon: #4fbf7f;  --mb-uncommon-rgb: 79, 191, 127;
     --mb-rare: #6fa8ff;      --mb-rare-rgb: 111, 168, 255;

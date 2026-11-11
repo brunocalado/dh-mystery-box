@@ -8,26 +8,7 @@
 
 /* ── Daggerheart: Nice Sheets look ──────────────────────────────────── */
 
-/* Values copied from Daggerheart: Nice Sheets so a box looks native inside its sheet and our
-   windows match it. Kept in step by hand; theirs are scoped to their sheet. Our windows don't
-   borrow the `dh-nice-sheets` class to inherit them: that module nests its sheet layout rules
-   under the class, so a window carrying it would pick up a character sheet's layout. */
-.dh-nice-sheets,
-.dh-mystery-box-app.dh-mb-nice {
-    --mbn-gold: #f3c267;
-    --mbn-gold-rgb: 243, 194, 103;
-    --mbn-gold-bright: #ffe3a3;
-    --mbn-gold-dim: #b8893a;
-    --mbn-ink: #0f0d1b;
-    --mbn-ink-2: #171430;
-    --mbn-ink-3: #211d3d;
-    --mbn-text: #efe6d8;
-    --mbn-text-muted: rgba(239, 230, 216, 0.62);
-    --mbn-font-display: "Cinzel", serif;
-    --mbn-font-title: "Cinzel Decorative", "Cinzel", serif;
-    --mbn-font-body: "Montserrat", sans-serif;
-    --mbn-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-}
+/* Tokens (--mb-gold, --mb-ink, …) live in mystery-box.css, shared with every window. */
 
 /* ── Box rows in the Nice Sheet ── */
 
@@ -67,8 +48,8 @@
 }
 
 @keyframes dh-mb-nice-breathe {
-    0%, 100% { filter: drop-shadow(0 0 1px rgba(var(--mbn-gold-rgb), 0.2)); }
-    50%      { filter: drop-shadow(0 0 7px rgba(var(--mbn-gold-rgb), 0.85)); }
+    0%, 100% { filter: drop-shadow(0 0 1px rgba(var(--mb-gold-rgb), 0.2)); }
+    50%      { filter: drop-shadow(0 0 7px rgba(var(--mb-gold-rgb), 0.85)); }
 }
 
 /* Rarity plaque after the name, Inventory tab only. Added by the script on every sheet and
@@ -85,7 +66,7 @@
     border-radius: 3px;
     background: rgba(var(--mb-rarity-rgb), 0.1);
     color: var(--mb-rarity);
-    font-family: var(--mbn-font-display);
+    font-family: var(--mb-font-display);
     font-size: 10px;
     font-weight: 600;
     line-height: 14px;
@@ -100,41 +81,41 @@
    the user picked: Nice Sheets is dark only. Selectors carry the same containers as
    mystery-box.css and mb-reveal.css, so they outrank those rules instead of tying with them. */
 .application.dh-mystery-box-app.dh-mb-nice {
-    border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+    border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
     border-radius: 10px;
     background:
-        radial-gradient(120% 70% at 50% -10%, rgba(var(--mbn-gold-rgb), 0.14), transparent 60%),
+        radial-gradient(120% 70% at 50% -10%, rgba(var(--mb-gold-rgb), 0.14), transparent 60%),
         radial-gradient(90% 60% at 50% 110%, rgba(0, 0, 0, 0.35), transparent 60%),
-        var(--mbn-ink);
+        var(--mb-ink);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.6);
-    color: var(--mbn-text);
+    color: var(--mb-text);
 
     .window-header {
         background: transparent;
-        border-bottom: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
-        color: var(--mbn-gold);
+        border-bottom: 1px solid rgba(var(--mb-gold-rgb), 0.35);
+        color: var(--mb-gold);
         letter-spacing: 0.06em;
 
         .window-title {
-            color: var(--mbn-gold);
-            font-family: var(--mbn-font-display);
+            color: var(--mb-gold);
+            font-family: var(--mb-font-display);
             font-weight: 700;
         }
 
         .window-icon,
         .header-control {
-            color: var(--mbn-gold-dim);
+            color: var(--mb-gold-dim);
         }
 
         .header-control:hover {
-            color: var(--mbn-gold-bright);
+            color: var(--mb-gold-bright);
         }
     }
 
     .window-content {
         background: transparent;
-        color: var(--mbn-text);
-        font-family: var(--mbn-font-body);
+        color: var(--mb-text);
+        font-family: var(--mb-font-body);
     }
 }
 
@@ -143,15 +124,15 @@
     background: transparent;
 
     & .mb-notes {
-        border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
         border-radius: 6px;
-        background: linear-gradient(180deg, var(--mbn-ink-3), var(--mbn-ink-2));
+        background: linear-gradient(180deg, var(--mb-ink-3), var(--mb-ink-2));
         box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.35);
-        color: var(--mbn-text);
-        font-family: var(--mbn-font-body);
+        color: var(--mb-text);
+        font-family: var(--mb-font-body);
 
         & i {
-            color: var(--mbn-gold);
+            color: var(--mb-gold);
         }
     }
 
@@ -164,14 +145,14 @@
     }
 
     & .mb-opener-card {
-        border: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         border-radius: 8px;
-        background: rgba(var(--mbn-gold-rgb), 0.045);
-        transition: border-color 0.25s var(--mbn-ease), box-shadow 0.25s var(--mbn-ease);
+        background: rgba(var(--mb-gold-rgb), 0.045);
+        transition: border-color 0.25s var(--mb-ease), box-shadow 0.25s var(--mb-ease);
 
         &:hover {
-            border-color: rgba(var(--mbn-gold-rgb), 0.45);
-            box-shadow: 0 0 12px rgba(var(--mbn-gold-rgb), 0.15);
+            border-color: rgba(var(--mb-gold-rgb), 0.45);
+            box-shadow: 0 0 12px rgba(var(--mb-gold-rgb), 0.15);
         }
     }
 
@@ -182,79 +163,79 @@
     }
 
     & .mb-opener-name {
-        color: var(--mbn-text);
-        font-family: var(--mbn-font-display);
+        color: var(--mb-text);
+        font-family: var(--mb-font-display);
         font-weight: 700;
         letter-spacing: 0.03em;
     }
 
     & .mb-opener-meta {
-        color: var(--mbn-text-muted);
-        font-family: var(--mbn-font-body);
+        color: var(--mb-text-muted);
+        font-family: var(--mb-font-body);
     }
 
     /* Lit like Nice Sheets' hovered round buttons: a bright spot fading to the dim gold. */
     & .mb-btn-open {
-        border: 1px solid var(--mbn-gold-dim);
+        border: 1px solid var(--mb-gold-dim);
         border-radius: 4px;
-        background: radial-gradient(120% 180% at 35% 20%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
-        color: var(--mbn-ink);
-        font-family: var(--mbn-font-display);
+        background: radial-gradient(120% 180% at 35% 20%, var(--mb-gold-bright), var(--mb-gold) 55%, var(--mb-gold-dim));
+        color: var(--mb-ink);
+        font-family: var(--mb-font-display);
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        transition: box-shadow 0.25s var(--mbn-ease), filter 0.25s var(--mbn-ease);
+        transition: box-shadow 0.25s var(--mb-ease), filter 0.25s var(--mb-ease);
 
         &:hover {
-            background: radial-gradient(120% 180% at 35% 20%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
-            box-shadow: 0 0 12px rgba(var(--mbn-gold-rgb), 0.55);
+            background: radial-gradient(120% 180% at 35% 20%, var(--mb-gold-bright), var(--mb-gold) 55%, var(--mb-gold-dim));
+            box-shadow: 0 0 12px rgba(var(--mb-gold-rgb), 0.55);
             filter: brightness(1.06);
         }
     }
 
     & .mb-empty-state {
-        color: var(--mbn-text-muted);
+        color: var(--mb-text-muted);
 
         & i {
-            color: var(--mbn-gold);
+            color: var(--mb-gold);
         }
     }
 
     & .mb-party-toggle-row {
-        border: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
-        background: rgba(var(--mbn-gold-rgb), 0.045);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
+        background: rgba(var(--mb-gold-rgb), 0.045);
     }
 
     & .mb-party-toggle-label {
-        color: var(--mbn-gold);
-        font-family: var(--mbn-font-display);
+        color: var(--mb-gold);
+        font-family: var(--mb-font-display);
     }
 
     & .mb-party-toggle-btn {
-        border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
-        background: var(--mbn-ink);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
+        background: var(--mb-ink);
 
         & .mb-toggle-off {
-            color: var(--mbn-text-muted);
+            color: var(--mb-text-muted);
         }
 
         & .mb-toggle-on {
-            color: var(--mbn-ink);
+            color: var(--mb-ink);
         }
 
         &[data-active="true"] {
-            border-color: var(--mbn-gold-dim);
-            background: radial-gradient(120% 180% at 35% 20%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
-            box-shadow: 0 0 8px rgba(var(--mbn-gold-rgb), 0.45);
+            border-color: var(--mb-gold-dim);
+            background: radial-gradient(120% 180% at 35% 20%, var(--mb-gold-bright), var(--mb-gold) 55%, var(--mb-gold-dim));
+            box-shadow: 0 0 8px rgba(var(--mb-gold-rgb), 0.45);
         }
     }
 
     & .mb-opener-grid::-webkit-scrollbar-track {
-        background: var(--mbn-ink);
+        background: var(--mb-ink);
     }
 
     & .mb-opener-grid::-webkit-scrollbar-thumb {
-        background: var(--mbn-gold-dim);
+        background: var(--mb-gold-dim);
     }
 }
 
@@ -266,11 +247,11 @@
         background: transparent;
 
         &::-webkit-scrollbar-track {
-            background: var(--mbn-ink);
+            background: var(--mb-ink);
         }
 
         &::-webkit-scrollbar-thumb {
-            background: var(--mbn-gold-dim);
+            background: var(--mb-gold-dim);
         }
     }
 
@@ -279,14 +260,14 @@
         position: relative;
         gap: 10px;
         padding: 6px 8px;
-        border: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         border-radius: 8px;
-        background: rgba(var(--mbn-gold-rgb), 0.045);
-        animation: dh-mb-nice-rise 0.45s var(--mbn-ease) both;
+        background: rgba(var(--mb-gold-rgb), 0.045);
+        animation: dh-mb-nice-rise 0.45s var(--mb-ease) both;
         animation-delay: calc(var(--mb-index, 0) * 40ms);
 
         &:last-child {
-            border-bottom: 1px solid rgba(var(--mbn-gold-rgb), 0.22);
+            border-bottom: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         }
 
         /* One pass of gold light over the icon once the row has landed. It sits over the image,
@@ -303,7 +284,7 @@
             background: linear-gradient(115deg, transparent 32%, rgba(255, 238, 200, 0.9) 50%, transparent 68%) 150% 0 / 250% 100% no-repeat;
             mix-blend-mode: screen;
             pointer-events: none;
-            animation: dh-mb-nice-glint 0.9s var(--mbn-ease) both;
+            animation: dh-mb-nice-glint 0.9s var(--mb-ease) both;
             animation-delay: calc(var(--mb-index, 0) * 40ms + 0.35s);
         }
     }
@@ -313,12 +294,12 @@
         height: 36px;
         border: none;
         border-radius: 6px;
-        box-shadow: 0 0 0 1px rgba(var(--mbn-gold-rgb), 0.35);
+        box-shadow: 0 0 0 1px rgba(var(--mb-gold-rgb), 0.35);
     }
 
     & .dh-mb-reveal-name {
-        color: var(--mbn-text);
-        font-family: var(--mbn-font-display);
+        color: var(--mb-text);
+        font-family: var(--mb-font-display);
         font-weight: 700;
         letter-spacing: 0.03em;
     }
@@ -326,17 +307,17 @@
     & .dh-mb-reveal-view {
         width: 28px;
         height: 28px;
-        border: 1px solid rgba(var(--mbn-gold-rgb), 0.35);
+        border: 1px solid rgba(var(--mb-gold-rgb), 0.35);
         border-radius: 50%;
-        background: var(--mbn-ink-3);
-        color: var(--mbn-gold);
-        transition: background 0.2s var(--mbn-ease), color 0.2s var(--mbn-ease), box-shadow 0.2s var(--mbn-ease);
+        background: var(--mb-ink-3);
+        color: var(--mb-gold);
+        transition: background 0.2s var(--mb-ease), color 0.2s var(--mb-ease), box-shadow 0.2s var(--mb-ease);
 
         &:hover {
             border-color: transparent;
-            background: radial-gradient(circle at 35% 30%, var(--mbn-gold-bright), var(--mbn-gold) 55%, var(--mbn-gold-dim));
-            color: var(--mbn-ink);
-            box-shadow: 0 0 8px rgba(var(--mbn-gold-rgb), 0.45);
+            background: radial-gradient(circle at 35% 30%, var(--mb-gold-bright), var(--mb-gold) 55%, var(--mb-gold-dim));
+            color: var(--mb-ink);
+            box-shadow: 0 0 8px rgba(var(--mb-gold-rgb), 0.45);
         }
     }
 }
