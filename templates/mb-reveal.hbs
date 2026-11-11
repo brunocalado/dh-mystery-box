@@ -1,11 +1,20 @@
-<div class="dh-mb-reveal-list">
-    {{#each items as |item|}}
-    <div class="dh-mb-reveal-row" style="--mb-index: {{item.index}}">
-        <img src="{{item.img}}" class="dh-mb-reveal-img" alt="{{item.name}}">
-        <span class="dh-mb-reveal-name">{{item.name}}</span>
-        <button type="button" class="dh-mb-reveal-view" data-action="viewItem" data-index="{{item.index}}" title="View Item">
-            <i class="fas fa-search"></i>
-        </button>
+<div class="dh-mb-reveal" data-mb-rarity="{{box.rarity}}">
+    <header class="dh-mb-reveal-header">
+        <span class="dh-mb-reveal-box">{{box.boxName}}</span>
+        <span class="dh-mb-reveal-rarity">{{box.rarity}}</span>
+    </header>
+    <div class="dh-mb-reveal-list">
+        {{#each items as |item|}}
+        <div class="dh-mb-reveal-row" style="--mb-index: {{item.index}}">
+            <img src="{{item.img}}" class="dh-mb-reveal-img" alt="{{item.name}}">
+            <span class="dh-mb-reveal-name">{{item.name}}</span>
+            <button type="button" class="dh-mb-reveal-view" data-action="viewItem" data-index="{{item.index}}" title="View Item">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
+    {{#if box.sentTo}}
+    <p class="dh-mb-reveal-sent"><i class="fas fa-users"></i> Sent to {{box.sentTo}}</p>
+    {{/if}}
 </div>

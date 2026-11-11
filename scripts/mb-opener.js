@@ -420,7 +420,11 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
     await ChatMessage.create(chatData);
 
     this.close();
-    new MysteryBoxReveal(resolvedItems, displayItems, targetActor).render(true);
+    new MysteryBoxReveal(resolvedItems, displayItems, targetActor, {
+      boxName: boxConfig.name,
+      rarity: boxConfig.rarity ?? "common",
+      sentTo: (sendToParty && partyActor) ? partyActor.name : null
+    }).render(true);
   }
 
   /**

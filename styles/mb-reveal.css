@@ -7,6 +7,43 @@
  */
 
 .dh-mystery-box-reveal {
+    /* The box's rarity colours the whole window, set on .dh-mb-reveal by data-mb-rarity. No
+       particles or sound here: the opening style has already played its effect by now. */
+    & .dh-mb-reveal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(var(--mb-rarity-rgb), 0.5);
+    }
+
+    & .dh-mb-reveal-box {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: var(--mb-font-display);
+        font-size: 1.1em;
+        font-weight: 700;
+        color: var(--mb-text);
+    }
+
+    /* Not .dh-mb-rarity-tag: mb-nice.css hides that class everywhere outside a Nice sheet. */
+    & .dh-mb-reveal-rarity {
+        flex-shrink: 0;
+        padding: 0 6px;
+        border: 1px solid rgba(var(--mb-rarity-rgb), 0.6);
+        border-radius: 3px;
+        background: rgba(var(--mb-rarity-rgb), 0.1);
+        color: var(--mb-rarity);
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 16px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
     & .dh-mb-reveal-list {
         display: flex;
         flex-direction: column;
@@ -39,13 +76,17 @@
         border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         border-radius: 6px;
         background: var(--mb-ink-2);
+        /* Rows come in one after another. */
+        animation: dh-mb-rise 0.45s var(--mb-ease) both;
+        animation-delay: calc(var(--mb-index, 0) * 60ms);
     }
 
     & .dh-mb-reveal-img {
-        width: 28px;
-        height: 28px;
+        width: 40px;
+        height: 40px;
         object-fit: contain;
-        border-radius: 3px;
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px var(--mb-rarity);
         flex-shrink: 0;
     }
 
@@ -69,5 +110,24 @@
         cursor: pointer;
         border-radius: 4px;
         transition: all 0.2s;
+    }
+
+    & .dh-mb-reveal-sent {
+        margin: 0;
+        padding: 0 10px 10px;
+        color: var(--mb-text-muted);
+        font-size: 0.9em;
+    }
+}
+
+@keyframes dh-mb-rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dh-mystery-box-reveal *,
+    .dh-mystery-box-reveal *::after {
+        animation: none !important;
     }
 }

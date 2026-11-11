@@ -26,12 +26,18 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
    * @param {Actor} [actor] - The actor that actually received the items (may
    *   differ from `game.user.character` in party mode). Falls back to the
    *   current user's character.
+   * @param {object} [box] - What was opened, for the header.
+   * @param {string} [box.boxName] - The box's name.
+   * @param {string} [box.rarity] - The box's rarity. It colours the whole window, since
+   *   Daggerheart items carry no rarity of their own.
+   * @param {string|null} [box.sentTo] - The party actor's name in party mode, else null.
    */
-  constructor(items, displayItems, actor) {
+  constructor(items, displayItems, actor, { boxName = "", rarity = "common", sentTo = null } = {}) {
     super();
     this._items = items;
     this._display = displayItems ?? items.map(i => ({ name: i.name, img: i.img }));
     this._actor = actor ?? game.user.character;
+    this._box = { boxName, rarity, sentTo };
   }
 
   static BASE_APPLICATION = MysteryBoxReveal;
@@ -40,7 +46,7 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
     id: "dh-mb-reveal",
     classes: ["dh-mystery-box-app", "dh-mystery-box-reveal", "themed", "theme-dark"],
     window: {
-      title: "You received:",
+      title: "You received",
       icon: "fas fa-gift",
       resizable: true
     },
@@ -63,7 +69,7 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
    * Build context for the reveal template.
    * Extracts displayable fields from plain item objects.
    * @param {object} options - Render options from AppV2 lifecycle.
-   * @returns {Promise<object>} Template context with items array.
+   * @returns {Promise<object>} Template context with items array and the box.
    */
   async _prepareContext(options) {
     const items = this._items.map((item, index) => ({
@@ -71,7 +77,7 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
       name: this._display[index]?.name ?? item.name,
       index
     }));
-    return { items };
+    return { items, box: this._box };
   }
 
   /**

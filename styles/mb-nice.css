@@ -245,6 +245,17 @@
 
 /* ── Reveal ── */
 .dh-mystery-box-app.dh-mb-nice.dh-mystery-box-reveal {
+    & .dh-mb-reveal-box {
+        font-family: var(--mb-font-display);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    & .dh-mb-reveal-rarity {
+        font-family: var(--mb-font-display);
+        box-shadow: 0 0 8px rgba(var(--mb-rarity-rgb), 0.45);
+    }
+
     & .dh-mb-reveal-list {
         gap: 6px;
         padding: 10px;
@@ -259,7 +270,7 @@
         }
     }
 
-    /* Rows rise in one after another, like Nice Sheets' entrance. */
+    /* The rows' rise comes from mb-reveal.css, shared with the default skin. */
     & .dh-mb-reveal-row {
         position: relative;
         gap: 10px;
@@ -267,8 +278,6 @@
         border: 1px solid rgba(var(--mb-gold-rgb), 0.22);
         border-radius: 8px;
         background: rgba(var(--mb-gold-rgb), 0.045);
-        animation: dh-mb-nice-rise 0.45s var(--mb-ease) both;
-        animation-delay: calc(var(--mb-index, 0) * 40ms);
 
         &:last-child {
             border-bottom: 1px solid rgba(var(--mb-gold-rgb), 0.22);
@@ -281,24 +290,22 @@
             position: absolute;
             top: 50%;
             left: 8px;
-            width: 36px;
-            height: 36px;
-            margin-top: -18px;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
             border-radius: 6px;
             background: linear-gradient(115deg, transparent 32%, rgba(255, 238, 200, 0.9) 50%, transparent 68%) 150% 0 / 250% 100% no-repeat;
             mix-blend-mode: screen;
             pointer-events: none;
             animation: dh-mb-nice-glint 0.9s var(--mb-ease) both;
-            animation-delay: calc(var(--mb-index, 0) * 40ms + 0.35s);
+            animation-delay: calc(var(--mb-index, 0) * 60ms + 0.35s);
         }
     }
 
     & .dh-mb-reveal-img {
-        width: 36px;
-        height: 36px;
         border: none;
         border-radius: 6px;
-        box-shadow: 0 0 0 1px rgba(var(--mb-gold-rgb), 0.35);
+        box-shadow: 0 0 0 1px var(--mb-rarity), 0 0 12px rgba(var(--mb-rarity-rgb), 0.5);
     }
 
     & .dh-mb-reveal-name {
@@ -327,11 +334,6 @@
 }
 
 /* Not reused by name from Nice Sheets, for the same reason as the sweep above. */
-@keyframes dh-mb-nice-rise {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes dh-mb-nice-glint {
     from { background-position: 150% 0; }
     to   { background-position: -50% 0; }
