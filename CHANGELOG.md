@@ -3,6 +3,9 @@
 - [Fixed] Mystery Box windows no longer show a band of the core theme around their content, and the Default Assets, Box Configuration and Import windows are readable when the interface uses the light theme. The windows are always dark.
 - [Changed] Rarity colours are the same in every window: steel, emerald, sapphire and gold, the palette Nice Sheets characters already show.
 - [Fixed] Headings and the chat card asked for the Aleo font, which nothing loads, and fell back to the browser's serif. They use Cinzel, which the Daggerheart system provides.
+- [Fixed] Open Mystery Box: the Open buttons line up when a box name wraps, long names show in full on hover instead of being cut at 30 characters, and the party label no longer spaces out its parentheses.
+- [Fixed] Mystery Box Manager: a long box name no longer widens its column.
+- [Changed] Mystery Box Editor: the raffle chance moved below the item name, so names have room, and Save is now the most prominent button. Delete and Remove turn red only on hover.
 
 # 0.2.4
 

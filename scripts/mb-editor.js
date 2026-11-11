@@ -245,9 +245,9 @@ export class MysteryBoxEditor extends foundry.applications.api.HandlebarsApplica
                 ? Math.min(1, (w / totalWeight) * this._raffleCount) * 100
                 : 0;
               const weightDisplay = controls.querySelector(".chance-value");
-              const probSpan = s.closest(".mb-item-row")?.querySelector(".mb-item-drop .raffle-prob");
+              const probSpan = controls.querySelector(".raffle-prob");
               if (weightDisplay) weightDisplay.firstChild.textContent = `Weight: ${s.value} `;
-              if (probSpan) probSpan.textContent = `(${prob.toFixed(2)}%)`;
+              if (probSpan) probSpan.textContent = `${prob.toFixed(2)}%`;
             }
           } else {
             display.textContent = `${slider.value}%`;

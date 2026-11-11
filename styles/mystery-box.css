@@ -18,6 +18,8 @@
     --mb-border-hover: #555555;
 
     /* Typography — used across settings and editor-config dialogs */
+    /* Shipped by the required Daggerheart system. Not fetched from a web font service: that
+       would be a third-party request from every client and would break offline games. */
     --mb-font-display: "Cinzel", serif;
     --mb-font-ui: 'Signika', sans-serif;
 
@@ -31,7 +33,9 @@
 }
 
 /* Rarity hues for every window and for box rows on a Nice Sheets character: steel, emerald,
-   sapphire, gold. The channels sit beside each hue for translucent glows. */
+   sapphire, gold. The channels sit beside each hue for translucent glows. This is the Nice
+   Sheets palette, chosen over the older green/blue/orange hues because it sits beside the
+   system's gold and is what players with that sheet already see. */
 .dh-mystery-box-app,
 .dh-nice-sheets {
     --mb-common: #9fb3c8;    --mb-common-rgb: 159, 179, 200;
@@ -48,6 +52,8 @@
 /* =========================================
    Window Overrides
    ========================================= */
+/* `.application`, not `.window-app`: that is the v1 Application frame class, and no
+   ApplicationV2 window carries it in v14. */
 .application.dh-mystery-box-app > .window-content {
     padding: 0;
     background: var(--mb-bg-dark);
@@ -137,7 +143,9 @@
 
         & .mb-box-list {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            /* minmax(0, …): a 1fr track's minimum is its content's min-content width, so one long
+               nowrap name used to widen its column. */
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 8px;
             padding-right: 4px;
         }
@@ -180,6 +188,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
+            min-width: 0;
             transition: border-color 0.2s;
 
             &:hover {
@@ -250,17 +259,12 @@
                 }
             }
 
-            & .mb-btn-danger {
-                background: linear-gradient(to bottom, #4a2020, #2b1515);
-                border-color: #662020;
-                color: #ff6666;
-
-                &:hover {
-                    background: linear-gradient(to bottom, #662020, #4a2020);
-                    border-color: #ff6666;
-                    color: #ff4444;
-                    box-shadow: 0 0 6px rgba(255, 100, 100, 0.4);
-                }
+            /* Same neutral as its neighbours at rest; red only once hovered. */
+            & .mb-btn-danger:hover {
+                background: linear-gradient(to bottom, #662020, #4a2020);
+                border-color: #ff6666;
+                color: #ff4444;
+                box-shadow: 0 0 6px rgba(255, 100, 100, 0.4);
             }
         }
 
@@ -442,9 +446,9 @@
         }
 
         & .mb-item-remove {
-            background: #3a1a1a;
-            border: 1px solid #662222;
-            color: #ff6666;
+            background: linear-gradient(to bottom, #3a3a3a, #2b2b2b);
+            border: 1px solid #444;
+            color: #aaa;
             padding: 3px 5px;
             border-radius: 3px;
             cursor: pointer;
@@ -457,7 +461,7 @@
             justify-content: center;
 
             &:hover {
-                background: #4a2222;
+                background: linear-gradient(to bottom, #662020, #4a2020);
                 border-color: #ff6666;
                 color: #ff4444;
             }
@@ -499,9 +503,9 @@
         }
 
         & .mb-add-btn {
-            background: linear-gradient(to bottom, #2a3a2a, #1b2b1b);
-            border: 1px solid #3a5a3a;
-            color: #88cc88;
+            background: linear-gradient(to bottom, #3a3a4a, #2a2a3a);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #C9A060;
             padding: 5px 12px;
             border-radius: 4px;
             cursor: pointer;
@@ -515,9 +519,9 @@
             height: 28px;
 
             &:hover {
-                background: linear-gradient(to bottom, #3a5a3a, #2a4a2a);
-                border-color: #66ff66;
-                color: #66ff66;
+                color: #fff;
+                border-color: #C9A060;
+                box-shadow: 0 0 8px rgba(201, 160, 96, 0.3);
             }
         }
 
@@ -529,25 +533,25 @@
 
             & button {
                 flex: 1;
-                background: linear-gradient(to bottom, #4a4a4a, #2b2b2b);
-                border: 1px solid #111;
+                background: linear-gradient(to bottom, var(--mb-accent), #d55400);
+                border: 1px solid var(--mb-accent);
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-                color: #f0f0f0;
+                color: #fff;
+                font-weight: 600;
                 padding: 10px 0;
                 border-radius: 4px;
                 cursor: pointer;
                 transition: all 0.2s;
 
                 &:hover {
-                    background: linear-gradient(to bottom, #5a5a5a, #3b3b3b);
+                    background: linear-gradient(to bottom, #ff7b1a, var(--mb-accent));
                     color: #fff;
-                    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+                    box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
                 }
             }
         }
 
         & .raffle-prob {
-            margin-left: auto;
             color: var(--color-text-light-highlight, #aaaaaa);
             font-size: 0.85em;
             white-space: nowrap;
@@ -650,10 +654,16 @@
             gap: 2px;
         }
 
+        /* Clamped here rather than cut in JS: a character count cannot know the rendered width.
+           The full name is in the title. */
         & .mb-opener-name {
             font-weight: 700;
             color: #fff;
             font-size: 1.05em;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
         }
 
         & .mb-opener-meta {
@@ -671,6 +681,8 @@
             transition: all 0.2s;
             font-weight: 600;
             width: 100%;
+            /* Pinned to the card's bottom, so buttons line up when a name wraps. */
+            margin-top: auto;
 
             &:hover {
                 background: linear-gradient(to bottom, #ff7b1a, var(--mb-accent));

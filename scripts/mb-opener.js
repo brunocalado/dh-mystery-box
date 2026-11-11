@@ -102,11 +102,10 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       // Skip items with no remaining quantity — they should have been deleted on last use.
       if ((item.system.quantity ?? 1) <= 0) continue;
       const boxConfig = boxes[flagBoxId];
-      const maxCharacters = 30;
       available.push({
         actorItemId: item.id,
         boxId: flagBoxId,
-        boxName: item.name.length > maxCharacters ? item.name.slice(0, maxCharacters) + "..." : item.name,
+        boxName: item.name,
         img: item.img,
         rarity: boxConfig.rarity ?? "common",
         itemCount: boxConfig.items.length,

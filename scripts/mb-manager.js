@@ -40,7 +40,8 @@ export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplic
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-manager",
     // Core adds theme classes only to document sheets. These windows hard-code a dark palette,
-    // so they pin the dark theme themselves, as core's own Main Menu does.
+    // so they pin the dark theme themselves, as core's own Main Menu does. A light variant would
+    // double every colour rule.
     classes: ["dh-mystery-box-app", "dh-mystery-box-manager", "themed", "theme-dark"],
     window: {
       title: "Mystery Box Manager",

@@ -15,7 +15,7 @@
         <div class="mb-party-toggle-row">
           <label class="mb-party-toggle-label" for="mb-party-toggle">
             <i class="fas fa-users"></i>
-            Send loot to party (<em>{{partyActorName}}</em>)
+            <span>Send loot to party (<em>{{partyActorName}}</em>)</span>
           </label>
           <button
             type="button"
@@ -35,7 +35,7 @@
             <div class="mb-opener-card" data-mb-rarity="{{box.rarity}}">
                 <img src="{{box.img}}" class="mb-opener-img" alt="{{box.boxName}}">
                 <div class="mb-opener-info">
-                    <span class="mb-opener-name">{{box.boxName}}</span>
+                    <span class="mb-opener-name" title="{{box.boxName}}">{{box.boxName}}</span>
                     <span class="mb-opener-meta">{{box.itemCount}} possible item(s) | Qty: {{box.quantity}}</span>
                 </div>
                 <button type="button" data-action="openBox" data-box-id="{{box.boxId}}" data-actor-item-id="{{box.actorItemId}}" class="mb-btn-open">
