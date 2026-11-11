@@ -11,7 +11,7 @@
 
     {{#if rarityGroups.length}}
         {{#each rarityGroups as |group|}}
-        <div class="mb-rarity-section mb-rarity-{{group.rarity}}">
+        <div class="mb-rarity-section" data-mb-rarity="{{group.rarity}}">
             <div class="mb-rarity-header">
                 <span class="mb-rarity-label">{{group.label}}</span>
                 <span class="mb-rarity-count">{{group.boxes.length}} box(es)</span>

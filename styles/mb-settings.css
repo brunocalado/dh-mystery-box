@@ -153,12 +153,9 @@
         font-size: 13px;
         text-align: right;
         padding-right: 5px;
-
-        &.mbs-common    { color: var(--mbs-rarity-common); }
-        &.mbs-uncommon  { color: var(--mbs-rarity-uncommon); }
-        &.mbs-rare      { color: var(--mbs-rarity-rare); }
-        &.mbs-legendary { color: var(--mbs-rarity-legendary); }
     }
+
+    & .mbs-rarity-label[data-mb-rarity] { color: var(--mb-rarity); }
 
     /* -- FOOTER -- */
     & .mbs-footer {

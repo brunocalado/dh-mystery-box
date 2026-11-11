@@ -27,23 +27,6 @@
     --mbn-font-title: "Cinzel Decorative", "Cinzel", serif;
     --mbn-font-body: "Montserrat", sans-serif;
     --mbn-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-    /* Rarity hues: common steel, uncommon emerald, rare sapphire, legendary gold. The channels
-       are kept beside each hue for translucent glows, as Nice Sheets does with its gold. */
-    --mbn-common: #9fb3c8;
-    --mbn-common-rgb: 159, 179, 200;
-    --mbn-uncommon: #4fbf7f;
-    --mbn-uncommon-rgb: 79, 191, 127;
-    --mbn-rare: #6fa8ff;
-    --mbn-rare-rgb: 111, 168, 255;
-    --mbn-legendary: var(--mbn-gold);
-    --mbn-legendary-rgb: var(--mbn-gold-rgb);
-}
-
-.dh-nice-sheets, .dh-mystery-box-app.dh-mb-nice {
-    & [data-mb-rarity="common"]    { --mb-rarity: var(--mbn-common);    --mb-rarity-rgb: var(--mbn-common-rgb); }
-    & [data-mb-rarity="uncommon"]  { --mb-rarity: var(--mbn-uncommon);  --mb-rarity-rgb: var(--mbn-uncommon-rgb); }
-    & [data-mb-rarity="rare"]      { --mb-rarity: var(--mbn-rare);      --mb-rarity-rgb: var(--mbn-rare-rgb); }
-    & [data-mb-rarity="legendary"] { --mb-rarity: var(--mbn-legendary); --mb-rarity-rgb: var(--mbn-legendary-rgb); }
 }
 
 /* ── Box rows in the Nice Sheet ── */

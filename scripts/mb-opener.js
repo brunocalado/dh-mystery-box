@@ -301,12 +301,12 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
       const content = `
       <div class="chat-card" style="border: 2px solid ${titleColor}; border-radius: 8px; overflow: hidden;">
           <header class="card-header flexrow" style="background: #191919 !important; padding: 8px; border-bottom: 2px solid ${titleColor};">
-              <h3 class="noborder" style="margin: 0; font-weight: bold; color: ${titleColor} !important; font-family: 'Aleo', serif; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%;">
+              <h3 class="noborder" style="margin: 0; font-weight: bold; color: ${titleColor} !important; font-family: 'Cinzel', serif; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%;">
                   ${boxConfig.name} Opened!
               </h3>
           </header>
           <div class="card-content" style="background: #222; padding: 20px; min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
-              <div style="color: #b0b0b0; font-style: italic; font-family: 'Aleo', serif; font-size: 1.1em;">The box was empty...</div>
+              <div style="color: #b0b0b0; font-style: italic; font-size: 1.1em;">The box was empty...</div>
           </div>
       </div>`;
 
@@ -374,7 +374,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
     // Construct and send chat message
     const titleColor = "#C9A060";
     const partyFooter = (sendToParty && partyActor)
-      ? `<div style="margin-top: 8px; padding: 4px 8px; background: rgba(42, 106, 58, 0.3); border-radius: 4px; border-left: 3px solid #4caf50; color: #88cc88; font-size: 0.85em; font-family: 'Aleo', serif;">
+      ? `<div style="margin-top: 8px; padding: 4px 8px; background: rgba(42, 106, 58, 0.3); border-radius: 4px; border-left: 3px solid #4caf50; color: #88cc88; font-size: 0.85em;">
            <i class="fas fa-users"></i> Items sent to <strong>${partyActor.name}</strong>
          </div>`
       : "";
@@ -395,7 +395,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
     const content = `
     <div class="chat-card" style="border: 2px solid ${titleColor}; border-radius: 8px; overflow: hidden;">
         <header class="card-header flexrow" style="background: #191919 !important; padding: 8px; border-bottom: 2px solid ${titleColor};">
-            <h3 class="noborder" style="margin: 0; font-weight: bold; color: ${titleColor} !important; font-family: 'Aleo', serif; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%;">
+            <h3 class="noborder" style="margin: 0; font-weight: bold; color: ${titleColor} !important; font-family: 'Cinzel', serif; text-align: center; text-transform: uppercase; letter-spacing: 1px; width: 100%;">
                 ${boxConfig.name} Opened!
             </h3>
         </header>
@@ -403,7 +403,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
             ${displayItems.map(display => `
             <div style="display: flex; align-items: center; gap: 10px; background: rgba(0, 0, 0, 0.3); padding: 6px; border-radius: 4px;">
                 <img src="${display.img}" style="width: 32px; height: 32px; border: 1px solid #555; border-radius: 4px; object-fit: cover; flex-shrink: 0;">
-                <div style="color: #ffffff; font-size: 1.1em; font-family: 'Aleo', serif; text-shadow: 1px 1px 2px #000;">${display.name}</div>
+                <div style="color: #ffffff; font-size: 1.1em; text-shadow: 1px 1px 2px #000;">${display.name}</div>
             </div>`).join("")}
             ${partyFooter}
         </div>

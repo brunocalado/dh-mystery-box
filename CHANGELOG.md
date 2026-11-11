@@ -1,6 +1,8 @@
 # Unreleased
 
 - [Fixed] Mystery Box windows no longer show a band of the core theme around their content, and the Default Assets, Box Configuration and Import windows are readable when the interface uses the light theme. The windows are always dark.
+- [Changed] Rarity colours are the same in every window: steel, emerald, sapphire and gold, the palette Nice Sheets characters already show.
+- [Fixed] Headings and the chat card asked for the Aleo font, which nothing loads, and fell back to the browser's serif. They use Cinzel, which the Daggerheart system provides.
 
 # 0.2.4
 

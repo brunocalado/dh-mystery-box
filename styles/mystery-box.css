@@ -18,7 +18,7 @@
     --mb-border-hover: #555555;
 
     /* Typography — used across settings and editor-config dialogs */
-    --mb-font-display: 'Aleo', serif;
+    --mb-font-display: "Cinzel", serif;
     --mb-font-ui: 'Signika', sans-serif;
 
     /* Shared "mbs" sub-theme (settings menu & editor-config dialog) */
@@ -28,10 +28,21 @@
     --mbs-text-main: #f0f0e0;
     --mbs-text-dim: #aaa;
     --mbs-input-bg: rgba(0, 0, 0, 0.3);
-    --mbs-rarity-common: #b0b0b0;
-    --mbs-rarity-uncommon: #4caf50;
-    --mbs-rarity-rare: #2196f3;
-    --mbs-rarity-legendary: #ff9800;
+}
+
+/* Rarity hues for every window and for box rows on a Nice Sheets character: steel, emerald,
+   sapphire, gold. The channels sit beside each hue for translucent glows. */
+.dh-mystery-box-app,
+.dh-nice-sheets {
+    --mb-common: #9fb3c8;    --mb-common-rgb: 159, 179, 200;
+    --mb-uncommon: #4fbf7f;  --mb-uncommon-rgb: 79, 191, 127;
+    --mb-rare: #6fa8ff;      --mb-rare-rgb: 111, 168, 255;
+    --mb-legendary: #f3c267; --mb-legendary-rgb: 243, 194, 103;
+
+    & [data-mb-rarity="common"]    { --mb-rarity: var(--mb-common);    --mb-rarity-rgb: var(--mb-common-rgb); }
+    & [data-mb-rarity="uncommon"]  { --mb-rarity: var(--mb-uncommon);  --mb-rarity-rgb: var(--mb-uncommon-rgb); }
+    & [data-mb-rarity="rare"]      { --mb-rarity: var(--mb-rare);      --mb-rarity-rgb: var(--mb-rare-rgb); }
+    & [data-mb-rarity="legendary"] { --mb-rarity: var(--mb-legendary); --mb-rarity-rgb: var(--mb-legendary-rgb); }
 }
 
 /* =========================================
@@ -143,7 +154,7 @@
             gap: 8px;
             padding: 4px 8px;
             border-radius: 4px;
-            border-left: 4px solid #888;
+            border-left: 4px solid var(--mb-rarity, #888);
             background: #222;
         }
 
@@ -160,12 +171,6 @@
             color: #888;
             margin-left: auto;
         }
-
-        /* Per-rarity accent colors on the left border */
-        & .mb-rarity-common    .mb-rarity-header { border-left-color: #aaaaaa; }
-        & .mb-rarity-uncommon  .mb-rarity-header { border-left-color: #1eff00; }
-        & .mb-rarity-rare      .mb-rarity-header { border-left-color: #0070dd; }
-        & .mb-rarity-legendary .mb-rarity-header { border-left-color: #ff8000; }
 
         & .mb-box-entry {
             background: var(--mb-bg-dark);
