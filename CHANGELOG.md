@@ -1,3 +1,7 @@
+# Unreleased
+
+- [Fixed] Mystery Box windows no longer show a band of the core theme around their content, and the Default Assets, Box Configuration and Import windows are readable when the interface uses the light theme. The windows are always dark.
+
 # 0.2.4
 
 [Changed]

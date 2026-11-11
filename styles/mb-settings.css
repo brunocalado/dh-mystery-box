@@ -1,3 +1,11 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 /* Mystery Box: Settings Menu Styles */
 
 .dh-mystery-box-settings {
@@ -180,7 +188,7 @@
 }
 
 /* Shared window override for this app — matches existing module pattern */
-.window-app.dh-mystery-box-settings .window-content {
+.application.dh-mystery-box-settings > .window-content {
     padding: 0;
     background: var(--mb-bg-dark);
     display: flex;

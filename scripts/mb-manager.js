@@ -1,3 +1,11 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 import { MysteryBoxEditor } from "./mb-editor.js";
 import { MODULE_ID } from "./constants.js";
 
@@ -31,7 +39,9 @@ export class MysteryBoxManager extends foundry.applications.api.HandlebarsApplic
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-manager",
-    classes: ["dh-mystery-box-app", "dh-mystery-box-manager"],
+    // Core adds theme classes only to document sheets. These windows hard-code a dark palette,
+    // so they pin the dark theme themselves, as core's own Main Menu does.
+    classes: ["dh-mystery-box-app", "dh-mystery-box-manager", "themed", "theme-dark"],
     window: {
       title: "Mystery Box Manager",
       icon: "fas fa-box-open",

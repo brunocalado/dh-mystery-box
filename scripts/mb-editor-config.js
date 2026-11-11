@@ -1,3 +1,11 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 import { MODULE_ID } from "./constants.js";
 
 /**
@@ -22,7 +30,7 @@ export class MysteryBoxEditorConfig extends foundry.applications.api.HandlebarsA
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-editor-config",
     tag: "div",
-    classes: ["dh-mystery-box-app", "mb-editor-config"],
+    classes: ["dh-mystery-box-app", "mb-editor-config", "themed", "theme-dark"],
     window: {
       title: "Box Configuration",
       icon: "fas fa-sliders",

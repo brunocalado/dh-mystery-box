@@ -1,3 +1,11 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 import { MODULE_ID } from "./constants.js";
 import { usesNiceSheets } from "./mb-helpers.js";
 
@@ -30,7 +38,7 @@ export class MysteryBoxReveal extends foundry.applications.api.HandlebarsApplica
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-reveal",
-    classes: ["dh-mystery-box-app", "dh-mystery-box-reveal"],
+    classes: ["dh-mystery-box-app", "dh-mystery-box-reveal", "themed", "theme-dark"],
     window: {
       title: "You received:",
       icon: "fas fa-gift",

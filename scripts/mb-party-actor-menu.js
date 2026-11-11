@@ -1,3 +1,11 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 import { MODULE_ID } from "./constants.js";
 
 /**
@@ -14,7 +22,7 @@ export class MysteryBoxPartyActorMenu extends foundry.applications.api.Handlebar
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-party-actor-menu",
     tag: "form",
-    classes: ["dh-mystery-box-app"],
+    classes: ["dh-mystery-box-app", "themed", "theme-dark"],
     window: { title: "Mystery Box: Select Party Actor", resizable: false },
     position: { width: 480, height: "auto" }
   }, { inplace: false });

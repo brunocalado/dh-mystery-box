@@ -1,3 +1,11 @@
+/*!
+ * Daggerheart: 🎁 Mystery Box
+ * 2026 https://github.com/brunocalado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3.
+ */
+
 import { MysteryBoxReveal } from "./mb-reveal.js";
 import { MysteryBoxConfetti } from "./mb-confetti.js";
 import { debugLog, getDisplayIdentity, usesNiceSheets } from "./mb-helpers.js";
@@ -51,7 +59,7 @@ export class MysteryBoxOpener extends foundry.applications.api.HandlebarsApplica
 
   static DEFAULT_OPTIONS = foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
     id: "dh-mb-opener",
-    classes: ["dh-mystery-box-app", "dh-mystery-box-opener"],
+    classes: ["dh-mystery-box-app", "dh-mystery-box-opener", "themed", "theme-dark"],
     window: {
       title: "Open Mystery Box",
       icon: "fas fa-box-open",
