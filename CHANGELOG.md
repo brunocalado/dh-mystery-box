@@ -1,4 +1,4 @@
-# Unreleased
+# 0.3.0
 
 - [Fixed] Mystery Box windows no longer show a band of the core theme around their content, and the Default Assets, Box Configuration and Import windows are readable when the interface uses the light theme. The windows are always dark.
 - [Changed] Rarity colours are the same in every window: steel, emerald, sapphire and gold, the palette Nice Sheets characters already show.
